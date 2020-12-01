@@ -19,3 +19,8 @@ vim docker development environment
 alias vimdocker='docker run -it -v "$(pwd)":/home/alex_cj96/src alexcj96/vim-docker-env:latest'
 vimdocker
 ```
+
+## Screenshots
+
+![vim](./images/vim.png)
+![ls](./images/ls.png)
