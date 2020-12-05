@@ -9,7 +9,8 @@ ARG RUST_TOOLCHAIN=nightly-2020-11-14
 ENV DEBIAN_FRONTEND noninteractive
 ENV TZ=Europe/Paris
 
-RUN useradd ${APP_USER} --user-group --create-home --shell /usr/bin/zsh --groups sudo
+RUN useradd ${APP_USER} --user-group --create-home --shell /usr/bin/zsh --groups sudo \
+        && yes ${APP_USER} | passwd ${APP_USER}
 
 RUN apt update --fix-missing \
     && apt upgrade -y \
@@ -64,6 +65,19 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 RUN echo '%sudo   ALL=(ALL:ALL) NOPASSWD:ALL' >> /etc/sudoers \
     && sed -i 's/required/sufficient/1' /etc/pam.d/chsh
+
+RUN ( \
+        echo 'Port 9999'; \
+        echo 'ChallengeResponseAuthentication no'; \
+        echo 'UsePAM yes'; \
+        echo 'X11Forwarding yes'; \
+        echo 'PrintMotd no'; \
+        echo 'AcceptEnv LANG LC_*'; \
+        echo 'Subsystem sftp /usr/lib/openssh/sftp-server'; \
+        echo 'PasswordAuthentication yes'; \
+        echo 'MaxAuthTries 30'; \
+    ) > /etc/ssh/sshd_config \
+    && mkdir /run/sshd
 
 USER ${APP_USER}
 WORKDIR /home/${APP_USER}
@@ -168,4 +182,6 @@ RUN curl https://raw.githubusercontent.com/GopherJ/cfg/master/fonts/install-fira
 
 WORKDIR /home/${APP_USER}/src
 
-CMD ["/usr/bin/zsh"]
+EXPOSE 9999
+
+CMD ["sudo", "/usr/sbin/sshd", "-D", "-e", "-f", "/etc/ssh/sshd_config"]

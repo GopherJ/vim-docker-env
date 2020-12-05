@@ -16,9 +16,18 @@ vim docker development environment
 
 ## Usage
 
+1. enter docker for working
 ```
-alias vimdocker='docker run -it -v "$(pwd)":/home/alex_cj96/src alexcj96/vim-docker-env:latest'
+alias vimdocker='docker run --rm -it -v "$(pwd)":/home/alex_cj96/src alexcj96/vim-docker-env:latest zsh'
 vimdocker
+```
+
+2. launch as ssh daemon
+
+```
+docker run -p 9999:9999 alexcj96/vim-docker-env:latest
+# Connect: ssh alex_cj96@localhost -p 9999
+# Default password: alex_cj96
 ```
 
 ## Screenshots
@@ -31,4 +40,3 @@ vimdocker
 - add common cxx dependencies like boost, dlib, paho, geographiclib...
 - passing `GITHUB_TOKEN`, `GITLAB_TOKEN` to container so that command like `:GBrowse` makes sense
 - minimize
-- sshd
