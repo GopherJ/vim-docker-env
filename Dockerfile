@@ -4,7 +4,7 @@ MAINTAINER Cheng JIANG <alex_cj96@foxmail.com>
 ARG APP_USER=alex_cj96
 ARG GO_VERSION=1.14.4
 ARG NODE_VERSION=v12.19.0
-ARG RUST_TOOLCHAIN=nightly-2020-07-08
+ARG RUST_TOOLCHAIN=nightly-2020-11-14
 
 ENV DEBIAN_FRONTEND noninteractive
 ENV TZ=Europe/Paris
@@ -121,6 +121,7 @@ RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | \
     && cargo install install cargo-whatfeatures --no-default-features --features "rustls" \
     && cargo install --git https://github.com/xen0n/autojump-rs \
     && curl -fLo ~/.autojump.zsh https://raw.githubusercontent.com/wting/autojump/master/bin/autojump.zsh --retry-delay 2 --retry 3 \
+    && cargo install --git https://github.com/extrawurst/gitui \
     && cargo install --git https://github.com/sharkdp/fd
 
 RUN sh -c "$(wget -O- https://github.com/deluan/zsh-in-docker/releases/download/v1.1.1/zsh-in-docker.sh)" -- -t robbyrussell \
