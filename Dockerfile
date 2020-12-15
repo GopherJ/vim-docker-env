@@ -108,11 +108,13 @@ ENV GOENV_ROOT=/home/${APP_USER}/.goenv
 ENV NVM_DIR=/home/${APP_USER}/.nvm
 ENV CARGO_HOME=/home/${APP_USER}/.cargo
 
-ENV PATH=$CARGO_HOME/bin:$NVM_DIR/versions/node/${NODE_VERSION}/bin:$GOROOT/bin:$GOPATH/bin:$GOENV_ROOT/bin:$GOENV_ROOT/versions/$GO_VERSION/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+ENV PATH=$CARGO_HOME/bin:$NVM_DIR/versions/node/${NODE_VERSION}/bin:$GOENV_ROOT/bin:$GOENV_ROOT/versions/$GO_VERSION/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
 RUN git clone https://github.com/syndbg/goenv.git ~/.goenv \
     && eval "$(goenv init -)" \
     && goenv install $GO_VERSION \
+    && goenv global $GO_VERSION \
+    && goenv rehash \
     && go get -u github.com/go-delve/delve/cmd/dlv
 
 RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.2/install.sh | bash \
@@ -131,10 +133,10 @@ RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | \
     && rustup component add rust-analysis rust-src \
     && cargo install cargo-edit \
     && cargo install exa \
+    && cargo install zoxide \
+    && cargo install bat \
     && cargo install code-minimap \
     && cargo install install cargo-whatfeatures --no-default-features --features "rustls" \
-    && cargo install --git https://github.com/xen0n/autojump-rs \
-    && curl -fLo ~/.autojump.zsh https://raw.githubusercontent.com/wting/autojump/master/bin/autojump.zsh --retry-delay 2 --retry 3 \
     && cargo install --git https://github.com/extrawurst/gitui \
     && cargo install --git https://github.com/sharkdp/fd
 

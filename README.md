@@ -12,13 +12,14 @@ vim docker development environment
 - go, rust, node
 - autojump
 - built in multiple languages vim config
-- ripgrep, fd, exa...
+- ripgrep, bat, fd, exa...
+- vimspector debug
 
 ## Usage
 
 1. enter docker for working
 ```
-alias vimdocker='docker run --rm -it -v "$(pwd)":/home/alex_cj96/src alexcj96/vim-docker-env:latest zsh'
+vimdocker='docker run --rm -it -e SSH_AUTH_SOCK=$SSH_AUTH_SOCK -v $(dirname $SSH_AUTH_SOCK):$(dirname $SSH_AUTH_SOCK) -v "$(pwd)":/home/alex_cj96/src alexcj96/vim-docker-env:latest zsh'
 vimdocker
 ```
 
@@ -26,7 +27,7 @@ vimdocker
 
 ```
 docker run -p 9999:9999 alexcj96/vim-docker-env:latest
-# Connect: ssh alex_cj96@localhost -p 9999
+# Connect: ssh -A alex_cj96@localhost -p 9999
 # Default password: alex_cj96
 ```
 
