@@ -107,6 +107,7 @@ RUN curl -fLo ~/ripgrep_12.1.1_amd64.deb https://github.com/BurntSushi/ripgrep/r
 ENV GOENV_ROOT=/home/${APP_USER}/.goenv
 ENV NVM_DIR=/home/${APP_USER}/.nvm
 ENV CARGO_HOME=/home/${APP_USER}/.cargo
+ENV USER=${APP_USER}
 
 ENV PATH=$CARGO_HOME/bin:$NVM_DIR/versions/node/${NODE_VERSION}/bin:$GOENV_ROOT/bin:$GOENV_ROOT/versions/$GO_VERSION/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
