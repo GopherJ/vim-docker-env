@@ -28,6 +28,7 @@ RUN apt update --fix-missing \
         xz-utils \
         gawk \
         unzip \
+        ruby \
         zlib1g-dev \
         sudo \
         ninja-build \
@@ -56,6 +57,7 @@ RUN apt update --fix-missing \
         clangd-9 \
         clang-9 \
         libjansson-dev \
+        protobuf-compiler \
     && update-alternatives --install /usr/bin/clangd clangd /usr/bin/clangd-9 100 \
     && update-alternatives --install /usr/bin/clang clang /usr/bin/clang-9 1 --slave /usr/bin/clang++ clang++ /usr/bin/clang++-9 \
     && apt clean \
@@ -116,7 +118,8 @@ RUN git clone https://github.com/syndbg/goenv.git ~/.goenv \
     && goenv install $GO_VERSION \
     && goenv global $GO_VERSION \
     && goenv rehash \
-    && go get -u github.com/go-delve/delve/cmd/dlv
+    && go get -u github.com/go-delve/delve/cmd/dlv \
+    && go get -u github.com/golang/protobuf/protoc-gen-go
 
 RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.2/install.sh | bash \
     && [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" \
@@ -155,6 +158,7 @@ RUN sudo add-apt-repository ppa:jonathonf/vim \
     && pip3 install wheel \
     && pip install --user pynvim \
     && pip3 install --user pynvim \
+    && sudo gem install neovim \
     && curl -fo ~/.vimrc https://raw.githubusercontent.com/GopherJ/cfg/master/coc/.vimrc --retry-delay 2 --retry 3 \
     && curl -fo ~/.vim/coc-settings.json --create-dirs https://raw.githubusercontent.com/GopherJ/cfg/master/coc/coc-settings.json --retry-delay 2 --retry 3 \
     && curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim --retry-delay 2 --retry 3 \
