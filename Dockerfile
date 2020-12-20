@@ -119,7 +119,8 @@ RUN git clone https://github.com/syndbg/goenv.git ~/.goenv \
     && goenv global $GO_VERSION \
     && goenv rehash \
     && go get -u github.com/go-delve/delve/cmd/dlv \
-    && go get -u github.com/golang/protobuf/protoc-gen-go
+    && go get -u github.com/golang/protobuf/protoc-gen-go \
+    && go get github.com/golangci/golangci-lint/cmd/golangci-lint@v1.27.0
 
 RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.2/install.sh | bash \
     && [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" \
