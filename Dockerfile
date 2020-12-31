@@ -149,7 +149,8 @@ RUN sh -c "$(wget -O- https://github.com/deluan/zsh-in-docker/releases/download/
     && curl https://raw.githubusercontent.com/GopherJ/cfg/master/zshrc/.zshrc --retry-delay 2 --retry 3 >> ~/.zshrc
 
 RUN bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)" \
-    && /home/linuxbrew/.linuxbrew/bin/brew install watchman
+    && /home/linuxbrew/.linuxbrew/bin/brew install watchman \
+    && /home/linuxbrew/.linuxbrew/bin/brew install gh
 
 RUN sudo add-apt-repository ppa:jonathonf/vim \
     && sudo add-apt-repository ppa:neovim-ppa/unstable \
