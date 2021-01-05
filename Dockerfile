@@ -99,10 +99,6 @@ RUN wget https://cmake.org/files/v3.18/cmake-3.18.4.tar.gz \
     && make -j4 \
     && sudo make install
 
-RUN curl -fLo ~/Alacritty-v0.4.3-ubuntu_18_04_amd64.deb https://github.com/alacritty/alacritty/releases/download/v0.4.3/Alacritty-v0.4.3-ubuntu_18_04_amd64.deb --retry-delay 2 --retry 3 \
-    && sudo dpkg -i ~/Alacritty-v0.4.3-ubuntu_18_04_amd64.deb \
-    && curl -fLo ~/.config/alacritty/alacritty.yml --create-dirs https://raw.githubusercontent.com/GopherJ/cfg/master/alacritty/alacritty.yml --retry-delay 2 --retry 3
-
 RUN curl -fLo ~/ripgrep_12.1.1_amd64.deb https://github.com/BurntSushi/ripgrep/releases/download/12.1.1/ripgrep_12.1.1_amd64.deb --retry-delay 2 --retry 3 \
     && sudo dpkg -i ~/ripgrep_12.1.1_amd64.deb
 
@@ -142,6 +138,8 @@ RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | \
     && cargo install bat \
     && cargo install code-minimap \
     && cargo install install cargo-whatfeatures --no-default-features --features "rustls" \
+    && cargo install --git https://github.com/alacritty/alacritty --tag v0.6.0 \
+    && curl -fLo ~/.config/alacritty/alacritty.yml --create-dirs https://raw.githubusercontent.com/GopherJ/cfg/master/alacritty/alacritty.yml --retry-delay 2 --retry 3 \
     && cargo install --git https://github.com/extrawurst/gitui \
     && cargo install --git https://github.com/sharkdp/fd
 
