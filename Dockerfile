@@ -156,6 +156,7 @@ RUN sudo add-apt-repository ppa:jonathonf/vim \
     && sudo apt install -y vim neovim \
     && pip install wheel \
     && pip3 install wheel \
+    && pip3 install -U jedi \
     && pip install --user pynvim \
     && pip3 install --user pynvim \
     && sudo gem install neovim \
