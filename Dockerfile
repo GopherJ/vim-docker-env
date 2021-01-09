@@ -115,8 +115,7 @@ RUN git clone https://github.com/syndbg/goenv.git ~/.goenv \
     && goenv global $GO_VERSION \
     && goenv rehash \
     && go get -u github.com/go-delve/delve/cmd/dlv \
-    && go get -u github.com/golang/protobuf/protoc-gen-go \
-    && go get github.com/golangci/golangci-lint/cmd/golangci-lint@v1.27.0
+    && go get -u github.com/golang/protobuf/protoc-gen-go
 
 RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.2/install.sh | bash \
     && [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" \
@@ -141,6 +140,7 @@ RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | \
     && cargo install --git https://github.com/alacritty/alacritty --tag v0.6.0 \
     && curl -fLo ~/.config/alacritty/alacritty.yml --create-dirs https://raw.githubusercontent.com/GopherJ/cfg/master/alacritty/alacritty.yml --retry-delay 2 --retry 3 \
     && cargo install --git https://github.com/extrawurst/gitui \
+    && cargo install --git https://github.com/sharkdp/bat --tag v0.17.1 \
     && cargo install --git https://github.com/sharkdp/fd
 
 RUN sh -c "$(wget -O- https://github.com/deluan/zsh-in-docker/releases/download/v1.1.1/zsh-in-docker.sh)" -- -t robbyrussell \
