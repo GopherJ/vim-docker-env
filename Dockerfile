@@ -35,6 +35,7 @@ RUN apt update --fix-missing \
         autoconf \
         automake \
         libtool \
+        python3 \
         python3-dev \
         python3-pip \
         python-pip \
@@ -54,6 +55,9 @@ RUN apt update --fix-missing \
         software-properties-common \
         ca-certificates \
         pkg-config \
+        libfreetype6-dev \
+        libfontconfig1-dev \
+        libxcb-xfixes0-dev \
         clangd-9 \
         clang-9 \
         libjansson-dev \
