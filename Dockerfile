@@ -48,6 +48,7 @@ RUN apt update --fix-missing \
         openssh-client \
         openssh-server \
         jq \
+        ranger \
         zsh \
         apt-transport-https \
         openjdk-8-jdk \

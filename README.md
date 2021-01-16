@@ -15,6 +15,7 @@ vim docker development environment
 -   built in multiple languages vim config
 -   ripgrep, bat, fd, exa...
 -   vimspector debug
+-   ranger
 
 ## Usage
 
