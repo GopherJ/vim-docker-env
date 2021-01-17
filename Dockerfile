@@ -32,6 +32,7 @@ RUN apt update --fix-missing \
         zlib1g-dev \
         sudo \
         ninja-build \
+        xdotool \
         autoconf \
         automake \
         libtool \
@@ -49,6 +50,7 @@ RUN apt update --fix-missing \
         openssh-server \
         jq \
         ranger \
+        nnn \
         zsh \
         apt-transport-https \
         openjdk-8-jdk \
