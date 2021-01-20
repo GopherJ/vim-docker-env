@@ -32,6 +32,7 @@ RUN apt update --fix-missing \
         zlib1g-dev \
         sudo \
         ninja-build \
+        xdotool \
         autoconf \
         automake \
         libtool \
