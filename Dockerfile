@@ -61,6 +61,7 @@ RUN apt update --fix-missing \
         libfreetype6-dev \
         libfontconfig1-dev \
         libxcb-xfixes0-dev \
+        imagemagick \
         clangd-9 \
         clang-9 \
         libjansson-dev \
