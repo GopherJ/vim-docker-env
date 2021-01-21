@@ -10,9 +10,9 @@ vim docker development environment
 -   alacritty
 -   tmux
 -   fira code fonts
--   go, rust, node, java, python
+-   rust, go, js/ts, c/c++, java, python
 -   autojump
--   built in multiple languages vim config
+-   zsh
 -   ripgrep, bat, fd, exa...
 -   vimspector debug
 -   ranger

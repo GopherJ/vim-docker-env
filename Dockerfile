@@ -5,6 +5,8 @@ ARG APP_USER=alex_cj96
 ARG GO_VERSION=1.14.4
 ARG NODE_VERSION=v12.19.0
 ARG RUST_TOOLCHAIN=nightly-2020-11-14
+ARG TABNINE_VERSION=3.3.35
+ARG RUST_ANALYZER_VERSION=2021-01-18
 
 ENV DEBIAN_FRONTEND noninteractive
 ENV TZ=Europe/Paris
@@ -149,7 +151,12 @@ RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | \
     && curl -fLo ~/.config/alacritty/alacritty.yml --create-dirs https://raw.githubusercontent.com/GopherJ/cfg/master/alacritty/alacritty.yml --retry-delay 2 --retry 3 \
     && cargo install --git https://github.com/extrawurst/gitui \
     && cargo install --git https://github.com/sharkdp/bat --tag v0.17.1 \
-    && cargo install --git https://github.com/sharkdp/fd
+    && cargo install --git https://github.com/sharkdp/fd \
+    && git clone https://github.com/rust-analyzer/rust-analyzer.git \
+    && cd rust-analyzer \
+    && git checkout $RUST_ANALYZER_VERSION \
+    && cargo xtask install --server \
+    && cd - && rm -fr rust-analyzer
 
 RUN sh -c "$(wget -O- https://github.com/deluan/zsh-in-docker/releases/download/v1.1.1/zsh-in-docker.sh)" -- -t robbyrussell \
     && curl https://raw.githubusercontent.com/GopherJ/cfg/master/zshrc/.zshrc --retry-delay 2 --retry 3 >> ~/.zshrc
@@ -189,6 +196,12 @@ RUN sudo add-apt-repository ppa:jonathonf/vim \
     && curl -fo ~/.config/coc/extensions/package.json https://raw.githubusercontent.com/GopherJ/cfg/master/coc/package.json --retry-delay 2 --retry 3 \
     && cd ~/.config/coc/extensions \
     && npm install --global-style --ignore-scripts --no-bin-links --no-package-lock --only=prod
+
+RUN curl -fLo ~/.config/coc/extensions/coc-tabnine-data/binaries/$TABNINE_VERSION/TabNine.zip --create-dirs https://update.tabnine.com/bundles/$TABNINE_VERSION/$(uname -m)-unknown-linux-musl/TabNine.zip \
+    && cd ~/.config/coc/extensions/coc-tabnine-data/binaries/$TABNINE_VERSION \
+    && unzip TabNine.zip \
+    && chmod u+x ./TabNine \
+    && echo "$TABNINE_VERSION" > .active
 
 RUN git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm \
     && curl -fLo ~/.tmux.conf --create-dirs https://raw.githubusercontent.com/GopherJ/cfg/master/tmux/.tmux.conf --retry-delay 2 --retry 3 \
