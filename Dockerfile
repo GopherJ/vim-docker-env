@@ -198,10 +198,12 @@ RUN sudo add-apt-repository ppa:jonathonf/vim \
     && npm install --global-style --ignore-scripts --no-bin-links --no-package-lock --only=prod
 
 RUN curl -fLo ~/.config/coc/extensions/coc-tabnine-data/binaries/$TABNINE_VERSION/TabNine.zip --create-dirs https://update.tabnine.com/bundles/$TABNINE_VERSION/$(uname -m)-unknown-linux-musl/TabNine.zip \
-    && cd ~/.config/coc/extensions/coc-tabnine-data/binaries/$TABNINE_VERSION \
-    && unzip TabNine.zip \
-    && chmod u+x ./TabNine \
-    && echo "$TABNINE_VERSION" > .active
+    && cd ~/.config/coc/extensions/coc-tabnine-data/binaries \
+    && echo "$TABNINE_VERSION" > .active \
+    && if [ ! -d "$TABNINE_VERSION/$(uname -m)-unknown-linux-musl" ]; then mkdir "$TABNINE_VERSION/$(uname -m)-unknown-linux-musl"; fi \
+    && unzip $TABNINE_VERSION/TabNine.zip -d "$TABNINE_VERSION/$(uname -m)-unknown-linux-musl" \
+    && cd "$TABNINE_VERSION/$(uname -m)-unknown-linux-musl" \
+    && chmod u+x ./TabNine ./TabNine-deep-cloud ./TabNine-deep-local ./WD-TabNine
 
 RUN git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm \
     && curl -fLo ~/.tmux.conf --create-dirs https://raw.githubusercontent.com/GopherJ/cfg/master/tmux/.tmux.conf --retry-delay 2 --retry 3 \
