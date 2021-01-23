@@ -30,7 +30,6 @@ RUN apt update --fix-missing \
         xz-utils \
         gawk \
         unzip \
-        ruby \
         zlib1g-dev \
         sudo \
         ninja-build \
