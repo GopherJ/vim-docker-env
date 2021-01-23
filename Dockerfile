@@ -1,4 +1,4 @@
-FROM ubuntu:18.04
+FROM ubuntu:20.04
 MAINTAINER Cheng JIANG <alex_cj96@foxmail.com>
 
 ARG APP_USER=alex_cj96
@@ -38,10 +38,8 @@ RUN apt update --fix-missing \
         autoconf \
         automake \
         libtool \
-        python3 \
-        python3-dev \
-        python3-pip \
-        python-pip \
+        python2 \
+        python2-dev \
         tmux \
         clang-format \
         cppcheck \
@@ -63,12 +61,12 @@ RUN apt update --fix-missing \
         libfontconfig1-dev \
         libxcb-xfixes0-dev \
         imagemagick \
-        clangd-9 \
-        clang-9 \
+        clangd-11 \
+        clang-11 \
         libjansson-dev \
         protobuf-compiler \
-    && update-alternatives --install /usr/bin/clangd clangd /usr/bin/clangd-9 100 \
-    && update-alternatives --install /usr/bin/clang clang /usr/bin/clang-9 1 --slave /usr/bin/clang++ clang++ /usr/bin/clang++-9 \
+    && update-alternatives --install /usr/bin/clangd clangd /usr/bin/clangd-11 100 \
+    && update-alternatives --install /usr/bin/clang clang /usr/bin/clang-11 1 --slave /usr/bin/clang++ clang++ /usr/bin/clang++-11 \
     && apt clean \
     && rm -rf /var/lib/apt/lists/*
 
@@ -168,10 +166,10 @@ RUN sudo add-apt-repository ppa:jonathonf/vim \
     && sudo add-apt-repository ppa:neovim-ppa/unstable \
     && sudo apt update \
     && sudo apt install -y vim neovim \
-    && pip install wheel \
+    && pip2 install wheel \
     && pip3 install wheel \
     && pip3 install -U jedi \
-    && pip install --user pynvim \
+    && pip2 install --user pynvim \
     && pip3 install --user pynvim \
     && sudo gem install neovim \
     && curl -fo ~/.vimrc https://raw.githubusercontent.com/GopherJ/cfg/master/coc/.vimrc --retry-delay 2 --retry 3 \
