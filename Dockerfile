@@ -9,7 +9,7 @@ ARG TABNINE_VERSION=3.3.35
 ARG RUST_ANALYZER_VERSION=2021-01-18
 
 ENV DEBIAN_FRONTEND noninteractive
-ENV TZ=Europe/Paris
+ENV TZ=Asia/Shanghai
 
 RUN useradd ${APP_USER} --user-group --create-home --shell /usr/bin/zsh --groups sudo \
         && yes ${APP_USER} | passwd ${APP_USER}
@@ -52,7 +52,6 @@ RUN apt update --fix-missing \
         openssh-server \
         jq \
         ranger \
-        nnn \
         zsh \
         apt-transport-https \
         openjdk-8-jdk \
