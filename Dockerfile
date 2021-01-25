@@ -33,6 +33,7 @@ RUN apt update --fix-missing \
         zlib1g-dev \
         sudo \
         ninja-build \
+        gfortran \
         xdotool \
         autoconf \
         automake \
@@ -51,6 +52,7 @@ RUN apt update --fix-missing \
         apt-transport-https \
         openjdk-8-jdk \
         protobuf-compiler \
+        libprotobuf-dev \
         software-properties-common \
         ca-certificates \
         pkg-config \
@@ -66,7 +68,7 @@ RUN apt update --fix-missing \
     && update-alternatives --install /usr/bin/clang clang /usr/bin/clang-11 1 --slave /usr/bin/clang++ clang++ /usr/bin/clang++-11 \
     && add-apt-repository universe \
     && apt update \
-    && apt install python2 -y \
+    && apt install python2 python3 python3-pip -y \
     && curl https://bootstrap.pypa.io/2.7/get-pip.py --output get-pip.py \
     && python2 get-pip.py \
     && apt clean \
@@ -118,6 +120,11 @@ ENV USER=${APP_USER}
 
 ENV PATH=$CARGO_HOME/bin:$NVM_DIR/versions/node/${NODE_VERSION}/bin:$GOENV_ROOT/bin:$GOENV_ROOT/versions/$GO_VERSION/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
+RUN git clone https://github.com/Microsoft/vcpkg.git \
+    && cd vcpkg \
+    && ./bootstrap-vcpkg.sh \
+    && sudo ln -s $(pwd)/vcpkg /usr/local/bin
+
 RUN git clone https://github.com/syndbg/goenv.git ~/.goenv \
     && eval "$(goenv init -)" \
     && goenv install $GO_VERSION \
@@ -154,8 +161,7 @@ RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | \
     && git clone https://github.com/rust-analyzer/rust-analyzer.git \
     && cd rust-analyzer \
     && git checkout $RUST_ANALYZER_VERSION \
-    && cargo xtask install --server \
-    && cd - && rm -fr rust-analyzer
+    && cargo xtask install --server
 
 RUN sh -c "$(wget -O- https://github.com/deluan/zsh-in-docker/releases/download/v1.1.1/zsh-in-docker.sh)" -- -t robbyrussell \
     && curl https://raw.githubusercontent.com/GopherJ/cfg/master/zshrc/.zshrc --retry-delay 2 --retry 3 >> ~/.zshrc
