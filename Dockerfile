@@ -176,7 +176,7 @@ RUN sudo add-apt-repository ppa:jonathonf/vim \
     && sudo apt install -y vim neovim \
     && pip2 install wheel \
     && pip3 install wheel \
-    && pip3 install cmakelang \
+    && pip3 install cmake-format \
     && pip3 install -U jedi \
     && pip2 install --user pynvim \
     && pip3 install --user pynvim \
