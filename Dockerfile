@@ -37,8 +37,6 @@ RUN apt update --fix-missing \
         autoconf \
         automake \
         libtool \
-        python2 \
-        python2-dev \
         tmux \
         clang-format \
         cppcheck \
@@ -66,6 +64,11 @@ RUN apt update --fix-missing \
         protobuf-compiler \
     && update-alternatives --install /usr/bin/clangd clangd /usr/bin/clangd-11 100 \
     && update-alternatives --install /usr/bin/clang clang /usr/bin/clang-11 1 --slave /usr/bin/clang++ clang++ /usr/bin/clang++-11 \
+    && add-apt-repository universe \
+    && apt update \
+    && apt install python2 -y \
+    && curl https://bootstrap.pypa.io/2.7/get-pip.py --output get-pip.py \
+    && python2 get-pip.py \
     && apt clean \
     && rm -rf /var/lib/apt/lists/*
 
@@ -167,6 +170,7 @@ RUN sudo add-apt-repository ppa:jonathonf/vim \
     && sudo apt install -y vim neovim \
     && pip2 install wheel \
     && pip3 install wheel \
+    && pip3 install cmakelang \
     && pip3 install -U jedi \
     && pip2 install --user pynvim \
     && pip3 install --user pynvim \
