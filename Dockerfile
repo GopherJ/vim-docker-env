@@ -32,6 +32,9 @@ RUN apt update --fix-missing \
         gawk \
         unzip \
         zlib1g-dev \
+        libmpc-dev \
+        libmpfr-dev \
+        libgmp-dev \
         sudo \
         ninja-build \
         gfortran \
@@ -117,7 +120,7 @@ ENV CARGO_HOME=/home/${APP_USER}/.cargo
 ENV USER=${APP_USER}
 ENV VCPKG_ROOT=/home/${APP_USER}/vcpkg
 
-ENV PATH=$CARGO_HOME/bin:$NVM_DIR/versions/node/${NODE_VERSION}/bin:$GOENV_ROOT/bin:$GOENV_ROOT/versions/$GO_VERSION/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/home/${APP_USER}/.local/bin
+ENV PATH=$CARGO_HOME/bin:$NVM_DIR/versions/node/${NODE_VERSION}/bin:$GOENV_ROOT/bin:$GOENV_ROOT/versions/$GO_VERSION/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/home/${APP_USER}/.local/bin:/home/${APP_USER}/osxcross/target/bin
 
 RUN git clone https://github.com/Microsoft/vcpkg.git \
     && cd vcpkg \
@@ -144,7 +147,7 @@ RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | b
     && npm install -g yarn @vue/cli vls typescript eslint eslint-plugin-vue prettier neovim
 
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | \
-    sh -s -- -y --default-toolchain ${RUST_TOOLCHAIN} --component rust-src --target x86_64-pc-windows-gnu \
+    sh -s -- -y --default-toolchain ${RUST_TOOLCHAIN} --component rust-src --target x86_64-pc-windows-gnu --target x86_64-apple-darwin \
     && cargo install cargo-edit \
     && cargo install exa \
     && cargo install zoxide \
@@ -159,6 +162,12 @@ RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | \
     && cd rust-analyzer \
     && git checkout $RUST_ANALYZER_VERSION \
     && cargo xtask install --server
+
+RUN git clone https://github.com/tpoechtrager/osxcross \
+    && cd osxcross \
+    && wget -nc https://s3.dockerproject.org/darwin/v2/MacOSX10.10.sdk.tar.xz \
+    && mv MacOSX10.10.sdk.tar.xz tarballs \
+    && UNATTENDED=yes OSX_VERSION_MIN=10.7 ./build.sh
 
 RUN sh -c "$(wget -O- https://github.com/deluan/zsh-in-docker/releases/download/v1.1.1/zsh-in-docker.sh)" -- -t robbyrussell \
     && curl https://raw.githubusercontent.com/GopherJ/cfg/master/zshrc/.zshrc --retry-delay 2 --retry 3 >> ~/.zshrc
