@@ -44,6 +44,8 @@ RUN apt update --fix-missing \
         cppcheck \
         ruby \
         ruby-dev \
+        python3 \
+        python3-pip \
         apt-file \
         openssh-client \
         openssh-server \
@@ -67,11 +69,6 @@ RUN apt update --fix-missing \
         protobuf-compiler \
     && update-alternatives --install /usr/bin/clangd clangd /usr/bin/clangd-11 100 \
     && update-alternatives --install /usr/bin/clang clang /usr/bin/clang-11 1 --slave /usr/bin/clang++ clang++ /usr/bin/clang++-11 \
-    && add-apt-repository universe \
-    && apt update \
-    && apt install python2 python3 python3-pip -y \
-    && curl https://bootstrap.pypa.io/2.7/get-pip.py --output get-pip.py \
-    && python2 get-pip.py \
     && apt clean \
     && rm -rf /var/lib/apt/lists/*
 
@@ -120,7 +117,7 @@ ENV CARGO_HOME=/home/${APP_USER}/.cargo
 ENV USER=${APP_USER}
 ENV VCPKG_ROOT=/home/${APP_USER}/vcpkg
 
-ENV PATH=$CARGO_HOME/bin:$NVM_DIR/versions/node/${NODE_VERSION}/bin:$GOENV_ROOT/bin:$GOENV_ROOT/versions/$GO_VERSION/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+ENV PATH=$CARGO_HOME/bin:$NVM_DIR/versions/node/${NODE_VERSION}/bin:$GOENV_ROOT/bin:$GOENV_ROOT/versions/$GO_VERSION/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/home/${APP_USER}/.local/bin
 
 RUN git clone https://github.com/Microsoft/vcpkg.git \
     && cd vcpkg \
@@ -174,11 +171,10 @@ RUN sudo add-apt-repository ppa:jonathonf/vim \
     && sudo add-apt-repository ppa:neovim-ppa/unstable \
     && sudo apt update \
     && sudo apt install -y vim neovim \
-    && pip2 install wheel \
-    && pip3 install wheel \
-    && pip3 install cmake-format \
-    && pip3 install -U jedi \
-    && pip2 install --user pynvim \
+    && pip3 install --upgrade pip \
+    && pip3 install --user wheel \
+    && pip3 install --user cmake-format \
+    && pip3 install --user -U jedi \
     && pip3 install --user pynvim \
     && sudo gem install neovim \
     && curl -fo ~/.vimrc https://raw.githubusercontent.com/GopherJ/cfg/master/coc/.vimrc --retry-delay 2 --retry 3 \
