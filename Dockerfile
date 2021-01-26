@@ -2,11 +2,11 @@ FROM ubuntu:20.04
 MAINTAINER Cheng JIANG <alex_cj96@foxmail.com>
 
 ARG APP_USER=alex_cj96
-ARG GO_VERSION=1.14.4
-ARG NODE_VERSION=v12.19.0
-ARG RUST_TOOLCHAIN=nightly-2020-11-14
+ARG GO_VERSION=1.15.7
+ARG NODE_VERSION=v12.20.1
+ARG RUST_TOOLCHAIN=nightly-2021-01-25
 ARG TABNINE_VERSION=3.3.35
-ARG RUST_ANALYZER_VERSION=2021-01-18
+ARG RUST_ANALYZER_VERSION=2021-01-25
 
 ENV DEBIAN_FRONTEND noninteractive
 ENV TZ=Asia/Shanghai
@@ -23,6 +23,7 @@ RUN apt update --fix-missing \
         wget \
         curl \
         build-essential \
+        mingw-w64 \
         libncurses5-dev \
         libncursesw5-dev \
         debhelper \
@@ -134,7 +135,7 @@ RUN git clone https://github.com/syndbg/goenv.git ~/.goenv \
     && go get -u github.com/go-delve/delve/cmd/dlv \
     && go get -u github.com/golang/protobuf/protoc-gen-go
 
-RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.2/install.sh | bash \
+RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash \
     && [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" \
     && [ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion" \
     && sudo ln -s "$NVM_DIR/versions/node/$(nvm version)/bin/node" "/usr/local/bin/node" \
@@ -146,13 +147,11 @@ RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.2/install.sh | b
     && npm install -g yarn @vue/cli vls typescript eslint eslint-plugin-vue prettier neovim
 
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | \
-    sh -s -- -y --default-toolchain ${RUST_TOOLCHAIN} \
-    && rustup component add rust-analysis rust-src \
+    sh -s -- -y --default-toolchain ${RUST_TOOLCHAIN} --component rust-src --target x86_64-pc-windows-gnu \
     && cargo install cargo-edit \
     && cargo install exa \
     && cargo install zoxide \
     && cargo install bat \
-    && cargo install code-minimap \
     && cargo install install cargo-whatfeatures --no-default-features --features "rustls" \
     && cargo install --git https://github.com/alacritty/alacritty --tag v0.6.0 \
     && curl -fLo ~/.config/alacritty/alacritty.yml --create-dirs https://raw.githubusercontent.com/GopherJ/cfg/master/alacritty/alacritty.yml --retry-delay 2 --retry 3 \
