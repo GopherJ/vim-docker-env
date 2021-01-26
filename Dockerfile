@@ -35,6 +35,7 @@ RUN apt update --fix-missing \
         libmpc-dev \
         libmpfr-dev \
         libgmp-dev \
+        libxml2-dev \
         sudo \
         ninja-build \
         gfortran \
