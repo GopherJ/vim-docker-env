@@ -126,8 +126,7 @@ ENV PATH=$CARGO_HOME/bin:$NVM_DIR/versions/node/${NODE_VERSION}/bin:$GOENV_ROOT/
 RUN git clone https://github.com/Microsoft/vcpkg.git \
     && cd vcpkg \
     && ./bootstrap-vcpkg.sh \
-    && sudo ln -s $(pwd)/vcpkg /usr/local/bin \
-    && vcpkg install nlohmann-json dlib spdlog boost
+    && sudo ln -s $(pwd)/vcpkg /usr/local/bin
 
 RUN git clone https://github.com/syndbg/goenv.git ~/.goenv \
     && eval "$(goenv init -)" \
