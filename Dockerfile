@@ -126,7 +126,8 @@ ENV PATH=$CARGO_HOME/bin:$NVM_DIR/versions/node/${NODE_VERSION}/bin:$GOENV_ROOT/
 RUN git clone https://github.com/Microsoft/vcpkg.git \
     && cd vcpkg \
     && ./bootstrap-vcpkg.sh \
-    && sudo ln -s $(pwd)/vcpkg /usr/local/bin
+    && sudo ln -s $(pwd)/vcpkg /usr/local/bin \
+    && vcpkg install boost spdlog nlohmann-json
 
 RUN git clone https://github.com/syndbg/goenv.git ~/.goenv \
     && eval "$(goenv init -)" \
@@ -176,6 +177,10 @@ RUN sh -c "$(wget -O- https://github.com/deluan/zsh-in-docker/releases/download/
 RUN bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)" \
     && /home/linuxbrew/.linuxbrew/bin/brew install watchman \
     && /home/linuxbrew/.linuxbrew/bin/brew install gh
+
+RUN sudo add-apt-repository ppa:ethereum/ethereum \
+    && sudo apt update \
+    && sudo apt install solc
 
 RUN sudo add-apt-repository ppa:jonathonf/vim \
     && sudo add-apt-repository ppa:neovim-ppa/unstable \
