@@ -36,6 +36,8 @@ RUN apt update --fix-missing \
         libmpfr-dev \
         libgmp-dev \
         libxml2-dev \
+        libjsoncpp-dev \
+        uuid-dev \
         sudo \
         ninja-build \
         gfortran \
