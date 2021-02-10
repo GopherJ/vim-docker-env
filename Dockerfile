@@ -26,6 +26,7 @@ RUN apt update --fix-missing \
         mingw-w64 \
         libncurses5-dev \
         libncursesw5-dev \
+        libboost-all-dev \
         debhelper \
         inotify-tools \
         xz-utils \
@@ -129,7 +130,7 @@ RUN git clone https://github.com/Microsoft/vcpkg.git \
     && cd vcpkg \
     && ./bootstrap-vcpkg.sh \
     && sudo ln -s $(pwd)/vcpkg /usr/local/bin \
-    && vcpkg install boost spdlog nlohmann-json
+    && vcpkg install spdlog nlohmann-json
 
 RUN git clone https://github.com/syndbg/goenv.git ~/.goenv \
     && eval "$(goenv init -)" \
