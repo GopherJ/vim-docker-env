@@ -27,6 +27,7 @@ RUN apt update --fix-missing \
         libncurses5-dev \
         libncursesw5-dev \
         libboost-all-dev \
+        libarmadillo-dev \
         debhelper \
         inotify-tools \
         xz-utils \
