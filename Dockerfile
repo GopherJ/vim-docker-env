@@ -22,12 +22,11 @@ RUN apt update --fix-missing \
         git \
         wget \
         curl \
+        bear \
         build-essential \
         mingw-w64 \
         libncurses5-dev \
         libncursesw5-dev \
-        libboost-all-dev \
-        libarmadillo-dev \
         debhelper \
         inotify-tools \
         xz-utils \
@@ -38,6 +37,8 @@ RUN apt update --fix-missing \
         libmpfr-dev \
         libgmp-dev \
         libxml2-dev \
+        libboost-all-dev \
+        libarmadillo-dev \
         libjsoncpp-dev \
         uuid-dev \
         sudo \
