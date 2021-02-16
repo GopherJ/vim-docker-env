@@ -24,11 +24,13 @@ RUN apt update --fix-missing \
         curl \
         bear \
         build-essential \
+        gfortran \
         mingw-w64 \
         libncurses5-dev \
         libncursesw5-dev \
         debhelper \
         inotify-tools \
+        watchman \
         xz-utils \
         gawk \
         unzip \
@@ -40,6 +42,8 @@ RUN apt update --fix-missing \
         libboost-all-dev \
         libarmadillo-dev \
         libjsoncpp-dev \
+        libopenblas-dev \
+        liblapack-dev \
         uuid-dev \
         sudo \
         ninja-build \
@@ -185,9 +189,9 @@ RUN git clone https://github.com/tpoechtrager/osxcross \
 RUN sh -c "$(wget -O- https://github.com/deluan/zsh-in-docker/releases/download/v1.1.1/zsh-in-docker.sh)" -- -t robbyrussell \
     && curl https://cdn.jsdelivr.net/gh/GopherJ/cfg/zshrc/.zshrc --retry-delay 2 --retry 3 >> ~/.zshrc
 
-RUN bash -c "$(curl -fsSL https://cdn.jsdelivr.net/gh/Homebrew/install/install.sh)" \
-    && /home/linuxbrew/.linuxbrew/bin/brew install watchman \
-    && /home/linuxbrew/.linuxbrew/bin/brew install gh
+# RUN bash -c "$(curl -fsSL https://cdn.jsdelivr.net/gh/Homebrew/install/install.sh)" \
+#     && /home/linuxbrew/.linuxbrew/bin/brew install watchman \
+#     && /home/linuxbrew/.linuxbrew/bin/brew install gh
 
 RUN sudo add-apt-repository ppa:ethereum/ethereum \
     && sudo apt update \
