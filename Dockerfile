@@ -147,7 +147,7 @@ RUN git clone https://github.com/syndbg/goenv.git ~/.goenv \
     && go get -u github.com/go-delve/delve/cmd/dlv \
     && go get -u github.com/golang/protobuf/protoc-gen-go
 
-RUN curl -o- https://cdn.jsdelivr.net/gh/nvm-sh/nvm/v0.37.2/install.sh | bash \
+RUN curl -o- https://cdn.jsdelivr.net/gh/nvm-sh/nvm@v0.37.2/install.sh | bash \
     && [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" \
     && [ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion" \
     && sudo ln -s "$NVM_DIR/versions/node/$(nvm version)/bin/node" "/usr/local/bin/node" \
