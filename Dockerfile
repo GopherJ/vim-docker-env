@@ -24,6 +24,7 @@ RUN apt update --fix-missing \
         curl \
         bear \
         build-essential \
+        gfortran \
         mingw-w64 \
         libncurses5-dev \
         libncursesw5-dev \
@@ -40,6 +41,8 @@ RUN apt update --fix-missing \
         libboost-all-dev \
         libarmadillo-dev \
         libjsoncpp-dev \
+        libopenblas-dev \
+        liblapack-dev \
         uuid-dev \
         sudo \
         ninja-build \
