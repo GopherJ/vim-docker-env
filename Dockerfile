@@ -193,9 +193,9 @@ RUN sh -c "$(wget -O- https://github.com/deluan/zsh-in-docker/releases/download/
 #     && /home/linuxbrew/.linuxbrew/bin/brew install watchman \
 #     && /home/linuxbrew/.linuxbrew/bin/brew install gh
 
-RUN sudo add-apt-repository ppa:ethereum/ethereum \
-    && sudo apt update \
-    && sudo apt install solc
+# RUN sudo add-apt-repository ppa:ethereum/ethereum \
+#     && sudo apt update \
+#     && sudo apt install solc
 
 RUN sudo add-apt-repository ppa:jonathonf/vim \
     && sudo add-apt-repository ppa:neovim-ppa/unstable \
