@@ -141,7 +141,7 @@ RUN git clone https://github.com/Microsoft/vcpkg.git \
     && cd vcpkg \
     && ./bootstrap-vcpkg.sh \
     && sudo ln -s $(pwd)/vcpkg /usr/local/bin \
-    && vcpkg install spdlog nlohmann-json
+    && vcpkg install cpp-redis dlib geographclib
 
 RUN git clone https://github.com/syndbg/goenv.git ~/.goenv \
     && eval "$(goenv init -)" \
