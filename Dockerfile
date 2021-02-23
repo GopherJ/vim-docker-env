@@ -163,6 +163,7 @@ RUN curl -o- https://cdn.jsdelivr.net/gh/nvm-sh/nvm@v0.37.2/install.sh | bash \
 
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | \
     sh -s -- -y --default-toolchain ${RUST_TOOLCHAIN} --component rust-src --target x86_64-pc-windows-gnu --target x86_64-apple-darwin \
+    && source /home/${APP_USER}/.cargo/env \
     && cargo install cargo-edit \
     && cargo install exa \
     && cargo install zoxide \
