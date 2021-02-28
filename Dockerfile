@@ -159,7 +159,7 @@ RUN curl -o- https://cdn.jsdelivr.net/gh/nvm-sh/nvm@v0.37.2/install.sh | bash \
     && nvm use $NODE_VERSION \
     && nvm alias default $NODE_VERSION \
     && nvm install-latest-npm \
-    && npm install -g yarn @vue/cli vls typescript eslint eslint-plugin-vue prettier neovim
+    && npm install -g yarn @vue/cli vls typescript eslint eslint-plugin-vue prettier neovim truffle
 
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | \
     sh -s -- -y --default-toolchain ${RUST_TOOLCHAIN} --component rust-src --target x86_64-pc-windows-gnu --target x86_64-apple-darwin \
@@ -193,9 +193,9 @@ RUN sh -c "$(wget -O- https://github.com/deluan/zsh-in-docker/releases/download/
 #     && /home/linuxbrew/.linuxbrew/bin/brew install watchman \
 #     && /home/linuxbrew/.linuxbrew/bin/brew install gh
 
-# RUN sudo add-apt-repository ppa:ethereum/ethereum \
-#     && sudo apt update \
-#     && sudo apt install solc
+RUN sudo add-apt-repository ppa:ethereum/ethereum \
+    && sudo apt update \
+    && sudo apt install solc
 
 RUN sudo add-apt-repository ppa:jonathonf/vim \
     && sudo add-apt-repository ppa:neovim-ppa/unstable \
