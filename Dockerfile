@@ -75,6 +75,7 @@ RUN apt update --fix-missing \
         libfreetype6-dev \
         libfontconfig1-dev \
         libxcb-xfixes0-dev \
+        libpq-dev \
         imagemagick \
         clangd-11 \
         clang-11 \
@@ -168,6 +169,7 @@ RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | \
     && cargo install exa \
     && cargo install zoxide \
     && cargo install bat \
+    && cargo install diesel_cli --no-default-features --features postgres \
     && cargo install install cargo-whatfeatures --no-default-features --features "rustls" \
     && cargo install --git https://github.com/alacritty/alacritty --tag v0.6.0 \
     && curl -fLo ~/.config/alacritty/alacritty.yml --create-dirs https://cdn.jsdelivr.net/gh/GopherJ/cfg/alacritty/alacritty.yml --retry-delay 2 --retry 3 \
@@ -193,14 +195,11 @@ RUN sh -c "$(wget -O- https://github.com/deluan/zsh-in-docker/releases/download/
 #     && /home/linuxbrew/.linuxbrew/bin/brew install watchman \
 #     && /home/linuxbrew/.linuxbrew/bin/brew install gh
 
-RUN sudo add-apt-repository ppa:ethereum/ethereum \
-    && sudo apt update \
-    && sudo apt install solc
-
 RUN sudo add-apt-repository ppa:jonathonf/vim \
     && sudo add-apt-repository ppa:neovim-ppa/unstable \
+    && sudo add-apt-repository ppa:ethereum/ethereum \
     && sudo apt update \
-    && sudo apt install -y vim neovim \
+    && sudo apt install -y vim neovim solc \
     && pip3 install --upgrade pip \
     && pip3 install --user wheel \
     && pip3 install --user cmake-format \
