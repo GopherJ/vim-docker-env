@@ -187,7 +187,7 @@ RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | \
     && cd rust-analyzer \
     && git checkout $RUST_ANALYZER_VERSION \
     && cargo xtask install --server \
-    && curl https://getsubstrate.io -sSf | bash -s -- --fast \
+    && curl https://getsubstrate.io -sSf | bash -s \
     && curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh
 
 
