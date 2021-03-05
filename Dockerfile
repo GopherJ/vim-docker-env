@@ -160,10 +160,10 @@ RUN curl -o- https://cdn.jsdelivr.net/gh/nvm-sh/nvm@v0.37.2/install.sh | bash \
     && nvm use $NODE_VERSION \
     && nvm alias default $NODE_VERSION \
     && nvm install-latest-npm \
-    && npm install -g yarn @vue/cli vls typescript eslint eslint-plugin-vue prettier neovim truffle near-cli
+    && npm install -g yarn @vue/cli create-react-app create-near-app vls typescript eslint eslint-plugin-vue prettier neovim truffle near-cli assemblyscript
 
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | \
-    sh -s -- -y --default-toolchain ${RUST_TOOLCHAIN} --component rust-src --target x86_64-pc-windows-gnu --target x86_64-apple-darwin \
+    sh -s -- -y --default-toolchain ${RUST_TOOLCHAIN} --component rust-src --target wasm32-unknown-unknown --target x86_64-pc-windows-gnu --target x86_64-apple-darwin \
     && . /home/${APP_USER}/.cargo/env \
     && cargo install cargo-edit \
     && cargo install exa \
@@ -180,7 +180,9 @@ RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | \
     && git clone https://github.com/rust-analyzer/rust-analyzer.git \
     && cd rust-analyzer \
     && git checkout $RUST_ANALYZER_VERSION \
-    && cargo xtask install --server
+    && cargo xtask install --server \
+    && curl https://getsubstrate.io -sSf | bash -s -- --fast \
+    && curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh
 
 RUN git clone https://github.com/tpoechtrager/osxcross \
     && cd osxcross \
