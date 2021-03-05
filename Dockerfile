@@ -143,6 +143,12 @@ RUN git clone https://github.com/Microsoft/vcpkg.git \
     && ./bootstrap-vcpkg.sh \
     && sudo ln -s $(pwd)/vcpkg /usr/local/bin
 
+RUN git clone https://github.com/tpoechtrager/osxcross \
+    && cd osxcross \
+    && wget -nc https://s3.dockerproject.org/darwin/v2/MacOSX10.10.sdk.tar.xz \
+    && mv MacOSX10.10.sdk.tar.xz tarballs \
+    && UNATTENDED=yes OSX_VERSION_MIN=10.7 ./build.sh
+
 RUN git clone https://github.com/syndbg/goenv.git ~/.goenv \
     && eval "$(goenv init -)" \
     && goenv install $GO_VERSION \
@@ -184,18 +190,9 @@ RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | \
     && curl https://getsubstrate.io -sSf | bash -s -- --fast \
     && curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh
 
-RUN git clone https://github.com/tpoechtrager/osxcross \
-    && cd osxcross \
-    && wget -nc https://s3.dockerproject.org/darwin/v2/MacOSX10.10.sdk.tar.xz \
-    && mv MacOSX10.10.sdk.tar.xz tarballs \
-    && UNATTENDED=yes OSX_VERSION_MIN=10.7 ./build.sh
 
-RUN sh -c "$(wget -O- https://github.com/deluan/zsh-in-docker/releases/download/v1.1.1/zsh-in-docker.sh)" -- -t robbyrussell \
+RUN sh -c "$(curl -fsSL https://cdn.jsdelivr.net/gh/ohmyzsh/ohmyzsh/tools/install.sh)" \
     && curl https://cdn.jsdelivr.net/gh/GopherJ/cfg/zshrc/.zshrc --retry-delay 2 --retry 3 >> ~/.zshrc
-
-# RUN bash -c "$(curl -fsSL https://cdn.jsdelivr.net/gh/Homebrew/install/install.sh)" \
-#     && /home/linuxbrew/.linuxbrew/bin/brew install watchman \
-#     && /home/linuxbrew/.linuxbrew/bin/brew install gh
 
 RUN sudo add-apt-repository ppa:jonathonf/vim \
     && sudo add-apt-repository ppa:neovim-ppa/unstable \
@@ -244,6 +241,8 @@ RUN git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm \
     && curl -fLo ~/.tmuxline_snapshot --create-dirs https://cdn.jsdelivr.net/gh/GopherJ/cfg/tmux/.tmuxline_snapshot --retry-delay 2 --retry 3
 
 RUN curl https://cdn.jsdelivr.net/gh/GopherJ/cfg/fonts/install-fira-code.sh | bash
+
+RUN sudo apt install locales && sudo locale-gen en_US.UTF-8
 
 WORKDIR /home/${APP_USER}/src
 
