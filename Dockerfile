@@ -184,6 +184,8 @@ RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | \
     && cargo install --git https://github.com/sharkdp/bat --tag v0.17.1 \
     && cargo install --git https://github.com/sharkdp/fd \
     && git clone https://github.com/rust-analyzer/rust-analyzer.git \
+    && cargo install --git https://github.com/paritytech/cargo-contract cargo-contract --features extrinsics --force \
+    && cargo install --git https://github.com/dtolnay/cargo-expand \
     && cd rust-analyzer \
     && git checkout $RUST_ANALYZER_VERSION \
     && cargo xtask install --server \
