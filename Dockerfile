@@ -81,6 +81,7 @@ RUN apt update --fix-missing \
         clang-11 \
         libjansson-dev \
         protobuf-compiler \
+        binaryen \
     && update-alternatives --install /usr/bin/clangd clangd /usr/bin/clangd-11 100 \
     && update-alternatives --install /usr/bin/clang clang /usr/bin/clang-11 1 --slave /usr/bin/clang++ clang++ /usr/bin/clang++-11 \
     && apt clean \
