@@ -23,6 +23,7 @@ RUN apt update --fix-missing \
         wget \
         curl \
         bear \
+        nmap \
         build-essential \
         gfortran \
         mingw-w64 \
@@ -187,6 +188,7 @@ RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | \
     && git clone https://github.com/rust-analyzer/rust-analyzer.git \
     && cargo install --git https://github.com/paritytech/cargo-contract cargo-contract --features extrinsics --force \
     && cargo install --git https://github.com/dtolnay/cargo-expand \
+    && cargo install --git https://github.com/vi/websocat \
     && cd rust-analyzer \
     && git checkout $RUST_ANALYZER_VERSION \
     && cargo xtask install --server \
