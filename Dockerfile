@@ -177,6 +177,7 @@ RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | \
     && cargo install cargo-edit \
     && cargo install exa \
     && cargo install zoxide \
+    && cargo install cargo-generate \
     && cargo install bat \
     && cargo install diesel_cli --no-default-features --features postgres \
     && cargo install install cargo-whatfeatures --no-default-features --features "rustls" \
