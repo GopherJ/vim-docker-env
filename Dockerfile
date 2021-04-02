@@ -178,6 +178,7 @@ RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | \
     && cargo install exa \
     && cargo install zoxide \
     && cargo install cargo-generate \
+    && cargo install basic-http-server \
     && cargo install bat \
     && cargo install diesel_cli --no-default-features --features postgres \
     && cargo install --force --git https://github.com/google/evcxr.git evcxr_repl \
