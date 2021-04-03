@@ -35,6 +35,8 @@ vimdockerd
 # Default password: alex_cj96
 ```
 
+**Note**: this container may contains my personal information, you can edit the container and build your own image!
+
 ## Screenshots
 
 ![vim](./images/vim.png)
@@ -45,3 +47,4 @@ vimdockerd
 -   add common cxx dependencies like boost, dlib, paho, geographiclib...
 -   passing `GITHUB_TOKEN`, `GITLAB_TOKEN` to container so that command like `:GBrowse` makes sense
 -   minimize
+-   remove personal information
