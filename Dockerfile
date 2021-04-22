@@ -163,8 +163,8 @@ RUN git clone https://github.com/syndbg/goenv.git ~/.goenv \
 RUN echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main" | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list \
     && sudo apt install apt-transport-https ca-certificates gnupg \
     && curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key --keyring /usr/share/keyrings/cloud.google.gpg add - \
-    && sudo apt update \
-    && sudo apt install google-cloud-sdk
+    && sudo apt update -y \
+    && sudo apt -y install google-cloud-sdk
 
 RUN curl -o- https://cdn.jsdelivr.net/gh/nvm-sh/nvm@v0.37.2/install.sh | bash \
     && [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" \
