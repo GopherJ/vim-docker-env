@@ -183,6 +183,7 @@ RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | \
     && curl -fLo ~/.cargo/config --create-dirs https://cdn.jsdelivr.net/gh/GopherJ/cfg/cargo/config \
     && cargo install cargo-edit \
     && cargo install exa \
+    && cargo install cross \
     && cargo install zoxide \
     && cargo install cargo-generate \
     && cargo install basic-http-server \
@@ -195,7 +196,6 @@ RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | \
     && curl -fLo ~/.config/alacritty/alacritty.yml --create-dirs https://cdn.jsdelivr.net/gh/GopherJ/cfg/alacritty/alacritty.yml --retry-delay 2 --retry 3 \
     && cargo install --git https://github.com/extrawurst/gitui --tag v0.11.0 \
     && curl -fo ~/.config/gitui/key_config.ron --create-dirs https://cdn.jsdelivr.net/gh/extrawurst/gitui/assets/vim_style_key_config.ron \
-    && cargo install --git https://github.com/sharkdp/bat --tag v0.17.1 \
     && cargo install --git https://github.com/sharkdp/fd \
     && git clone https://github.com/rust-analyzer/rust-analyzer.git \
     && cargo install --git https://github.com/paritytech/cargo-contract cargo-contract --features extrinsics --force \
