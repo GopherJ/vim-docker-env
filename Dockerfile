@@ -187,6 +187,7 @@ RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | \
     && cargo install exa \
     && cargo install cross \
     && cargo install zoxide \
+    && cargo install silicon \
     && cargo install cargo-generate \
     && cargo install basic-http-server \
     && cargo install bat \
