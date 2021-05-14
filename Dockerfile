@@ -33,6 +33,8 @@ RUN apt update --fix-missing \
         debhelper \
         inotify-tools \
         watchman \
+        ansible \
+        sshpass \
         xz-utils \
         gawk \
         unzip \
