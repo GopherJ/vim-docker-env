@@ -201,6 +201,7 @@ RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | \
     && cargo install diesel_cli --no-default-features --features postgres \
     && cargo install --force --git https://github.com/google/evcxr.git evcxr_repl \
     && cargo install --force --git https://github.com/sgeisler/cargo-remote \
+    && cargo install --git https://gitlab.com/chevdor/srtool-cli \
     && cargo install install cargo-whatfeatures --no-default-features --features "rustls" \
     && cargo install --git https://github.com/alacritty/alacritty --tag v0.6.0 \
     && curl -fLo ~/.config/alacritty/alacritty.yml --create-dirs https://cdn.jsdelivr.net/gh/GopherJ/cfg/alacritty/alacritty.yml --retry-delay 2 --retry 3 \
