@@ -191,6 +191,8 @@ RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | \
     && cargo install cargo-update \
     && cargo install cargo-chef \
     && cargo install cargo-deadlinks \
+    && cargo install cargo-generate-rpm\
+    && cargo install cargo-deb \
     && cargo install --locked cargo-outdated \
     && cargo install exa \
     && cargo install cross \
