@@ -187,6 +187,7 @@ RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | \
     && cargo install cargo-edit \
     && cargo install tokei \
     && cargo install xh \
+    && cargo install onefetch \
     && cargo install hyperfine \
     && cargo install cargo-update \
     && cargo install cargo-chef \
