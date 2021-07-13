@@ -178,7 +178,7 @@ RUN curl -o- https://cdn.jsdelivr.net/gh/nvm-sh/nvm@v0.37.2/install.sh | bash \
     && nvm use $NODE_VERSION \
     && nvm alias default $NODE_VERSION \
     && nvm install-latest-npm \
-    && npm install -g yarn @vue/cli create-react-app create-near-app vls typescript eslint eslint-plugin-vue prettier neovim truffle near-cli assemblyscript browserify @polkadot/api-cli
+    && npm install -g yarn ts-node @vue/cli create-react-app create-near-app vls typescript eslint eslint-plugin-vue prettier neovim truffle near-cli assemblyscript browserify @polkadot/api-cli
 
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | \
     sh -s -- -y --default-toolchain ${RUST_TOOLCHAIN} --component rust-src --target wasm32-unknown-unknown --target x86_64-pc-windows-gnu --target x86_64-apple-darwin \
