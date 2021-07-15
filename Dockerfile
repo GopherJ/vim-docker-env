@@ -191,6 +191,7 @@ RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | \
     && cargo install hyperfine \
     && cargo install cargo-update \
     && cargo install cargo-chef \
+    && cargo install watchexec-cli \
     && cargo install cargo-deadlinks \
     && cargo install cargo-generate-rpm\
     && cargo install cargo-deb \
