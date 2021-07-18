@@ -38,6 +38,7 @@ RUN apt update --fix-missing \
         xz-utils \
         gawk \
         unzip \
+        git-extras \
         zlib1g-dev \
         libmpc-dev \
         libmpfr-dev \
@@ -191,6 +192,7 @@ RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | \
     && cargo install tokei \
     && cargo install xh \
     && cargo install onefetch \
+    && cargo install git-brws \
     && cargo install hyperfine \
     && cargo install cargo-update \
     && cargo install cargo-chef \
