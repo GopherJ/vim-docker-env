@@ -80,6 +80,7 @@ RUN apt update --fix-missing \
         libfreetype6-dev \
         libfontconfig1-dev \
         libxcb-xfixes0-dev \
+        libxkbcommon-dev \
         libpq-dev \
         imagemagick \
         clangd-11 \
