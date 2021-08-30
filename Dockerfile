@@ -2,11 +2,11 @@ FROM ubuntu:20.04
 LABEL Cheng JIANG <alex_cj96@foxmail.com>
 
 ARG APP_USER=alex_cj96
-ARG GO_VERSION=1.16.3
+ARG GO_VERSION=1.16.0
 ARG NODE_VERSION=v15.14.0
 ARG RUST_TOOLCHAIN=nightly-2021-03-25
 ARG TABNINE_VERSION=3.3.35
-ARG RUST_ANALYZER_VERSION=2021-05-10
+ARG RUST_ANALYZER_VERSION=2021-08-23
 
 ENV DEBIAN_FRONTEND noninteractive
 ENV TZ=Asia/Shanghai
@@ -47,6 +47,7 @@ RUN apt update --fix-missing \
         libboost-all-dev \
         libarmadillo-dev \
         libjsoncpp-dev \
+        libblas-dev \
         libopenblas-dev \
         liblapack-dev \
         uuid-dev \
