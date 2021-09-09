@@ -39,6 +39,8 @@ RUN apt update --fix-missing \
         gawk \
         unzip \
         git-extras \
+        libclang-dev \
+        llvm \
         zlib1g-dev \
         libmpc-dev \
         libmpfr-dev \
