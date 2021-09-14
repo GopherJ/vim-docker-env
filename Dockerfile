@@ -33,6 +33,7 @@ RUN apt update --fix-missing \
         debhelper \
         inotify-tools \
         watchman \
+        p7zip-full \
         ansible \
         sshpass \
         xz-utils \
