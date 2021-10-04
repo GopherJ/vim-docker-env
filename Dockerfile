@@ -23,6 +23,7 @@ RUN apt update --fix-missing \
         wget \
         curl \
         bear \
+        apt-utils \
         nmap \
         build-essential \
         gfortran \
