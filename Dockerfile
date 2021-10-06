@@ -24,6 +24,7 @@ RUN apt update --fix-missing \
         curl \
         bear \
         apt-utils \
+        apt-rdepends \
         nmap \
         build-essential \
         gfortran \
