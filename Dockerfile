@@ -182,6 +182,11 @@ RUN echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.
     && sudo apt update -y \
     && sudo apt -y install google-cloud-sdk
 
+RUN curl -O https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip \
+    && unzip awscli-exe-linux-x86_64.zip \
+    && cd aws \
+    && sudo ./install
+
 RUN echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu  $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null\
     && curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg \
     && sudo apt update -y \
