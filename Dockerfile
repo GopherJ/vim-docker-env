@@ -82,6 +82,7 @@ RUN apt update --fix-missing \
         libprotobuf-dev \
         software-properties-common \
         ca-certificates \
+        gnupg \
         pkg-config \
         libfreetype6-dev \
         libfontconfig1-dev \
@@ -178,10 +179,15 @@ RUN git clone https://github.com/syndbg/goenv.git ~/.goenv \
     && go  github.com/mgechev/revive
 
 RUN echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main" | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list \
-    && sudo apt install apt-transport-https ca-certificates gnupg \
     && curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key --keyring /usr/share/keyrings/cloud.google.gpg add - \
     && sudo apt update -y \
     && sudo apt -y install google-cloud-sdk
+
+RUN echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu  $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null\
+    && curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg \
+    && sudo apt update -y \
+    && sudo apt install docker-ce docker-ce-cli containerd.io docker-compose \
+    && sudo usermod -aG docker ${APP_USER}
 
 RUN curl -o- https://cdn.jsdelivr.net/gh/nvm-sh/nvm@v0.37.2/install.sh | bash \
     && [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" \
@@ -224,9 +230,9 @@ RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | \
     && cargo install --force --git https://github.com/sgeisler/cargo-remote \
     && cargo install --git https://gitlab.com/chevdor/srtool-cli \
     && cargo install install cargo-whatfeatures --no-default-features --features "rustls" \
-    && cargo install --git https://github.com/alacritty/alacritty --tag v0.6.0 \
+    && cargo install --git https://github.com/alacritty/alacritty --tag v0.9.0 \
     && curl -fLo ~/.config/alacritty/alacritty.yml --create-dirs https://cdn.jsdelivr.net/gh/GopherJ/cfg/alacritty/alacritty.yml --retry-delay 2 --retry 3 \
-    && cargo install --git https://github.com/extrawurst/gitui --tag v0.11.0 \
+    && cargo install --git https://github.com/extrawurst/gitui --tag v0.17.1 \
     && curl -fo ~/.config/gitui/key_config.ron --create-dirs https://cdn.jsdelivr.net/gh/extrawurst/gitui/assets/vim_style_key_config.ron \
     && cargo install --git https://github.com/sharkdp/fd \
     && git clone https://github.com/rust-analyzer/rust-analyzer.git \
@@ -260,17 +266,8 @@ RUN sudo add-apt-repository ppa:jonathonf/vim \
     && if [ ! -d ~/.config ]; then mkdir ~/.config; fi \
     && ln -s ~/.vim ~/.config/nvim \
     && ln -s ~/.vimrc ~/.config/nvim/init.vim \
-    && if [ ! -d ~/.vim/pack ]; then mkdir ~/.vim/pack; fi \
-    && git clone https://github.com/puremourning/vimspector ~/.vim/pack/vimspector/opt/vimspector \
-    && cd ~/.vim/pack/vimspector/opt/vimspector \
-    && ./install_gadget.py \
-        --enable-c \
-        --enable-go \
-        --force-enable-node \
-        --enable-rust \
-        --force-enable-java \
-    && cd - \
     && nvim --headless +PlugInstall +qall \
+    && nvim --headless +VimspectorInstall +qall \
     && if [ ! -d ~/.config/coc/extensions ]; then mkdir -p ~/.config/coc/extensions; fi \
     && curl -fo ~/.config/coc/extensions/package.json https://cdn.jsdelivr.net/gh/GopherJ/cfg/coc/package.json --retry-delay 2 --retry 3 \
     && cd ~/.config/coc/extensions \
