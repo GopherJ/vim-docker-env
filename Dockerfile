@@ -3,16 +3,13 @@ LABEL Cheng JIANG <alex_cj96@foxmail.com>
 
 ARG APP_USER=alex_cj96
 ARG GO_VERSION=1.16.0
-ARG NODE_VERSION=v15.14.0
-ARG RUST_TOOLCHAIN=nightly-2021-03-25
-ARG TABNINE_VERSION=3.3.35
-ARG RUST_ANALYZER_VERSION=2021-08-23
+ARG NODE_VERSION=v14.17.0
+ARG RUST_TOOLCHAIN=nightly-2021-09-29
+ARG TABNINE_VERSION=3.7.9
+ARG RUST_ANALYZER_VERSION=2021-10-04
 
 ENV DEBIAN_FRONTEND noninteractive
 ENV TZ=Asia/Shanghai
-
-RUN useradd ${APP_USER} --user-group --create-home --shell /usr/bin/zsh --groups sudo \
-        && yes ${APP_USER} | passwd ${APP_USER}
 
 RUN apt update --fix-missing \
     && apt upgrade -y \
@@ -98,6 +95,9 @@ RUN apt update --fix-missing \
     && update-alternatives --install /usr/bin/clang clang /usr/bin/clang-11 1 --slave /usr/bin/clang++ clang++ /usr/bin/clang++-11 \
     && apt clean \
     && rm -rf /var/lib/apt/lists/*
+
+RUN useradd ${APP_USER} --user-group --create-home --shell /usr/bin/zsh --groups sudo \
+        && yes ${APP_USER} | passwd ${APP_USER}
 
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
