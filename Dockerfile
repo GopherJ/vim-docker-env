@@ -72,6 +72,8 @@ RUN apt update --fix-missing \
         openssh-client \
         openssh-server \
         jq \
+        ripgrep \
+        subwasm \
         ranger \
         zsh \
         apt-transport-https \
@@ -129,8 +131,8 @@ RUN git clone https://github.com/universal-ctags/ctags ~/ctags \
     && make \
     && sudo make install
 
-RUN wget https://github.com/chevdor/subwasm/releases/download/v0.12.1/subwasm_linux_amd64_v0.12.1.deb -O subwasm.deb \
-    && sudo dpkg -i subwasm.deb
+# RUN wget https://github.com/chevdor/subwasm/releases/download/v0.12.1/subwasm_linux_amd64_v0.12.1.deb -O subwasm.deb \
+#     && sudo dpkg -i subwasm.deb
 
 RUN wget https://github.com/upx/upx/releases/download/v3.94/upx-3.94-amd64_linux.tar.xz \
     && tar -xJf upx-3.94-amd64_linux.tar.xz \
@@ -144,8 +146,8 @@ RUN wget https://github.com/upx/upx/releases/download/v3.94/upx-3.94-amd64_linux
 #     && make -j4 \
 #     && sudo make install
 
-RUN curl -fLo ~/ripgrep_12.1.1_amd64.deb https://github.com/BurntSushi/ripgrep/releases/download/12.1.1/ripgrep_12.1.1_amd64.deb --retry-delay 2 --retry 3 \
-    && sudo dpkg -i ~/ripgrep_12.1.1_amd64.deb
+# RUN curl -fLo ~/ripgrep_12.1.1_amd64.deb https://github.com/BurntSushi/ripgrep/releases/download/12.1.1/ripgrep_12.1.1_amd64.deb --retry-delay 2 --retry 3 \
+#     && sudo dpkg -i ~/ripgrep_12.1.1_amd64.deb
 
 ENV GOENV_ROOT=/home/${APP_USER}/.goenv
 ENV NVM_DIR=/home/${APP_USER}/.nvm
@@ -171,9 +173,9 @@ RUN git clone https://github.com/syndbg/goenv.git ~/.goenv \
     && goenv install $GO_VERSION \
     && goenv global $GO_VERSION \
     && goenv rehash \
-    && go get -u github.com/go-delve/delve/cmd/dlv \
-    && go get -u github.com/golang/protobuf/protoc-gen-go \
-    && go get -u github.com/mgechev/revive
+    && go install github.com/go-delve/delve/cmd/dlv \
+    && go  github.com/golang/protobuf/protoc-gen-go \
+    && go  github.com/mgechev/revive
 
 RUN echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main" | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list \
     && sudo apt install apt-transport-https ca-certificates gnupg \
