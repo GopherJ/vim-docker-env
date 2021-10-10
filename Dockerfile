@@ -267,6 +267,7 @@ RUN sudo add-apt-repository ppa:jonathonf/vim \
     && ln -s ~/.vimrc ~/.config/nvim/init.vim \
     && nvim --headless +PlugInstall +qall \
     && nvim --headless +VimspectorInstall +qall \
+    && curl -fo ~/.vimspector.json --create-dirs https://cdn.jsdelivr.net/gh/GopherJ/cfg/vimspector/.vimspector.json --retry-delay 2 --retry 3 \
     && if [ ! -d ~/.config/coc/extensions ]; then mkdir -p ~/.config/coc/extensions; fi \
     && curl -fo ~/.config/coc/extensions/package.json https://cdn.jsdelivr.net/gh/GopherJ/cfg/coc/package.json --retry-delay 2 --retry 3 \
     && cd ~/.config/coc/extensions \
