@@ -22,8 +22,8 @@ vim docker development environment
 1. enter docker for working
 
 ```
-alias vimdocker='docker run --rm -it -e SSH_AUTH_SOCK=$SSH_AUTH_SOCK -v $(dirname $SSH_AUTH_SOCK):$(dirname $SSH_AUTH_SOCK) -v "$(pwd)":/home/alex_cj96/src alexcj96/vim-docker-env:latest zsh'
-alias vimdockerd='docker run --rm -v "$(pwd)":/home/alex_cj96/src -p 9999:9999 alexcj96/vim-docker-env:latest'
+alias vimdocker='docker run --privileged --rm -it -e SSH_AUTH_SOCK=$SSH_AUTH_SOCK -v $(dirname $SSH_AUTH_SOCK):$(dirname $SSH_AUTH_SOCK) -v "$(pwd)":/home/alex_cj96/src alexcj96/vim-docker-env:latest zsh'
+alias vimdockerd='docker run --privileged --rm -v "$(pwd)":/home/alex_cj96/src -p 9999:9999 alexcj96/vim-docker-env:latest'
 vimdocker
 ```
 
