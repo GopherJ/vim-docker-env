@@ -19,6 +19,7 @@ RUN apt update --fix-missing \
         git \
         wget \
         curl \
+        cmake \
         bear \
         apt-utils \
         apt-rdepends \
@@ -136,12 +137,12 @@ RUN wget https://github.com/upx/upx/releases/download/v3.94/upx-3.94-amd64_linux
     && chmod u+x upx-3.94-amd64_linux/upx \
     && sudo mv upx-3.94-amd64_linux/upx /usr/local/bin
 
-RUN wget https://cmake.org/files/v3.18/cmake-3.18.4.tar.gz \
-    && tar -xzvf cmake-3.18.4.tar.gz \
-    && cd cmake-3.18.4 \
-    && ./bootstrap \
-    && make -j4 \
-    && sudo make install
+# RUN wget https://cmake.org/files/v3.18/cmake-3.18.4.tar.gz \
+#     && tar -xzvf cmake-3.18.4.tar.gz \
+#     && cd cmake-3.18.4 \
+#     && ./bootstrap \
+#     && make -j4 \
+#     && sudo make install
 
 RUN curl -fLo ~/ripgrep_12.1.1_amd64.deb https://github.com/BurntSushi/ripgrep/releases/download/12.1.1/ripgrep_12.1.1_amd64.deb --retry-delay 2 --retry 3 \
     && sudo dpkg -i ~/ripgrep_12.1.1_amd64.deb
