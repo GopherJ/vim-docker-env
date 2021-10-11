@@ -26,6 +26,7 @@ RUN apt update --fix-missing \
         nmap \
         build-essential \
         gfortran \
+        mosh \
         certbot \
         mingw-w64 \
         libncurses5-dev \
@@ -255,7 +256,7 @@ RUN sh -c "$(curl -fsSL https://cdn.jsdelivr.net/gh/ohmyzsh/ohmyzsh/tools/instal
 RUN sudo add-apt-repository ppa:jonathonf/vim \
     && sudo add-apt-repository ppa:neovim-ppa/unstable \
     && sudo add-apt-repository ppa:ethereum/ethereum \
-    && sudo apt update \
+    && sudo apt update -y \
     && sudo apt install -y vim neovim solc \
     && pip3 install --upgrade pip \
     && pip3 install --user wheel \
