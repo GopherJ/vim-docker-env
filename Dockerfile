@@ -277,7 +277,7 @@ RUN sudo add-apt-repository ppa:jonathonf/vim \
     && cd ~/.config/coc/extensions \
     && npm install --global-style --ignore-scripts --no-bin-links --no-package-lock --only=prod \
     && curl -fo ~/.vim/tasks.ini https://cdn.jsdelivr.net/gh/GopherJ/cfg/asynctasks/tasks.ini --retry-delay 2 --retry 3 \
-    && curl -fo ~/.config/coc/ultisnips/vim.snippets https://cdn.jsdelivr.net/gh/GopherJ/cfg/snippets/vim.snippets --retry-delay 2 --retry 3
+    && curl -fo --create-dirs ~/.config/coc/ultisnips/vim.snippets https://cdn.jsdelivr.net/gh/GopherJ/cfg/snippets/vim.snippets --retry-delay 2 --retry 3
 
 RUN curl -fLo ~/.config/coc/extensions/coc-tabnine-data/binaries/$TABNINE_VERSION/TabNine.zip --create-dirs https://update.tabnine.com/bundles/$TABNINE_VERSION/$(uname -m)-unknown-linux-musl/TabNine.zip \
     && cd ~/.config/coc/extensions/coc-tabnine-data/binaries \
