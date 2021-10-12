@@ -23,7 +23,7 @@ vim docker development environment
 
 ```
 alias vimdocker='docker run -v /var/run/docker.sock:/var/run/docker.sock --rm -it alexcj96/vim-docker-env:latest zsh'
-alias vimdockerd='docker run -v /var/run/docker.sock:/var/run/docker.sock --rm -p 9999:9999 alexcj96/vim-docker-env:latest'
+alias vimdockerd='docker run -v /var/run/docker.sock:/var/run/docker.sock -d -p 9999:9999 alexcj96/vim-docker-env:latest'
 ```
 
 2. launch
