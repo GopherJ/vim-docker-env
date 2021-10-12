@@ -297,6 +297,15 @@ RUN curl https://cdn.jsdelivr.net/gh/GopherJ/cfg/fonts/install-fira-code.sh | ba
 
 RUN sudo apt install locales && sudo locale-gen en_US.UTF-8
 
+RUN rm /home/${APP_USER}/*.deb \
+    && rm -fr /home/${APP_USER}/*.tar.xz \
+    && rm -fr /home/${APP_USER}/*.tar.gz \
+    && rm -fr /home/${APP_USER}/*.zip \
+    && rm -fr /home/${APP_USER}/rust-analyzer \
+    && rm -fr /home/${APP_USER}/upx-3.94-amd64_linux \
+    && rm -fr /home/${APP_USER}/ctags \
+    && rm -fr /home/${APP_USER}/.cargo/registry
+
 WORKDIR /home/${APP_USER}/src
 
 EXPOSE 9999
