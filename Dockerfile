@@ -194,7 +194,7 @@ RUN echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/d
     && sudo apt install docker-ce docker-ce-cli containerd.io docker-compose -y \
     && sudo usermod -aG docker ${APP_USER}
 
-RUN curl -o- https://cdn.jsdelivr.net/gh/nvm-sh/nvm@v0.37.2/install.sh | bash \
+RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash \
     && [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" \
     && [ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion" \
     && sudo ln -s "$NVM_DIR/versions/node/$(nvm version)/bin/node" "/usr/local/bin/node" \
@@ -209,7 +209,7 @@ RUN curl -o- https://cdn.jsdelivr.net/gh/nvm-sh/nvm@v0.37.2/install.sh | bash \
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | \
     sh -s -- -y --default-toolchain ${RUST_TOOLCHAIN} --component rust-src --target wasm32-unknown-unknown --target x86_64-pc-windows-gnu --target x86_64-apple-darwin \
     && . /home/${APP_USER}/.cargo/env \
-    && curl -fLo ~/.cargo/config --create-dirs https://cdn.jsdelivr.net/gh/GopherJ/cfg/cargo/config \
+    && curl -fLo ~/.cargo/config --create-dirs https://raw.githubusercontent.com/GopherJ/cfg/master/cargo/config \
     && cargo install cargo-edit \
     && cargo install tokei \
     && cargo install xh \
@@ -236,9 +236,9 @@ RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | \
     && cargo install --force --git https://github.com/sgeisler/cargo-remote \
     && cargo install --git https://gitlab.com/chevdor/srtool-cli \
     && cargo install --git https://github.com/alacritty/alacritty --tag v0.9.0 \
-    && curl -fLo ~/.config/alacritty/alacritty.yml --create-dirs https://cdn.jsdelivr.net/gh/GopherJ/cfg/alacritty/alacritty.yml --retry-delay 2 --retry 3 \
+    && curl -fLo ~/.config/alacritty/alacritty.yml --create-dirs https://raw.githubusercontent.com/GopherJ/cfg/master/alacritty/alacritty.yml --retry-delay 2 --retry 3 \
     && cargo install --git https://github.com/extrawurst/gitui --tag v0.17.1 \
-    && curl -fo ~/.config/gitui/key_config.ron --create-dirs https://cdn.jsdelivr.net/gh/extrawurst/gitui/assets/vim_style_key_config.ron \
+    && curl -fo ~/.config/gitui/key_config.ron --create-dirs https://raw.githubusercontent.com/extrawurst/gitui/master/vim_style_key_config.ron \
     && cargo install --git https://github.com/sharkdp/fd \
     && git clone https://github.com/rust-analyzer/rust-analyzer.git \
     && cargo install --git https://github.com/paritytech/cargo-contract cargo-contract --features extrinsics --force \
@@ -252,7 +252,7 @@ RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | \
 
 
 RUN sh -c "$(curl -fsSL https://cdn.jsdelivr.net/gh/ohmyzsh/ohmyzsh/tools/install.sh)" \
-    && curl https://cdn.jsdelivr.net/gh/GopherJ/cfg/zshrc/.zshrc --retry-delay 2 --retry 3 >> ~/.zshrc
+    && curl https://raw.githubusercontent.com/GopherJ/cfg/master/zshrc/.zshrc --retry-delay 2 --retry 3 >> ~/.zshrc
 
 RUN sudo add-apt-repository ppa:jonathonf/vim \
     && sudo add-apt-repository ppa:neovim-ppa/unstable \
@@ -265,21 +265,21 @@ RUN sudo add-apt-repository ppa:jonathonf/vim \
     && pip3 install --user -U jedi \
     && pip3 install --user pynvim \
     && sudo gem install neovim \
-    && curl -fo ~/.vimrc https://cdn.jsdelivr.net/gh/GopherJ/cfg/coc/.vimrc --retry-delay 2 --retry 3 \
-    && curl -fo ~/.vim/coc-settings.json --create-dirs https://cdn.jsdelivr.net/gh/GopherJ/cfg/coc/coc-settings.json --retry-delay 2 --retry 3 \
+    && curl -fo ~/.vimrc https://raw.githubusercontent.com/GopherJ/cfg/master/coc/.vimrc --retry-delay 2 --retry 3 \
+    && curl -fo ~/.vim/coc-settings.json --create-dirs https://raw.githubusercontent.com/GopherJ/cfg/master/coc/coc-settings.json --retry-delay 2 --retry 3 \
     && curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://cdn.jsdelivr.net/gh/junegunn/vim-plug/plug.vim --retry-delay 2 --retry 3 \
     && if [ ! -d ~/.config ]; then mkdir ~/.config; fi \
     && ln -s ~/.vim ~/.config/nvim \
     && ln -s ~/.vimrc ~/.config/nvim/init.vim \
     && nvim --headless +PlugInstall +qall \
     && nvim --headless +VimspectorInstall +qall \
-    && curl -fo ~/.vimspector.json --create-dirs https://cdn.jsdelivr.net/gh/GopherJ/cfg/vimspector/.vimspector.json --retry-delay 2 --retry 3 \
+    && curl -fo ~/.vimspector.json --create-dirs https://raw.githubusercontent.com/GopherJ/cfg/master/vimspector/.vimspector.json --retry-delay 2 --retry 3 \
     && if [ ! -d ~/.config/coc/extensions ]; then mkdir -p ~/.config/coc/extensions; fi \
-    && curl -fo ~/.config/coc/extensions/package.json https://cdn.jsdelivr.net/gh/GopherJ/cfg/coc/package.json --retry-delay 2 --retry 3 \
+    && curl -fo ~/.config/coc/extensions/package.json https://raw.githubusercontent.com/GopherJ/cfg/master/coc/package.json --retry-delay 2 --retry 3 \
     && cd ~/.config/coc/extensions \
     && npm install --global-style --ignore-scripts --no-bin-links --no-package-lock --only=prod \
-    && curl -fo ~/.vim/tasks.ini https://cdn.jsdelivr.net/gh/GopherJ/cfg/asynctasks/tasks.ini --retry-delay 2 --retry 3 \
-    && curl -fo --create-dirs ~/.config/coc/ultisnips/vim.snippets https://cdn.jsdelivr.net/gh/GopherJ/cfg/snippets/vim.snippets --retry-delay 2 --retry 3
+    && curl -fo ~/.vim/tasks.ini https://raw.githubusercontent.com/GopherJ/cfg/master/asynctasks/tasks.ini --retry-delay 2 --retry 3 \
+    && curl -fo --create-dirs ~/.config/coc/ultisnips/vim.snippets https://raw.githubusercontent.com/GopherJ/cfg/master/snippets/vim.snippets --retry-delay 2 --retry 3
 
 RUN curl -fLo ~/.config/coc/extensions/coc-tabnine-data/binaries/$TABNINE_VERSION/TabNine.zip --create-dirs https://update.tabnine.com/bundles/$TABNINE_VERSION/$(uname -m)-unknown-linux-musl/TabNine.zip \
     && cd ~/.config/coc/extensions/coc-tabnine-data/binaries \
@@ -290,10 +290,10 @@ RUN curl -fLo ~/.config/coc/extensions/coc-tabnine-data/binaries/$TABNINE_VERSIO
     && chmod u+x ./TabNine ./TabNine-deep-cloud ./TabNine-deep-local ./WD-TabNine
 
 RUN git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm \
-    && curl -fLo ~/.tmux.conf --create-dirs https://cdn.jsdelivr.net/gh/GopherJ/cfg/tmux/.tmux.conf --retry-delay 2 --retry 3 \
-    && curl -fLo ~/.tmuxline_snapshot --create-dirs https://cdn.jsdelivr.net/gh/GopherJ/cfg/tmux/.tmuxline_snapshot --retry-delay 2 --retry 3
+    && curl -fLo ~/.tmux.conf --create-dirs https://raw.githubusercontent.com/GopherJ/cfg/master/tmux/.tmux.conf --retry-delay 2 --retry 3 \
+    && curl -fLo ~/.tmuxline_snapshot --create-dirs https://raw.githubusercontent.com/GopherJ/cfg/master/tmux/.tmuxline_snapshot --retry-delay 2 --retry 3
 
-RUN curl https://cdn.jsdelivr.net/gh/GopherJ/cfg/fonts/install-fira-code.sh | bash
+RUN curl https://raw.githubusercontent.com/GopherJ/cfg/master/fonts/install-fira-code.sh | bash
 
 RUN sudo apt install locales && sudo locale-gen en_US.UTF-8
 
