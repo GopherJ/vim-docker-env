@@ -233,7 +233,7 @@ RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | \
     && cargo install bat \
     && cargo install diesel_cli --no-default-features --features postgres \
     && cargo install --force --git https://github.com/google/evcxr.git evcxr_repl \
-    && cargo install --force --git https://github.com/sgeisler/cargo-remote \
+    && cargo install --force --git https://github.com/paritytech/cargo-remote \
     && cargo install --git https://gitlab.com/chevdor/srtool-cli \
     && cargo install --git https://github.com/alacritty/alacritty --tag v0.9.0 \
     && curl -fLo ~/.config/alacritty/alacritty.yml --create-dirs https://raw.githubusercontent.com/GopherJ/cfg/master/alacritty/alacritty.yml --retry-delay 2 --retry 3 \
