@@ -132,7 +132,7 @@ RUN git clone https://github.com/universal-ctags/ctags ~/ctags \
     && make \
     && sudo make install
 
-RUN wget https://github.com/chevdor/subwasm/releases/download/v0.12.1/subwasm_linux_amd64_v0.12.1.deb -O subwasm.deb \
+RUN wget https://github.com/chevdor/subwasm/releases/download/v0.14.1/subwasm_linux_amd64_v0.14.1.deb -O subwasm.deb \
     && sudo dpkg -i subwasm.deb
 
 RUN wget https://github.com/upx/upx/releases/download/v3.94/upx-3.94-amd64_linux.tar.xz \
@@ -233,6 +233,7 @@ RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | \
     && cargo install bat \
     && cargo install diesel_cli --no-default-features --features postgres \
     && cargo install --force --git https://github.com/google/evcxr.git evcxr_repl \
+    && cargo install --git https://github.com/ascjones/subsee \
     && cargo install --force --git https://github.com/paritytech/cargo-remote \
     && cargo install --git https://gitlab.com/chevdor/srtool-cli \
     && cargo install --git https://github.com/alacritty/alacritty --tag v0.9.0 \
