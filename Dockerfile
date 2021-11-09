@@ -132,7 +132,7 @@ RUN git clone https://github.com/universal-ctags/ctags ~/ctags \
     && make \
     && sudo make install
 
-RUN wget https://github.com/chevdor/subwasm/releases/download/v0.14.1/subwasm_linux_amd64_v0.14.1.deb -O subwasm.deb \
+RUN wget https://github.com/chevdor/subwasm/releases/download/v0.15.0/subwasm_linux_amd64_v0.15.0.deb -O subwasm.deb \
     && sudo dpkg -i subwasm.deb
 
 RUN wget https://github.com/upx/upx/releases/download/v3.94/upx-3.94-amd64_linux.tar.xz \
