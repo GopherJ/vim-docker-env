@@ -204,7 +204,7 @@ RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | b
     && nvm alias default $NODE_VERSION \
     && nvm install-latest-npm \
     && npm install -g yarn \
-    && yarn global add ts-node @vue/cli create-react-app create-near-app vls typescript eslint eslint-plugin-vue prettier neovim truffle near-cli assemblyscript browserify @polkadot/api-cli @open-web3/parachain-launch
+    && yarn global add ts-node @vue/cli create-react-app create-near-app vls typescript eslint eslint-plugin-vue prettier neovim truffle near-cli assemblyscript browserify @polkadot/api-cli @open-web3/parachain-launch @subql/cli
 
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | \
     sh -s -- -y --default-toolchain ${RUST_TOOLCHAIN} --component rust-src --target wasm32-unknown-unknown --target x86_64-pc-windows-gnu --target x86_64-apple-darwin \
