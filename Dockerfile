@@ -278,7 +278,7 @@ RUN sudo add-apt-repository ppa:jonathonf/vim \
     && sudo add-apt-repository ppa:neovim-ppa/unstable \
     && sudo add-apt-repository ppa:ethereum/ethereum \
     && sudo apt update -y \
-    && sudo apt install -y vim neovim solc \
+    && sudo apt install -y vim neovim solc ethereum \
     && pip3 install --upgrade pip \
     && pip3 install --user wheel \
     && pip3 install --user cmake-format \
