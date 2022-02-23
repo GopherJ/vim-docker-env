@@ -268,6 +268,7 @@ RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | \
     && git checkout $RUST_ANALYZER_VERSION \
     && cargo xtask install --server \
     && curl https://getsubstrate.io -sSf | bash -s \
+    && cargo install --force subkey --git https://github.com/paritytech/substrate --branch polkadot-v0.9.16 \
     && curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh
 
 
