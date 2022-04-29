@@ -229,6 +229,7 @@ RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | \
     && . /home/${APP_USER}/.cargo/env \
     && curl -fLo ~/.cargo/config --create-dirs https://raw.githubusercontent.com/GopherJ/cfg/master/cargo/config \
     && cargo install cargo-edit \
+    && cargo install typos-cli \
     && cargo install cargo-bump \
     && cargo install tokei \
     && cargo install xh \
