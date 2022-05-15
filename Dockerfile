@@ -3,10 +3,10 @@ LABEL Cheng JIANG <alex_cj96@foxmail.com>
 
 ARG APP_USER=alex_cj96
 ARG GO_VERSION=1.16.0
-ARG NODE_VERSION=v14.17.0
-ARG RUST_TOOLCHAIN=nightly-2021-06-17
+ARG NODE_VERSION=v16.15.0
+ARG RUST_TOOLCHAIN=nightly-2022-04-24
 ARG TABNINE_VERSION=3.7.9
-ARG RUST_ANALYZER_VERSION=2021-10-11
+ARG RUST_ANALYZER_VERSION=2022-05-09
 
 ENV DEBIAN_FRONTEND noninteractive
 ENV TZ=Asia/Shanghai
@@ -139,6 +139,10 @@ RUN wget https://github.com/upx/upx/releases/download/v3.94/upx-3.94-amd64_linux
     && tar -xJf upx-3.94-amd64_linux.tar.xz \
     && chmod u+x upx-3.94-amd64_linux/upx \
     && sudo mv upx-3.94-amd64_linux/upx /usr/local/bin
+
+RUN wget https://github.com/hyperledger-labs/solang/releases/download/v0.1.11/solang-linux-x86-64 \
+    && chmod u+x solang-linux-x86-64  \
+    && sudo mv solang-linux-x86-64 /usr/local/bin
 
 # RUN wget https://cmake.org/files/v3.18/cmake-3.18.4.tar.gz \
 #     && tar -xzvf cmake-3.18.4.tar.gz \
