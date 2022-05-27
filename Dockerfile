@@ -7,6 +7,7 @@ ARG NODE_VERSION=v16.15.0
 ARG RUST_TOOLCHAIN=nightly-2022-04-24
 ARG TABNINE_VERSION=3.7.9
 ARG RUST_ANALYZER_VERSION=2022-05-09
+ARG SOLC_VERSION=0.8.10
 
 ENV DEBIAN_FRONTEND noninteractive
 ENV TZ=Asia/Shanghai
@@ -144,6 +145,8 @@ RUN wget https://github.com/hyperledger-labs/solang/releases/download/v0.1.11/so
     && chmod u+x solang-linux-x86-64  \
     && sudo mv solang-linux-x86-64 /usr/local/bin
 
+RUN solc-select install ${SOLC_VERSION} \
+    && solc-select use ${SOLC_VERSION}
 # RUN wget https://cmake.org/files/v3.18/cmake-3.18.4.tar.gz \
 #     && tar -xzvf cmake-3.18.4.tar.gz \
 #     && cd cmake-3.18.4 \
