@@ -147,6 +147,7 @@ RUN wget https://github.com/hyperledger-labs/solang/releases/download/v0.1.11/so
 
 RUN solc-select install ${SOLC_VERSION} \
     && solc-select use ${SOLC_VERSION}
+
 # RUN wget https://cmake.org/files/v3.18/cmake-3.18.4.tar.gz \
 #     && tar -xzvf cmake-3.18.4.tar.gz \
 #     && cd cmake-3.18.4 \
@@ -229,7 +230,8 @@ RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | b
       @polkadot/api-cli \
       @open-web3/parachain-launch \
       @subql/cli \
-      graphql-language-service-cli
+      graphql-language-service-cli \
+      solidity-language-server
 
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | \
     sh -s -- -y --default-toolchain ${RUST_TOOLCHAIN} --component rust-src --target wasm32-unknown-unknown --target x86_64-pc-windows-gnu --target x86_64-apple-darwin \
@@ -241,6 +243,7 @@ RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | \
     && cargo install cargo-bump \
     && cargo install tokei \
     && cargo install xh \
+    && cargo install dprint \
     && cargo install onefetch \
     && cargo install git-brws \
     && cargo install hyperfine \
