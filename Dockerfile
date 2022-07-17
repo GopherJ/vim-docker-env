@@ -269,7 +269,7 @@ RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | \
     && cargo install --force --git https://github.com/paritytech/cargo-remote \
     && cargo install --git https://gitlab.com/chevdor/srtool-cli \
     && cargo install --git https://github.com/alacritty/alacritty --tag v0.9.0 \
-    && cargo install --git https://github.com/gakonst/foundry --bin forge --locked \
+    && curl -L https://foundry.paradigm.xyz | bash \
     && curl -fLo ~/.config/alacritty/alacritty.yml --create-dirs https://raw.githubusercontent.com/GopherJ/cfg/master/alacritty/alacritty.yml --retry-delay 2 --retry 3 \
     && cargo install --git https://github.com/extrawurst/gitui --tag v0.17.1 \
     && curl -fo ~/.config/gitui/key_config.ron --create-dirs https://raw.githubusercontent.com/extrawurst/gitui/master/vim_style_key_config.ron \
