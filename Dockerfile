@@ -230,6 +230,7 @@ RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | b
       @polkadot/api-cli \
       @open-web3/parachain-launch \
       @subql/cli \
+      graphviz \
       graphql-language-service-cli \
       solidity-language-server \
       ganache
@@ -264,6 +265,10 @@ RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | \
     && cargo install cargo-generate \
     && cargo install basic-http-server \
     && cargo install bat \
+    && cargo install mdbook \
+       mdbook-mermaid \
+       mdbook-linkcheck \
+       mdbook-graphviz \
     && cargo install diesel_cli --no-default-features --features postgres \
     && cargo install --force --git https://github.com/google/evcxr.git evcxr_repl \
     && cargo install --git https://github.com/ascjones/subsee \
