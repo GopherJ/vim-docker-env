@@ -1,9 +1,9 @@
-FROM ubuntu:20.04
+FROM ubuntu:22.04
 LABEL Cheng JIANG <alex_cj96@foxmail.com>
 
 ARG APP_USER=alex_cj96
-ARG GO_VERSION=1.16.0
-ARG NODE_VERSION=v16.15.0
+ARG GO_VERSION=1.19.3
+ARG NODE_VERSION=v18
 ARG RUST_TOOLCHAIN=nightly-2022-04-24
 ARG TABNINE_VERSION=3.7.9
 ARG RUST_ANALYZER_VERSION=2022-05-09
@@ -20,6 +20,7 @@ RUN apt update --fix-missing \
         git \
         wget \
         curl \
+        xclip \
         cmake \
         bear \
         apt-utils \
@@ -240,6 +241,7 @@ RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | \
     && . /home/${APP_USER}/.cargo/env \
     && curl -fLo ~/.cargo/config --create-dirs https://raw.githubusercontent.com/GopherJ/cfg/master/cargo/config \
     && cargo install cargo-edit \
+    && cargo install ethabi \
     && cargo install tidy-viewer \
     && cargo install shadowsocks-rust \
     && cargo install typos-cli \
@@ -274,10 +276,10 @@ RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | \
     && cargo install --git https://github.com/ascjones/subsee \
     && cargo install --force --git https://github.com/paritytech/cargo-remote \
     && cargo install --git https://gitlab.com/chevdor/srtool-cli \
-    && cargo install --git https://github.com/alacritty/alacritty --tag v0.9.0 \
+    && cargo install --git https://github.com/alacritty/alacritty --tag v0.11.0 \
     && curl -L https://foundry.paradigm.xyz | bash \
     && curl -fLo ~/.config/alacritty/alacritty.yml --create-dirs https://raw.githubusercontent.com/GopherJ/cfg/master/alacritty/alacritty.yml --retry-delay 2 --retry 3 \
-    && cargo install --git https://github.com/extrawurst/gitui --tag v0.17.1 \
+    && cargo install --git https://github.com/extrawurst/gitui --tag v0.21.0 \
     && curl -fo ~/.config/gitui/key_config.ron --create-dirs https://raw.githubusercontent.com/extrawurst/gitui/master/vim_style_key_config.ron \
     && cargo install --git https://github.com/sharkdp/fd \
     && git clone https://github.com/rust-analyzer/rust-analyzer.git \
