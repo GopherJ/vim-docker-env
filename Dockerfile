@@ -187,6 +187,10 @@ RUN git clone https://github.com/syndbg/goenv.git ~/.goenv \
     && go install github.com/golang/protobuf/protoc-gen-go@latest \
     && go install github.com/mgechev/revive@latest
 
+RUN git clone https://github.com/ethereum/go-ethereum \
+    && cd go-ethereum \
+    && make all
+
 RUN echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main" | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list \
     && curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key --keyring /usr/share/keyrings/cloud.google.gpg add - \
     && sudo apt update -y \
@@ -243,6 +247,7 @@ RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | \
     && curl -fLo ~/.cargo/config --create-dirs https://raw.githubusercontent.com/GopherJ/cfg/master/cargo/config \
     && cargo install cargo-edit \
     && cargo install git-interactive-rebase-tool \
+    && cargo install svm-rs \
     && cargo install ethabi \
     && cargo install tidy-viewer \
     && cargo install shadowsocks-rust \
