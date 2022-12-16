@@ -239,6 +239,7 @@ RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | b
       graphviz \
       graphql-language-service-cli \
       solidity-language-server \
+      solidity-shell \
       ganache
 
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | \
