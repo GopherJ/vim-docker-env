@@ -240,7 +240,8 @@ RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | b
       graphql-language-service-cli \
       solidity-language-server \
       solidity-shell \
-      ganache
+      ganache \
+      instant-markdown-d
 
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | \
     sh -s -- -y --default-toolchain ${RUST_TOOLCHAIN} --component rust-src --target wasm32-unknown-unknown --target x86_64-pc-windows-gnu --target x86_64-apple-darwin \
@@ -311,6 +312,7 @@ RUN sudo add-apt-repository ppa:jonathonf/vim \
     && sudo apt update -y \
     && sudo apt install -y vim neovim solc ethereum \
     && pip3 install --upgrade pip \
+    && pip3 install --user smdv \
     && pip3 install --user wheel \
     && pip3 install --user panoramix-decompiler \
     && pip3 install --user cmake-format \
