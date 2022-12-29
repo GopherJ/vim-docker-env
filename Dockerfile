@@ -242,7 +242,9 @@ RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | b
       solidity-language-server \
       solidity-shell \
       ganache \
-      instant-markdown-d
+      instant-markdown-d \
+      circom \
+      snarkjs
 
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | \
     sh -s -- -y --default-toolchain ${RUST_TOOLCHAIN} --component rust-src --target wasm32-unknown-unknown --target x86_64-pc-windows-gnu --target x86_64-apple-darwin \
@@ -272,6 +274,7 @@ RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | \
     && cargo install exa \
     && cargo install cross \
     && cargo install zoxide \
+    && cargo install zkutil \
     && cargo install du-dust \
     && cargo install silicon \
     && cargo install cargo-generate \
