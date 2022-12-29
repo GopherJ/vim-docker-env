@@ -243,7 +243,6 @@ RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | b
       solidity-shell \
       ganache \
       instant-markdown-d \
-      circom \
       snarkjs
 
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | \
@@ -274,7 +273,7 @@ RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | \
     && cargo install exa \
     && cargo install cross \
     && cargo install zoxide \
-    && cargo install zkutil \
+    && cargo install --git https://github.com/iden3/circom --bin circom \
     && cargo install du-dust \
     && cargo install silicon \
     && cargo install cargo-generate \
