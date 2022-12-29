@@ -243,7 +243,8 @@ RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | b
       solidity-shell \
       ganache \
       instant-markdown-d \
-      snarkjs
+      snarkjs \
+      snarkit2
 
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | \
     sh -s -- -y --default-toolchain ${RUST_TOOLCHAIN} --component rust-src --target wasm32-unknown-unknown --target x86_64-pc-windows-gnu --target x86_64-apple-darwin \
@@ -274,6 +275,7 @@ RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | \
     && cargo install cross \
     && cargo install zoxide \
     && cargo install --git https://github.com/iden3/circom --bin circom \
+    && cargo install --git https://github.com/fluidex/plonkit --bin plonkit \
     && cargo install du-dust \
     && cargo install silicon \
     && cargo install cargo-generate \
