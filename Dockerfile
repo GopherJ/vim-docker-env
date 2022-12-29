@@ -276,6 +276,7 @@ RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | \
     && cargo install zoxide \
     && cargo install --git https://github.com/iden3/circom --bin circom \
     && cargo install --git https://github.com/fluidex/plonkit --bin plonkit \
+    && cargo install circomspect \
     && cargo install du-dust \
     && cargo install silicon \
     && cargo install cargo-generate \
