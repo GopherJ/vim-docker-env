@@ -134,7 +134,7 @@ RUN git clone https://github.com/universal-ctags/ctags ~/ctags \
     && make \
     && sudo make install
 
-RUN wget https://github.com/chevdor/subwasm/releases/download/v0.16.1/subwasm_linux_amd64_v0.16.1.deb -O subwasm.deb \
+RUN wget https://github.com/chevdor/subwasm/releases/download/v0.18.0/subwasm_linux_amd64_v0.18.0.deb -O subwasm.deb \
     && sudo dpkg -i subwasm.deb
 
 RUN wget https://github.com/upx/upx/releases/download/v3.94/upx-3.94-amd64_linux.tar.xz \
@@ -142,7 +142,7 @@ RUN wget https://github.com/upx/upx/releases/download/v3.94/upx-3.94-amd64_linux
     && chmod u+x upx-3.94-amd64_linux/upx \
     && sudo mv upx-3.94-amd64_linux/upx /usr/local/bin
 
-RUN wget https://github.com/hyperledger-labs/solang/releases/download/v0.1.11/solang-linux-x86-64 \
+RUN wget https://github.com/hyperledger-labs/solang/releases/download/v0.2.0/solang-linux-x86-64 \
     && chmod u+x solang-linux-x86-64  \
     && sudo mv solang-linux-x86-64 /usr/local/bin
 
@@ -294,7 +294,7 @@ RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | \
     && cargo install --git https://github.com/alacritty/alacritty --tag v0.11.0 \
     && curl -L https://foundry.paradigm.xyz | bash \
     && curl -fLo ~/.config/alacritty/alacritty.yml --create-dirs https://cdn.jsdelivr.net/gh/GopherJ/cfg/alacritty/alacritty.yml --retry-delay 2 --retry 3 \
-    && cargo install --git https://github.com/extrawurst/gitui --tag v0.21.0 \
+    && cargo install --git https://github.com/extrawurst/gitui --tag v0.22.1 \
     && curl -fo ~/.config/gitui/key_config.ron --create-dirs https://cdn.jsdelivr.net/gh/extrawurst/gitui/vim_style_key_config.ron \
     && cargo install --git https://github.com/sharkdp/fd \
     && git clone https://github.com/rust-analyzer/rust-analyzer.git \
@@ -305,7 +305,7 @@ RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | \
     && git checkout $RUST_ANALYZER_VERSION \
     && cargo xtask install --server \
     && curl https://getsubstrate.io -sSf | bash -s \
-    && cargo install --force subkey --git https://github.com/paritytech/substrate --branch polkadot-v0.9.16 \
+    && cargo install --force subkey --git https://github.com/paritytech/substrate --branch polkadot-v0.9.36 \
     && curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh
 
 
