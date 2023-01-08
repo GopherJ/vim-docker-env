@@ -209,6 +209,7 @@ RUN echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/d
     && sudo usermod -aG docker ${APP_USER}
 
 RUN curl -o- https://cdn.jsdelivr.net/gh/nvm-sh/nvm@0.39.0/install.sh | bash \
+    && curl -fsSL https://fnm.vercel.app/install | bash \
     && [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" \
     && [ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion" \
     && sudo ln -s "$NVM_DIR/versions/node/$(nvm version)/bin/node" "/usr/local/bin/node" \
