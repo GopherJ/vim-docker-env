@@ -22,6 +22,8 @@ RUN apt update --fix-missing \
   curl \
   xclip \
   cmake \
+  jupyter \
+  jupyter-core \
   gh \
   latexmk \
   bear \
