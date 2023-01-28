@@ -259,6 +259,7 @@ RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | \
   && cargo install cargo-edit \
   && cargo install git-interactive-rebase-tool \
   && cargo install svm-rs \
+  && cargo install texlab \
   && cargo install ethabi \
   && cargo install tidy-viewer \
   && cargo install shadowsocks-rust \
