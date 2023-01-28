@@ -23,6 +23,7 @@ RUN apt update --fix-missing \
   xclip \
   cmake \
   gh \
+  latexmk \
   bear \
   apt-utils \
   apt-rdepends \
