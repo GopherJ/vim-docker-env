@@ -97,6 +97,7 @@ RUN apt update --fix-missing \
         libjansson-dev \
         protobuf-compiler \
         binaryen \
+        sagemath \
     && update-alternatives --install /usr/bin/clangd clangd /usr/bin/clangd-11 100 \
     && update-alternatives --install /usr/bin/clang clang /usr/bin/clang-11 1 --slave /usr/bin/clang++ clang++ /usr/bin/clang++-11 \
     && apt clean \
