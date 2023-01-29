@@ -4,9 +4,9 @@ LABEL Cheng JIANG <alex_cj96@foxmail.com>
 ARG APP_USER=alex_cj96
 ARG GO_VERSION=1.19.3
 ARG NODE_VERSION=v18
-ARG RUST_TOOLCHAIN=nightly-2022-04-24
-ARG TABNINE_VERSION=3.7.9
-ARG RUST_ANALYZER_VERSION=2022-05-09
+ARG RUST_TOOLCHAIN=nightly-2023-01-24
+ARG TABNINE_VERSION=4.4.225
+ARG RUST_ANALYZER_VERSION=2023-01-21
 ARG SOLC_VERSION=0.8.10
 
 ENV DEBIAN_FRONTEND noninteractive
@@ -147,12 +147,13 @@ RUN wget https://github.com/upx/upx/releases/download/v3.94/upx-3.94-amd64_linux
   && chmod u+x upx-3.94-amd64_linux/upx \
   && sudo mv upx-3.94-amd64_linux/upx /usr/local/bin
 
-RUN wget https://github.com/hyperledger-labs/solang/releases/download/v0.2.0/solang-linux-x86-64 \
-  && chmod u+x solang-linux-x86-64  \
-  && sudo mv solang-linux-x86-64 /usr/local/bin
+# RUN wget https://github.com/hyperledger-labs/solang/releases/download/v0.2.0/solang-linux-x86-64 \
+#   && chmod u+x solang-linux-x86-64  \
+#   && sudo mv solang-linux-x86-64 /usr/local/bin
 
-RUN solc-select install ${SOLC_VERSION} \
-  && solc-select use ${SOLC_VERSION}
+# RUN pip3 install --upgrade solc-select \
+#   && solc-select install ${SOLC_VERSION} \
+#   && solc-select use ${SOLC_VERSION}
 
 # RUN wget https://cmake.org/files/v3.18/cmake-3.18.4.tar.gz \
 #     && tar -xzvf cmake-3.18.4.tar.gz \
@@ -172,16 +173,16 @@ ENV VCPKG_ROOT=/home/${APP_USER}/vcpkg
 
 ENV PATH=$CARGO_HOME/bin:$NVM_DIR/versions/node/${NODE_VERSION}/bin:$GOENV_ROOT/bin:$GOENV_ROOT/versions/$GO_VERSION/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/home/${APP_USER}/.local/bin:/home/${APP_USER}/osxcross/target/bin
 
-RUN git clone https://github.com/Microsoft/vcpkg.git \
-  && cd vcpkg \
-  && ./bootstrap-vcpkg.sh \
-  && sudo ln -s $(pwd)/vcpkg /usr/local/bin
+# RUN git clone https://github.com/Microsoft/vcpkg.git \
+#   && cd vcpkg \
+#   && ./bootstrap-vcpkg.sh \
+#   && sudo ln -s $(pwd)/vcpkg /usr/local/bin
 
-RUN git clone https://github.com/tpoechtrager/osxcross \
-  && cd osxcross \
-  && wget -nc https://s3.dockerproject.org/darwin/v2/MacOSX10.10.sdk.tar.xz \
-  && mv MacOSX10.10.sdk.tar.xz tarballs \
-  && UNATTENDED=yes OSX_VERSION_MIN=10.7 ./build.sh
+# RUN git clone https://github.com/tpoechtrager/osxcross \
+#   && cd osxcross \
+#   && wget -nc https://s3.dockerproject.org/darwin/v2/MacOSX10.10.sdk.tar.xz \
+#   && mv MacOSX10.10.sdk.tar.xz tarballs \
+#   && UNATTENDED=yes OSX_VERSION_MIN=10.7 ./build.sh
 
 RUN git clone https://github.com/syndbg/goenv.git ~/.goenv \
   && eval "$(goenv init -)" \
@@ -197,15 +198,15 @@ RUN git clone https://github.com/ethereum/go-ethereum \
   && cd go-ethereum \
   && make all
 
-RUN echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main" | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list \
-  && curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key --keyring /usr/share/keyrings/cloud.google.gpg add - \
-  && sudo apt update -y \
-  && sudo apt -y install google-cloud-sdk
+# RUN echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main" | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list \
+#   && curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key --keyring /usr/share/keyrings/cloud.google.gpg add - \
+#   && sudo apt update -y \
+#   && sudo apt -y install google-cloud-sdk
 
-RUN curl -O https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip \
-  && unzip awscli-exe-linux-x86_64.zip \
-  && cd aws \
-  && sudo ./install
+# RUN curl -O https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip \
+#   && unzip awscli-exe-linux-x86_64.zip \
+#   && cd aws \
+#   && sudo ./install
 
 RUN echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu  $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null\
   && curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg \
@@ -213,7 +214,7 @@ RUN echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/d
   && sudo apt install docker-ce docker-ce-cli containerd.io docker-compose -y \
   && sudo usermod -aG docker ${APP_USER}
 
-RUN curl -o- https://cdn.jsdelivr.net/gh/nvm-sh/nvm@0.39.0/install.sh | bash \
+RUN curl -o- https://cdn.jsdelivr.net/gh/nvm-sh/nvm@0.39.3/install.sh | bash \
   && curl -fsSL https://fnm.vercel.app/install | bash \
   && [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" \
   && [ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion" \
@@ -326,6 +327,7 @@ RUN sudo add-apt-repository ppa:jonathonf/vim \
   && sudo apt update -y \
   && sudo apt install -y vim neovim solc ethereum \
   && pip3 install --upgrade pip \
+  && pip3 install --upgrade solc-select \
   && pip3 install --user jupyter \
   && pip3 install --user wheel \
   && pip3 install --user panoramix-decompiler \
@@ -348,6 +350,9 @@ RUN sudo add-apt-repository ppa:jonathonf/vim \
   && npm install --global-style --ignore-scripts --no-bin-links --no-package-lock --only=prod \
   && curl -fo ~/.vim/tasks.ini https://cdn.jsdelivr.net/gh/GopherJ/cfg/asynctasks/tasks.ini --retry-delay 2 --retry 3 \
   && curl -fo --create-dirs ~/.config/coc/ultisnips/vim.snippets https://cdn.jsdelivr.net/gh/GopherJ/cfg/snippets/vim.snippets --retry-delay 2 --retry 3
+
+RUN solc-select install ${SOLC_VERSION} \
+  && solc-select use ${SOLC_VERSION}
 
 RUN curl -fLo ~/.config/coc/extensions/coc-tabnine-data/binaries/$TABNINE_VERSION/TabNine.zip --create-dirs https://update.tabnine.com/bundles/$TABNINE_VERSION/$(uname -m)-unknown-linux-musl/TabNine.zip \
   && cd ~/.config/coc/extensions/coc-tabnine-data/binaries \
