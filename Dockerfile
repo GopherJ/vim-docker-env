@@ -66,6 +66,7 @@ RUN apt update --fix-missing \
   gfortran \
   xdotool \
   autoconf \
+  python3-autopep8 \
   automake \
   libtool \
   tmux \
