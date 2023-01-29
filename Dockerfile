@@ -89,6 +89,7 @@ RUN apt update --fix-missing \
   software-properties-common \
   ca-certificates \
   gnupg \
+  gnupg2 \
   pkg-config \
   libfreetype6-dev \
   libfontconfig1-dev \
