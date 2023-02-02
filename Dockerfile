@@ -17,6 +17,7 @@ RUN apt update --fix-missing \
   && apt install -y \
   tzdata \
   libssl-dev \
+  expat \
   git \
   wget \
   curl \
@@ -54,6 +55,7 @@ RUN apt update --fix-missing \
   libmpfr-dev \
   libgmp-dev \
   libxml2-dev \
+  libasound2-dev \
   libboost-all-dev \
   libarmadillo-dev \
   libjsoncpp-dev \
@@ -93,7 +95,10 @@ RUN apt update --fix-missing \
   gnupg2 \
   pkg-config \
   libfreetype6-dev \
+  libexpat1-dev \
   libfontconfig1-dev \
+  libxcb-composite0-dev \
+  libharfbuzz-dev \
   libxcb-xfixes0-dev \
   libxkbcommon-dev \
   libpq-dev \
