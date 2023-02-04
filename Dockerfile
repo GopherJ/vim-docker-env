@@ -376,6 +376,8 @@ RUN git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm \
 
 RUN curl https://cdn.jsdelivr.net/gh/GopherJ/cfg/fonts/install-fira-code.sh | bash
 
+RUN curl -fsSL https://cdn.jsdelivr.net/gh/filebrowser/get/get.sh | bash
+
 RUN sudo apt install locales && sudo locale-gen en_US.UTF-8
 
 RUN rm /home/${APP_USER}/*.deb \
