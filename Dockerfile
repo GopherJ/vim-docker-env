@@ -332,6 +332,8 @@ RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | \
 RUN sh -c "$(curl -fsSL https://cdn.jsdelivr.net/gh/ohmyzsh/ohmyzsh/tools/install.sh)" \
   && curl https://cdn.jsdelivr.net/gh/GopherJ/cfg/zshrc/.zshrc --retry-delay 2 --retry 3 >> ~/.zshrc
 
+RUN curl -fsSL https://sh.iroh.computer/install_laptop.sh | sh
+
 RUN sudo add-apt-repository ppa:jonathonf/vim \
   && sudo add-apt-repository ppa:neovim-ppa/unstable \
   && sudo add-apt-repository ppa:ethereum/ethereum \
