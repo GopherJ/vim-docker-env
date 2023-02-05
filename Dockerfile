@@ -18,6 +18,7 @@ RUN apt update --fix-missing \
   tzdata \
   libssl-dev \
   expat \
+  qrencode \
   git \
   wget \
   curl \
