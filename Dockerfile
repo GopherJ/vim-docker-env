@@ -101,8 +101,10 @@ RUN apt update --fix-missing \
   libharfbuzz-dev \
   libxcb-xfixes0-dev \
   libxkbcommon-dev \
+  libutempter-dev \
   libpq-dev \
   imagemagick \
+  bash-completion \
   clangd-11 \
   clang-11 \
   libjansson-dev \
