@@ -339,6 +339,7 @@ RUN sudo add-apt-repository ppa:jonathonf/vim \
   && pip3 install --upgrade pip \
   && pip3 install --upgrade solc-select \
   && pip3 install --user jupyter \
+  && pip3 install --user detect-secrets \
   && pip3 install --user wheel \
   && pip3 install --user panoramix-decompiler \
   && pip3 install --user cmake-format \
