@@ -203,7 +203,8 @@ RUN git clone https://github.com/syndbg/goenv.git ~/.goenv \
   && go install github.com/go-delve/delve/cmd/dlv@latest \
   && go install github.com/golang/protobuf/protoc-gen-go@latest \
   && go install github.com/mgechev/revive@latest \
-  && go install github.com/charmbracelet/glow@latest
+  && go install github.com/charmbracelet/glow@latest \
+  && go install github.com/Dreamacro/clash@v1.13.0
 
 RUN git clone https://github.com/ethereum/go-ethereum \
   && cd go-ethereum \
