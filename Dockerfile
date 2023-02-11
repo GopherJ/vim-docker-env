@@ -15,6 +15,8 @@ ENV TZ=Asia/Shanghai
 RUN apt update --fix-missing \
   && apt upgrade -y \
   && apt install -y \
+  duf \
+  aria2 \
   tzdata \
   libssl-dev \
   expat \
