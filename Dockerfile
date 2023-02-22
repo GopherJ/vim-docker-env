@@ -245,6 +245,7 @@ RUN curl -o- https://cdn.jsdelivr.net/gh/nvm-sh/nvm@0.39.3/install.sh | bash \
   && npm install -g yarn \
   && yarn global add \
   ts-node \
+  markdownlint \
   ipfs \
   @vue/cli \
   create-react-app \
@@ -350,6 +351,7 @@ RUN sudo add-apt-repository ppa:jonathonf/vim \
   && pip3 install --upgrade pip \
   && pip3 install --upgrade solc-select \
   && pip3 install --user jupyter \
+  && pip3 install --user codespell \
   && pip3 install --user detect-secrets \
   && pip3 install --user wheel \
   && pip3 install --user panoramix-decompiler \
