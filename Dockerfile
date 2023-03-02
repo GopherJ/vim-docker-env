@@ -21,6 +21,8 @@ RUN apt update --fix-missing \
   aria2 \
   tzdata \
   libssl-dev \
+  postgresql-client \
+  mysql-client \
   expat \
   qrencode \
   git \
@@ -108,6 +110,7 @@ RUN apt update --fix-missing \
   libxkbcommon-dev \
   libutempter-dev \
   libpq-dev \
+  libmysqlclient-dev \
   imagemagick \
   bash-completion \
   clangd-11 \
