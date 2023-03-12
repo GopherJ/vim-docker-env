@@ -21,6 +21,8 @@ RUN apt update --fix-missing \
   aria2 \
   tzdata \
   libssl-dev \
+  z3 \
+  libz3-dev \
   postgresql-client \
   mysql-client \
   expat \
