@@ -249,6 +249,8 @@ RUN curl -o- https://cdn.jsdelivr.net/gh/nvm-sh/nvm@0.39.3/install.sh | bash \
   && nvm install-latest-npm \
   && npm install -g yarn \
   && yarn global add \
+  sol2uml \
+  tx2uml \
   doctoc \
   ts-node \
   markdownlint \
