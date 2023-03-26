@@ -17,7 +17,7 @@ RUN apt update --fix-missing \
   && apt install -y \
   toilet \
   figlet \
-  proxychains \
+  proxychains4 \
   duf \
   aria2 \
   tzdata \
