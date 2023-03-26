@@ -18,6 +18,7 @@ RUN apt update --fix-missing \
   toilet \
   figlet \
   proxychains4 \
+  wireshark \
   duf \
   aria2 \
   tzdata \
