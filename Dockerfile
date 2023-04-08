@@ -98,6 +98,8 @@ RUN apt update --fix-missing \
   zsh \
   apt-transport-https \
   openjdk-8-jdk \
+  openjdk-11-jdk \
+  openjdk-17-jdk \
   protobuf-compiler \
   libprotobuf-dev \
   software-properties-common \
