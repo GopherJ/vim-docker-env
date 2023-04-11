@@ -289,6 +289,7 @@ RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | \
   && . /home/${APP_USER}/.cargo/env \
   && curl -fLo ~/.cargo/config --create-dirs https://cdn.jsdelivr.net/gh/GopherJ/cfg/cargo/config \
   && cargo install cargo-edit \
+  && cargo install sccache \
   && cargo install just \
   && cargo install git-interactive-rebase-tool \
   && cargo install --features cli etk-asm etk-dasm \
