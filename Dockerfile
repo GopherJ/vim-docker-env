@@ -55,6 +55,7 @@ RUN apt update --fix-missing \
   watchman \
   p7zip-full \
   ansible \
+  ssh \
   sshpass \
   xz-utils \
   gawk \
