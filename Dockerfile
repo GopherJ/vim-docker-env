@@ -121,15 +121,15 @@ RUN apt update --fix-missing \
   libmysqlclient-dev \
   imagemagick \
   bash-completion \
-  clangd-11 \
-  clang-11 \
+  clangd-15 \
+  clang-15 \
   libjansson-dev \
   protobuf-compiler \
   binaryen \
   sagemath \
   pari-gp \
-  && update-alternatives --install /usr/bin/clangd clangd /usr/bin/clangd-11 100 \
-  && update-alternatives --install /usr/bin/clang clang /usr/bin/clang-11 1 --slave /usr/bin/clang++ clang++ /usr/bin/clang++-11 \
+  && update-alternatives --install /usr/bin/clangd clangd /usr/bin/clangd-15 100 \
+  && update-alternatives --install /usr/bin/clang clang /usr/bin/clang-15 1 --slave /usr/bin/clang++ clang++ /usr/bin/clang++-15 \
   && apt clean \
   && rm -rf /var/lib/apt/lists/*
 
