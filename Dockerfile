@@ -254,7 +254,7 @@ RUN curl -o- https://cdn.jsdelivr.net/gh/nvm-sh/nvm@0.39.3/install.sh | bash \
   && nvm use $NODE_VERSION \
   && nvm alias default $NODE_VERSION \
   && nvm install-latest-npm \
-  && npm install -g yarn \
+  && npm install -g yarn instant-markdown-d \
   && yarn global add \
   sol2uml \
   tx2uml \
@@ -283,7 +283,6 @@ RUN curl -o- https://cdn.jsdelivr.net/gh/nvm-sh/nvm@0.39.3/install.sh | bash \
   solidity-language-server \
   solidity-shell \
   ganache \
-  instant-markdown-d \
   snarkjs \
   snarkit2
 
