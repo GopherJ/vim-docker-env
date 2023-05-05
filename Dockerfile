@@ -411,7 +411,9 @@ RUN git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm \
   && curl -fLo ~/.tmux.conf --create-dirs https://cdn.jsdelivr.net/gh/GopherJ/cfg/tmux/.tmux.conf --retry-delay 2 --retry 3 \
   && curl -fLo ~/.tmuxline_snapshot --create-dirs https://cdn.jsdelivr.net/gh/GopherJ/cfg/tmux/.tmuxline_snapshot --retry-delay 2 --retry 3
 
-RUN curl https://cdn.jsdelivr.net/gh/GopherJ/cfg/fonts/install-fira-code.sh | bash
+RUN git clone https://github.com/GopherJ/cfg ~/cfg \
+  && cd ~/cfg/fonts \
+  && ./install-fira-code.sh
 
 RUN curl -fsSL https://cdn.jsdelivr.net/gh/filebrowser/get/get.sh | bash
 
