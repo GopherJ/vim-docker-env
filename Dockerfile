@@ -220,7 +220,7 @@ RUN git clone https://github.com/syndbg/goenv.git ~/.goenv \
   && go install github.com/golang/protobuf/protoc-gen-go@latest \
   && go install github.com/mgechev/revive@latest \
   && go install github.com/charmbracelet/glow@latest \
-  && go install github.com/Dreamacro/clash@v1.13.0 \
+  && go install github.com/Dreamacro/clash@latest \
   && go install github.com/wealdtech/ethdo@latest \
   && go install github.com/boyter/scc/v3@latest
 
@@ -271,7 +271,6 @@ RUN curl -o- https://cdn.jsdelivr.net/gh/nvm-sh/nvm@0.39.3/install.sh | bash \
   eslint-plugin-vue \
   prettier \
   neovim \
-  truffle \
   near-cli \
   assemblyscript \
   browserify \
@@ -280,7 +279,6 @@ RUN curl -o- https://cdn.jsdelivr.net/gh/nvm-sh/nvm@0.39.3/install.sh | bash \
   @subql/cli \
   graphviz \
   graphql-language-service-cli \
-  solidity-language-server \
   solidity-shell \
   ganache \
   snarkjs \
@@ -341,6 +339,7 @@ RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | \
   && cargo install --git https://gitlab.com/chevdor/srtool-cli \
   && cargo install --git https://github.com/alacritty/alacritty \
   && curl -L https://foundry.paradigm.xyz | bash \
+  && ~/.foundry/bin/foundryup \
   && curl -fLo ~/.config/alacritty/alacritty.yml --create-dirs https://cdn.jsdelivr.net/gh/GopherJ/cfg/alacritty/alacritty.yml --retry-delay 2 --retry 3 \
   && cargo install --git https://github.com/extrawurst/gitui \
   && curl -fo ~/.config/gitui/key_config.ron --create-dirs https://cdn.jsdelivr.net/gh/extrawurst/gitui/vim_style_key_config.ron \
