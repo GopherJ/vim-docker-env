@@ -125,6 +125,7 @@ RUN apt update --fix-missing \
   clangd-15 \
   clang-15 \
   libjansson-dev \
+  libomp-dev \
   protobuf-compiler \
   binaryen \
   sagemath \
