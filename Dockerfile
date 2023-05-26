@@ -99,6 +99,8 @@ RUN apt update --fix-missing \
   sudo \
   ninja-build \
   gfortran \
+  parallel \
+  musl-tools \
   xdotool \
   autoconf \
   python3-autopep8 \
