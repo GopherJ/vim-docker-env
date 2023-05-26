@@ -31,6 +31,7 @@ RUN apt update --fix-missing \
   expat \
   qrencode \
   git \
+  lld \
   wget \
   curl \
   xclip \
