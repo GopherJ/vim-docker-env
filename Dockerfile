@@ -90,6 +90,7 @@ RUN apt update --fix-missing \
   libjansson-dev \
   libsodium-dev \
   libgrpc++-dev \
+  libbenchmark-dev \
   libomp-dev \
   uuid-dev \
   libprotobuf-dev \
