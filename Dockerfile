@@ -76,7 +76,25 @@ RUN apt update --fix-missing \
   libblas-dev \
   libopenblas-dev \
   liblapack-dev \
+  libfreetype6-dev \
+  libexpat1-dev \
+  libfontconfig1-dev \
+  libxcb-composite0-dev \
+  libharfbuzz-dev \
+  libxcb-xfixes0-dev \
+  libxkbcommon-dev \
+  libutempter-dev \
+  libpq-dev \
+  libpqxx-dev \
+  libmysqlclient-dev \
+  libjansson-dev \
+  libsodium-dev \
+  libgrpc++-dev \
+  libomp-dev \
   uuid-dev \
+  libprotobuf-dev \
+  nlohmann-json3-dev \
+  libsecp256k1-dev \
   sudo \
   ninja-build \
   gfortran \
@@ -104,29 +122,18 @@ RUN apt update --fix-missing \
   openjdk-11-jdk \
   openjdk-17-jdk \
   protobuf-compiler \
-  libprotobuf-dev \
   software-properties-common \
   ca-certificates \
   gnupg \
   gnupg2 \
   pkg-config \
-  libfreetype6-dev \
-  libexpat1-dev \
-  libfontconfig1-dev \
-  libxcb-composite0-dev \
-  libharfbuzz-dev \
-  libxcb-xfixes0-dev \
-  libxkbcommon-dev \
-  libutempter-dev \
-  libpq-dev \
-  libmysqlclient-dev \
   imagemagick \
   bash-completion \
   clangd-15 \
   clang-15 \
-  libjansson-dev \
-  libomp-dev \
+  nasm \
   protobuf-compiler \
+  protobuf-compiler-grpc \
   binaryen \
   sagemath \
   pari-gp \
