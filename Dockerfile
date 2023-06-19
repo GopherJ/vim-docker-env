@@ -308,6 +308,7 @@ RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | \
   && rustup install nightly-2023-04-23 && cargo +nightly-2023-04-23 install --git https://github.com/facebook/buck2.git buck2 \
   && cargo install --features cli etk-asm etk-dasm \
   && cargo install --git https://github.com/ClementTsang/bottom \
+  && cargo install --git https://github.com/svenstaro/miniserve \
   && cargo install svm-rs \
   && cargo install texlab \
   && cargo install ethabi \
