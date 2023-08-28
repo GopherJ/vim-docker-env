@@ -18,6 +18,7 @@ RUN apt update --fix-missing \
   nvidia-cuda-toolkit \
   toilet \
   figlet \
+  wabt \
   proxychains4 \
   wireshark \
   duf \
