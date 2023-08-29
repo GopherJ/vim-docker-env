@@ -15,6 +15,7 @@ ENV TZ=Asia/Shanghai
 RUN apt update --fix-missing \
   && apt upgrade -y \
   && apt install -y \
+  gcc-riscv64-linux-gnu \
   nvidia-cuda-toolkit \
   toilet \
   figlet \
