@@ -300,10 +300,11 @@ RUN curl -o- https://cdn.jsdelivr.net/gh/nvm-sh/nvm@0.39.3/install.sh | bash \
   snarkit2
 
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | \
-  sh -s -- -y --default-toolchain ${RUST_TOOLCHAIN} --component rust-src --target wasm32-unknown-unknown --target x86_64-pc-windows-gnu --target x86_64-apple-darwin \
+  sh -s -- -y --default-toolchain ${RUST_TOOLCHAIN} --component rust-src --target wasm32-unknown-unknown --target wasm32-wasi --target x86_64-pc-windows-gnu --target x86_64-apple-darwin \
   && . /home/${APP_USER}/.cargo/env \
   && curl -fLo ~/.cargo/config --create-dirs https://cdn.jsdelivr.net/gh/GopherJ/cfg/cargo/config \
   && cargo install cargo-edit \
+  && cargo install wasm-tools \
   && cargo install sccache \
   && cargo install just \
   && cargo install git-interactive-rebase-tool \
