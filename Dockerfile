@@ -237,7 +237,8 @@ RUN git clone https://github.com/syndbg/goenv.git ~/.goenv \
   && go install github.com/charmbracelet/glow@latest \
   && go install github.com/Dreamacro/clash@latest \
   && go install github.com/wealdtech/ethdo@latest \
-  && go install github.com/boyter/scc/v3@latest
+  && go install github.com/boyter/scc/v3@latest \
+  && go install github.com/jfeliu007/goplantuml/cmd/goplantuml@latest
 
 RUN git clone https://github.com/ethereum/go-ethereum \
   && cd go-ethereum \
