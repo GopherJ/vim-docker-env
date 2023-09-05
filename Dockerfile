@@ -37,6 +37,7 @@ RUN apt update --fix-missing \
   wget \
   curl \
   xclip \
+  xsel \
   cmake \
   jupyter \
   jupyter-core \
