@@ -357,6 +357,7 @@ RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | \
   && cargo install mdbook \
   mdbook-mermaid \
   mdbook-linkcheck \
+  mdbook-plantuml \
   mdbook-graphviz \
   mdbook-toc \
   && cargo install --git https://github.com/lzanini/mdbook-katex \
