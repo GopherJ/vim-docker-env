@@ -22,6 +22,7 @@ RUN apt update --fix-missing \
   flameshot \
   gimp \
   kazam \
+  alsa-utils \
   transmission \
   ffmpeg \
   tig \
