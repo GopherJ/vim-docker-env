@@ -19,6 +19,7 @@ RUN apt update --fix-missing \
   nvidia-cuda-toolkit \
   toilet \
   figlet \
+  flameshot \
   wabt \
   proxychains4 \
   wireshark \
