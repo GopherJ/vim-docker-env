@@ -20,6 +20,8 @@ RUN apt update --fix-missing \
   toilet \
   figlet \
   flameshot \
+  gimp \
+  ffmpeg \
   wabt \
   proxychains4 \
   wireshark \
