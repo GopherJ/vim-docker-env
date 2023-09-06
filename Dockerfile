@@ -269,6 +269,10 @@ RUN echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/d
   && sudo apt install docker-ce docker-ce-cli containerd.io docker-compose -y \
   && sudo usermod -aG docker ${APP_USER}
 
+RUN sudo add-apt-repository ppa:hluk/copyq \
+  && sudo apt update \
+  && sudo apt install copyq
+
 RUN curl -o- https://cdn.jsdelivr.net/gh/nvm-sh/nvm@0.39.3/install.sh | bash \
   && curl -fsSL https://fnm.vercel.app/install | bash \
   && [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" \
