@@ -21,6 +21,7 @@ RUN apt update --fix-missing \
   figlet \
   flameshot \
   gimp \
+  kazam \
   ffmpeg \
   tig \
   wabt \
