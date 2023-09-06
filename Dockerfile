@@ -22,6 +22,7 @@ RUN apt update --fix-missing \
   flameshot \
   gimp \
   ffmpeg \
+  tig \
   wabt \
   proxychains4 \
   wireshark \
