@@ -296,6 +296,7 @@ RUN curl -o- https://cdn.jsdelivr.net/gh/nvm-sh/nvm@0.39.3/install.sh | bash \
   ts-node \
   markdownlint \
   ipfs \
+  @marp-team/marp-cli \
   @vue/cli \
   create-react-app \
   create-near-app \
