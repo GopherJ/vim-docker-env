@@ -197,6 +197,8 @@ RUN wget https://github.com/upx/upx/releases/download/v3.94/upx-3.94-amd64_linux
   && chmod u+x upx-3.94-amd64_linux/upx \
   && sudo mv upx-3.94-amd64_linux/upx /usr/local/bin
 
+RUN curl -fsSL https://code-server.dev/install.sh | sh
+
 # RUN wget https://github.com/hyperledger-labs/solang/releases/download/v0.2.0/solang-linux-x86-64 \
 #   && chmod u+x solang-linux-x86-64  \
 #   && sudo mv solang-linux-x86-64 /usr/local/bin
