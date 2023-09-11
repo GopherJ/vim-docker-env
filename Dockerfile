@@ -23,6 +23,7 @@ RUN apt update --fix-missing \
   flameshot \
   gimp \
   kazam \
+  dnsutils \
   alsa-utils \
   transmission \
   ffmpeg \
