@@ -281,6 +281,10 @@ RUN sudo add-apt-repository ppa:hluk/copyq \
   && sudo apt update \
   && sudo apt install copyq
 
+RUN sudo add-apt-repository ppa:maveonair/helix-editor \
+  && sudo apt update \
+  && sudo apt install helix
+
 RUN curl -o- https://cdn.jsdelivr.net/gh/nvm-sh/nvm@0.39.3/install.sh | bash \
   && curl -fsSL https://fnm.vercel.app/install | bash \
   && [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" \
