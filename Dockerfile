@@ -61,6 +61,7 @@ RUN apt update --fix-missing \
   texlive-fonts-extra \
   texlive-latex-extra \
   texlive-bibtex-extra \
+  texlive-xetex \
   bear \
   apt-utils \
   apt-rdepends \
