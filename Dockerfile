@@ -52,6 +52,7 @@ RUN apt update --fix-missing \
   jupyter-core \
   gh \
   latexmk \
+  texstudio \
   bear \
   apt-utils \
   apt-rdepends \
