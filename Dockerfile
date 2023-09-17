@@ -53,6 +53,7 @@ RUN apt update --fix-missing \
   gh \
   latexmk \
   texstudio \
+  texlive \
   bear \
   apt-utils \
   apt-rdepends \
