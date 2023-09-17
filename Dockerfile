@@ -54,6 +54,10 @@ RUN apt update --fix-missing \
   latexmk \
   texstudio \
   texlive \
+  texinfo \
+  texlive-fonts-recommended \
+  texlive-fonts-extra \
+  texlive-latex-extra \
   bear \
   apt-utils \
   apt-rdepends \
