@@ -21,6 +21,7 @@ RUN apt update --fix-missing \
   figlet \
   git-lfs \
   flameshot \
+  inkscape \
   gimp \
   kazam \
   pandoc \
@@ -36,6 +37,7 @@ RUN apt update --fix-missing \
   aria2 \
   tzdata \
   libssl-dev \
+  librsvg2-bin \
   z3 \
   libz3-dev \
   postgresql-client \
