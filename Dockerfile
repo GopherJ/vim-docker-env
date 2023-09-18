@@ -354,6 +354,8 @@ RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | \
   && cargo install just \
   && cargo install git-interactive-rebase-tool \
   && cargo install --git https://github.com/facebook/buck2 buck2 \
+  && cargo install --git https://github.com/starkware-libs/cairo.git --tag v1.1.0 cairo-lang-compiler \
+  && cargo install --git https://github.com/software-mansion/scarb.git --tag v0.3.0 scarb \
   && cargo install cargo-whatfeatures --no-default-features --features "rustls" \
   && rustup install nightly-2023-04-23 && cargo +nightly-2023-04-23 install --git https://github.com/facebook/buck2.git buck2 \
   && cargo install --features cli etk-asm etk-dasm \
