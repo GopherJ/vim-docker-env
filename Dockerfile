@@ -398,6 +398,7 @@ RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | \
   && cargo install --force --git https://github.com/paritytech/cargo-remote \
   && cargo install --git https://gitlab.com/chevdor/srtool-cli \
   && cargo install --git https://github.com/alacritty/alacritty \
+  && cargo install --locked evcxr_jupyter \
   && curl -L https://foundry.paradigm.xyz | bash \
   && ~/.foundry/bin/foundryup \
   && curl -fLo ~/.config/alacritty/alacritty.yml --create-dirs https://cdn.jsdelivr.net/gh/GopherJ/cfg/alacritty/alacritty.yml --retry-delay 2 --retry 3 \
