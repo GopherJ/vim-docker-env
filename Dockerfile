@@ -210,7 +210,10 @@ RUN wget https://github.com/upx/upx/releases/download/v3.94/upx-3.94-amd64_linux
 
 RUN curl -fsSL https://code-server.dev/install.sh | sh
 
-RUN curl https://pyenv.run | bash 
+RUN curl https://pyenv.run | bash \
+  && pyenv install 3.9.0 \
+  && pyenv virtualenv 3.9.0 cairo_venv \
+  && pyenv activate cairo_venv
 
 # RUN wget https://github.com/hyperledger-labs/solang/releases/download/v0.2.0/solang-linux-x86-64 \
 #   && chmod u+x solang-linux-x86-64  \
