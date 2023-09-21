@@ -24,6 +24,7 @@ RUN apt update --fix-missing \
   inkscape \
   gimp \
   kazam \
+  calibre \
   pandoc \
   dnsutils \
   alsa-utils \
