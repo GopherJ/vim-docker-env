@@ -211,6 +211,11 @@ RUN wget https://github.com/upx/upx/releases/download/v3.94/upx-3.94-amd64_linux
 
 RUN curl -fsSL https://code-server.dev/install.sh | sh
 
+RUN curl https://pyenv.run | bash \
+  && pyenv install 3.9.0 \
+  && pyenv virtualenv 3.9.0 cairo_venv \
+  && pyenv activate cairo_venv
+
 # RUN wget https://github.com/hyperledger-labs/solang/releases/download/v0.2.0/solang-linux-x86-64 \
 #   && chmod u+x solang-linux-x86-64  \
 #   && sudo mv solang-linux-x86-64 /usr/local/bin
@@ -350,6 +355,8 @@ RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | \
   && cargo install just \
   && cargo install git-interactive-rebase-tool \
   && cargo install --git https://github.com/facebook/buck2 buck2 \
+  && cargo install --git https://github.com/starkware-libs/cairo.git --tag v1.1.0 cairo-lang-compiler \
+  && cargo install --git https://github.com/software-mansion/scarb.git --tag v0.3.0 scarb \
   && cargo install cargo-whatfeatures --no-default-features --features "rustls" \
   && rustup install nightly-2023-04-23 && cargo +nightly-2023-04-23 install --git https://github.com/facebook/buck2.git buck2 \
   && cargo install --features cli etk-asm etk-dasm \
