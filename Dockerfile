@@ -108,6 +108,7 @@ RUN apt update --fix-missing \
   libxcb-xfixes0-dev \
   libxkbcommon-dev \
   libutempter-dev \
+  liblz4-dev \
   libpq-dev \
   libpqxx-dev \
   libmysqlclient-dev \
