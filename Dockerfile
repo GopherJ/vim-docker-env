@@ -119,6 +119,9 @@ RUN apt update --fix-missing \
   libbz2-dev \
   libreadline-dev \
   librdkafka-dev \
+  libev-dev \
+  libhiredis-dev \
+  libmpdec-dev \
   libsqlite3-dev \
   uuid-dev \
   libprotobuf-dev \
