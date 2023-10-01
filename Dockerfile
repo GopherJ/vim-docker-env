@@ -452,6 +452,7 @@ RUN sudo add-apt-repository ppa:jonathonf/vim \
   && pip3 install --user codespell \
   && pip3 install --user detect-secrets \
   && pip3 install --user wheel \
+  && pip3 install --user smdv \
   && pip3 install --user panoramix-decompiler \
   && pip3 install --user cmake-format \
   && pip3 install --user -U jedi \
