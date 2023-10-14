@@ -274,6 +274,7 @@ RUN git clone https://github.com/syndbg/goenv.git ~/.goenv \
   && go install github.com/wealdtech/ethdo@latest \
   && go install github.com/boyter/scc/v3@latest \
   && go install github.com/jfeliu007/goplantuml/cmd/goplantuml@latest \
+  && go install github.com/fullstorydev/grpcurl/cmd/grpcurl@latest \
   && go install \
   github.com/grpc-ecosystem/grpc-gateway/v2/protoc-gen-grpc-gateway \
   github.com/grpc-ecosystem/grpc-gateway/v2/protoc-gen-openapiv2 \
