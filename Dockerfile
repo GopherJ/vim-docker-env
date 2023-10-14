@@ -351,6 +351,7 @@ RUN curl -o- https://cdn.jsdelivr.net/gh/nvm-sh/nvm@0.39.3/install.sh | bash \
   @polkadot/api-cli \
   @open-web3/parachain-launch \
   @subql/cli \
+  @graphprotocol/graph-cli \
   graphviz \
   graphql-language-service-cli \
   solidity-shell \
