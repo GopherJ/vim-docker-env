@@ -278,7 +278,13 @@ RUN git clone https://github.com/syndbg/goenv.git ~/.goenv \
   && go install github.com/Dreamacro/clash@latest \
   && go install github.com/wealdtech/ethdo@latest \
   && go install github.com/boyter/scc/v3@latest \
-  && go install github.com/jfeliu007/goplantuml/cmd/goplantuml@latest
+  && go install github.com/jfeliu007/goplantuml/cmd/goplantuml@latest \
+  && go install github.com/fullstorydev/grpcurl/cmd/grpcurl@latest \
+  && go install \
+  github.com/grpc-ecosystem/grpc-gateway/v2/protoc-gen-grpc-gateway \
+  github.com/grpc-ecosystem/grpc-gateway/v2/protoc-gen-openapiv2 \
+  google.golang.org/protobuf/cmd/protoc-gen-go \
+  google.golang.org/grpc/cmd/protoc-gen-go-grpc
 
 RUN git clone https://github.com/ethereum/go-ethereum \
   && cd go-ethereum \
@@ -351,6 +357,7 @@ RUN curl -o- https://cdn.jsdelivr.net/gh/nvm-sh/nvm@0.39.3/install.sh | bash \
   @polkadot/api-cli \
   @open-web3/parachain-launch \
   @subql/cli \
+  @graphprotocol/graph-cli \
   graphviz \
   graphql-language-service-cli \
   solidity-shell \
