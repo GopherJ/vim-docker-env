@@ -328,6 +328,7 @@ RUN curl -o- https://cdn.jsdelivr.net/gh/nvm-sh/nvm@0.39.3/install.sh | bash \
   && nvm install-latest-npm \
   && npm install -g yarn instant-markdown-d \
   && yarn global add \
+  @ethereumjs/client \
   zksync-cli \
   gulp-cli \
   sol2uml \
