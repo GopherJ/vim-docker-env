@@ -378,6 +378,7 @@ RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | \
   && cargo install cargo-whatfeatures --no-default-features --features "rustls" \
   && rustup install nightly-2023-04-23 && cargo +nightly-2023-04-23 install --git https://github.com/facebook/buck2.git buck2 \
   && cargo install --features cli etk-asm etk-dasm \
+  && cargo install systemfd \
   && cargo install cargo-watch \
   && cargo install --git https://github.com/ClementTsang/bottom \
   && cargo install --git https://github.com/svenstaro/miniserve \
