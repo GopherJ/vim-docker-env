@@ -419,6 +419,7 @@ RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | \
   mdbook-plantuml \
   mdbook-graphviz \
   mdbook-toc \
+  mdbook-i18n-helpers \
   && cargo install --git https://github.com/lzanini/mdbook-katex \
   && cargo install diesel_cli --no-default-features --features postgres \
   && cargo install --force --git https://github.com/google/evcxr.git evcxr_repl \
