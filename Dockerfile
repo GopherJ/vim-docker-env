@@ -19,6 +19,7 @@ RUN apt update --fix-missing \
   nvidia-cuda-toolkit \
   toilet \
   figlet \
+  mold \
   git-lfs \
   flameshot \
   inkscape \
