@@ -373,6 +373,7 @@ RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | \
   && cargo install sccache \
   && cargo install just \
   && cargo install git-interactive-rebase-tool \
+  && cargo install --git https://github.com/casey/just just \
   && cargo install --git https://github.com/facebook/buck2 buck2 \
   && cargo install --git https://github.com/starkware-libs/cairo.git --tag v1.1.0 cairo-lang-compiler \
   && cargo install --git https://github.com/starkware-libs/cairo.git --tag v1.1.0 cairo-language-server \
