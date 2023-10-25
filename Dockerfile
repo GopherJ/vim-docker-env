@@ -493,7 +493,10 @@ RUN sudo add-apt-repository ppa:jonathonf/vim \
   && cd ~/.config/coc/extensions \
   && npm install --global-style --ignore-scripts --no-bin-links --no-package-lock --only=prod \
   && curl -fo ~/.vim/tasks.ini https://cdn.jsdelivr.net/gh/GopherJ/cfg/asynctasks/tasks.ini --retry-delay 2 --retry 3 \
-  && curl -fo --create-dirs ~/.config/coc/ultisnips/vim.snippets https://cdn.jsdelivr.net/gh/GopherJ/cfg/snippets/vim.snippets --retry-delay 2 --retry 3
+  && curl -fo --create-dirs ~/.config/coc/ultisnips/rust.snippets https://cdn.jsdelivr.net/gh/GopherJ/cfg/snippets/rust.snippets --retry-delay 2 --retry 3 \
+  && curl -fo --create-dirs ~/.config/coc/ultisnips/typescript.snippets https://cdn.jsdelivr.net/gh/GopherJ/cfg/snippets/typescript.snippets --retry-delay 2 --retry 3 \
+  && curl -fo --create-dirs ~/.config/coc/ultisnips/solidity.snippets https://cdn.jsdelivr.net/gh/GopherJ/cfg/snippets/solidity.snippets --retry-delay 2 --retry 3 \
+  && curl -fo --create-dirs ~/.config/coc/ultisnips/go.snippets https://cdn.jsdelivr.net/gh/GopherJ/cfg/snippets/go.snippets --retry-delay 2 --retry 3
 
 RUN solc-select install ${SOLC_VERSION} \
   && solc-select use ${SOLC_VERSION}
