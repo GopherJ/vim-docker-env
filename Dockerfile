@@ -375,6 +375,9 @@ RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | \
   && cargo install wasm-tools \
   && cargo install sccache \
   && cargo install just \
+  && cargo install fnm \
+  && cargo install broot \
+  && cargo install stylua \
   && cargo install git-interactive-rebase-tool \
   && cargo install --git https://github.com/casey/just just \
   && cargo install --git https://github.com/facebook/buck2 buck2 \
