@@ -372,7 +372,7 @@ RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | \
   && cargo install cargo-edit \
   && cargo install sea-orm-cli \
   && cargo install cargo-geiger \
-  && cargo install cargo-risczero \
+  && cargo install cargo-risczero && cargo risczero install \
   && cargo install wasm-tools \
   && cargo install sccache \
   && cargo install just \
