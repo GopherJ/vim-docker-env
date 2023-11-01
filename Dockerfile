@@ -159,7 +159,6 @@ RUN apt update --fix-missing \
   openjdk-8-jdk \
   openjdk-11-jdk \
   openjdk-17-jdk \
-  protobuf-compiler \
   software-properties-common \
   ca-certificates \
   gnupg \
@@ -363,6 +362,8 @@ RUN curl -o- https://cdn.jsdelivr.net/gh/nvm-sh/nvm@0.39.3/install.sh | bash \
   ganache \
   snarkjs \
   snarkit2
+
+RUN curl -L --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/cargo-bins/cargo-binstall/main/install-from-binstall-release.sh | bash
 
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | \
   sh -s -- -y --default-toolchain ${RUST_TOOLCHAIN} --component rust-src --target wasm32-unknown-unknown --target wasm32-wasi --target x86_64-pc-windows-gnu --target x86_64-apple-darwin \
