@@ -20,6 +20,7 @@ RUN apt update --fix-missing \
   toilet \
   figlet \
   rofi \
+  nnn \
   neomutt \
   mold \
   git-lfs \
