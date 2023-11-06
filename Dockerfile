@@ -21,6 +21,7 @@ RUN apt update --fix-missing \
   figlet \
   rofi \
   nnn \
+  sshfs \
   neomutt \
   mold \
   git-lfs \
