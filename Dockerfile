@@ -372,6 +372,7 @@ RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | \
   && . /home/${APP_USER}/.cargo/env \
   && curl -fLo ~/.cargo/config --create-dirs https://cdn.jsdelivr.net/gh/GopherJ/cfg/cargo/config \
   && cargo install cargo-edit \
+  && cargo install ast-grep \
   && cargo install sea-orm-cli \
   && cargo install zellij \
   && cargo install cargo-geiger \
