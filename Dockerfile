@@ -24,6 +24,11 @@ RUN apt update --fix-missing \
   libx11-xcb1 \
   toilet \
   figlet \
+  rofi \
+  nnn \
+  sshfs \
+  neomutt \
+  mold \
   git-lfs \
   flameshot \
   inkscape \
@@ -161,7 +166,6 @@ RUN apt update --fix-missing \
   openjdk-8-jdk \
   openjdk-11-jdk \
   openjdk-17-jdk \
-  protobuf-compiler \
   software-properties-common \
   ca-certificates \
   gnupg \
@@ -333,6 +337,8 @@ RUN curl -o- https://cdn.jsdelivr.net/gh/nvm-sh/nvm@0.39.3/install.sh | bash \
   && nvm install-latest-npm \
   && npm install -g yarn instant-markdown-d \
   && yarn global add \
+  @ethereumjs/client \
+  tldr \
   zksync-cli \
   gulp-cli \
   sol2uml \
@@ -365,16 +371,27 @@ RUN curl -o- https://cdn.jsdelivr.net/gh/nvm-sh/nvm@0.39.3/install.sh | bash \
   snarkjs \
   snarkit2
 
+# RUN curl -L --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/cargo-bins/cargo-binstall/main/install-from-binstall-release.sh | bash
+
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | \
   sh -s -- -y --default-toolchain ${RUST_TOOLCHAIN} --component rust-src --target wasm32-unknown-unknown --target wasm32-wasi --target x86_64-pc-windows-gnu --target x86_64-apple-darwin \
   && . /home/${APP_USER}/.cargo/env \
   && curl -fLo ~/.cargo/config --create-dirs https://cdn.jsdelivr.net/gh/GopherJ/cfg/cargo/config \
   && cargo install cargo-edit \
-  && cargo install cargo-risczero \
+  && cargo install ast-grep \
+  && cargo install sea-orm-cli \
+  && cargo install zellij \
+  && cargo install cargo-geiger \
+  && cargo install cargo-binstall \
+  && cargo install cargo-risczero && cargo risczero install \
   && cargo install wasm-tools \
   && cargo install sccache \
   && cargo install just \
+  && cargo install fnm \
+  && cargo install broot \
+  && cargo install stylua \
   && cargo install git-interactive-rebase-tool \
+  && cargo install --git https://github.com/casey/just just \
   && cargo install --git https://github.com/facebook/buck2 buck2 \
   && cargo install --git https://github.com/starkware-libs/cairo.git --tag v1.1.0 cairo-lang-compiler \
   && cargo install --git https://github.com/starkware-libs/cairo.git --tag v1.1.0 cairo-language-server \
@@ -382,6 +399,8 @@ RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | \
   && cargo install cargo-whatfeatures --no-default-features --features "rustls" \
   && rustup install nightly-2023-04-23 && cargo +nightly-2023-04-23 install --git https://github.com/facebook/buck2.git buck2 \
   && cargo install --features cli etk-asm etk-dasm \
+  && cargo install systemfd \
+  && cargo install cargo-watch \
   && cargo install --git https://github.com/ClementTsang/bottom \
   && cargo install --git https://github.com/svenstaro/miniserve \
   && cargo install svm-rs \
@@ -398,6 +417,9 @@ RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | \
   && cargo install git-brws \
   && cargo install hyperfine \
   && cargo install cargo-update \
+  && cargo install --git https://github.com/est31/cargo-udeps \
+  && cargo install --git https://github.com/BrainiumLLC/cargo-mobile \
+  && cargo install --git https://github.com/bnjbvr/cargo-machete \
   && cargo install cargo-chef \
   && cargo install watchexec-cli \
   && cargo install cargo-deadlinks \
@@ -422,6 +444,7 @@ RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | \
   mdbook-plantuml \
   mdbook-graphviz \
   mdbook-toc \
+  mdbook-i18n-helpers \
   && cargo install --git https://github.com/lzanini/mdbook-katex \
   && cargo install diesel_cli --no-default-features --features postgres \
   && cargo install --force --git https://github.com/google/evcxr.git evcxr_repl \
@@ -487,7 +510,10 @@ RUN sudo add-apt-repository ppa:jonathonf/vim \
   && cd ~/.config/coc/extensions \
   && npm install --global-style --ignore-scripts --no-bin-links --no-package-lock --only=prod \
   && curl -fo ~/.vim/tasks.ini https://cdn.jsdelivr.net/gh/GopherJ/cfg/asynctasks/tasks.ini --retry-delay 2 --retry 3 \
-  && curl -fo --create-dirs ~/.config/coc/ultisnips/vim.snippets https://cdn.jsdelivr.net/gh/GopherJ/cfg/snippets/vim.snippets --retry-delay 2 --retry 3
+  && curl -fo --create-dirs ~/.config/coc/ultisnips/rust.snippets https://cdn.jsdelivr.net/gh/GopherJ/cfg/snippets/rust.snippets --retry-delay 2 --retry 3 \
+  && curl -fo --create-dirs ~/.config/coc/ultisnips/typescript.snippets https://cdn.jsdelivr.net/gh/GopherJ/cfg/snippets/typescript.snippets --retry-delay 2 --retry 3 \
+  && curl -fo --create-dirs ~/.config/coc/ultisnips/solidity.snippets https://cdn.jsdelivr.net/gh/GopherJ/cfg/snippets/solidity.snippets --retry-delay 2 --retry 3 \
+  && curl -fo --create-dirs ~/.config/coc/ultisnips/go.snippets https://cdn.jsdelivr.net/gh/GopherJ/cfg/snippets/go.snippets --retry-delay 2 --retry 3
 
 RUN solc-select install ${SOLC_VERSION} \
   && solc-select use ${SOLC_VERSION}
