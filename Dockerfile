@@ -496,7 +496,7 @@ RUN sudo add-apt-repository ppa:jonathonf/vim \
   && pip3 install --user pynvim \
   && pip3 install --user awscli \
   && pip3 install --user maturin \
-  && curl -sSL https://install.python-poetry.org | python3 - \
+  && pip3 install --user poetry \
   && sudo gem install neovim \
   && curl -fo ~/.vimrc https://cdn.jsdelivr.net/gh/GopherJ/cfg/coc/.vimrc --retry-delay 2 --retry 3 \
   && curl -fo ~/.vim/coc-settings.json --create-dirs https://cdn.jsdelivr.net/gh/GopherJ/cfg/coc/coc-settings.json --retry-delay 2 --retry 3 \
