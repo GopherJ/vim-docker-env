@@ -8,6 +8,7 @@ ARG RUST_TOOLCHAIN=nightly-2023-05-02
 ARG TABNINE_VERSION=4.4.225
 ARG RUST_ANALYZER_VERSION=2023-01-21
 ARG SOLC_VERSION=0.8.10
+ARG PY_VERSION=3.10.0
 
 ENV DEBIAN_FRONTEND noninteractive
 ENV TZ=Asia/Shanghai
@@ -229,10 +230,10 @@ RUN wget https://github.com/upx/upx/releases/download/v3.94/upx-3.94-amd64_linux
 
 RUN curl -fsSL https://code-server.dev/install.sh | sh
 
-RUN curl https://pyenv.run | bash \
-  && pyenv install 3.9.0 \
-  && pyenv virtualenv 3.9.0 cairo_venv \
-  && pyenv activate cairo_venv
+RUN git clone https://github.com/pyenv/pyenv.git ~/.pyenv \
+  && eval "$(pyenv init -)" \
+  && git clone https://github.com/pyenv/pyenv-virtualenv.git $(pyenv root)/plugins/pyenv-virtualenv \
+  && pyenv install ${PY_VERSION}
 
 # RUN wget https://github.com/hyperledger-labs/solang/releases/download/v0.2.0/solang-linux-x86-64 \
 #   && chmod u+x solang-linux-x86-64  \
