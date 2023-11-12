@@ -146,6 +146,7 @@ RUN apt update --fix-missing \
   xdotool \
   autoconf \
   python3-autopep8 \
+  python3.10-venv \
   automake \
   libtool \
   tmux \
