@@ -18,6 +18,7 @@ RUN apt update --fix-missing \
   && apt install -y \
   gcc-riscv64-linux-gnu \
   nvidia-cuda-toolkit \
+  bsdmainutils \
   xvfb \
   x11-apps \
   x11-xkb-utils \
