@@ -54,6 +54,7 @@ RUN apt update --fix-missing \
   z3 \
   libz3-dev \
   postgresql-client \
+  redis-tools \
   mysql-client \
   expat \
   qrencode \
@@ -69,6 +70,7 @@ RUN apt update --fix-missing \
   latexmk \
   texstudio \
   texlive \
+  texmaker \
   texinfo \
   texlive-fonts-recommended \
   texlive-fonts-extra \
