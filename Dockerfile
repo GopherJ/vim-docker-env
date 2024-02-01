@@ -137,6 +137,7 @@ RUN apt update --fix-missing \
   libev-dev \
   libhiredis-dev \
   libmpdec-dev \
+  libevent-dev \
   libsqlite3-dev \
   uuid-dev \
   libprotobuf-dev \
@@ -149,6 +150,7 @@ RUN apt update --fix-missing \
   musl-tools \
   xdotool \
   autoconf \
+  autotools-dev \
   python3-autopep8 \
   python3.10-venv \
   automake \
