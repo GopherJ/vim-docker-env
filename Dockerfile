@@ -53,6 +53,7 @@ RUN apt update --fix-missing \
   librsvg2-bin \
   z3 \
   libz3-dev \
+  libzmq3-dev \
   postgresql-client \
   redis-tools \
   mysql-client \
@@ -257,6 +258,20 @@ RUN git clone https://github.com/pyenv/pyenv.git ~/.pyenv \
 
 # RUN curl -fLo ~/ripgrep_12.1.1_amd64.deb https://github.com/BurntSushi/ripgrep/releases/download/12.1.1/ripgrep_12.1.1_amd64.deb --retry-delay 2 --retry 3 \
 #     && sudo dpkg -i ~/ripgrep_12.1.1_amd64.deb
+
+RUN git clone https://github.com/bitcoin/bitcoin \
+  && cd bitcoin \
+  && ./autogen.sh \
+  && ./configure \
+  && make \
+  && sudo make install
+
+# RUN git clone https://github.com/libbitcoin/libbitcoin-explorer \
+#   && cd libbitcoin-explorer \
+#   && ./autogen.sh \
+#   && ./configure \
+#   && make \
+#   && sudo make install
 
 ENV GOENV_ROOT=/home/${APP_USER}/.goenv
 ENV NVM_DIR=/home/${APP_USER}/.nvm
