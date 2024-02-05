@@ -536,6 +536,7 @@ RUN sudo add-apt-repository ppa:jonathonf/vim \
   && sudo apt update -y \
   && sudo apt install -y vim neovim solc ethereum \
   && pip3 install --upgrade pip \
+  && pip3 install --upgrade pipenv \
   && pip3 install --upgrade solc-select \
   && pip3 install --user jupyter \
   && pip3 install --user you-get \
