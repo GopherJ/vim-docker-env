@@ -266,12 +266,27 @@ RUN git clone https://github.com/bitcoin/bitcoin \
   && make \
   && sudo make install
 
-# RUN git clone https://github.com/libbitcoin/libbitcoin-explorer \
-#   && cd libbitcoin-explorer \
-#   && ./autogen.sh \
-#   && ./configure \
-#   && make \
-#   && sudo make install
+RUN wget ttps://boostorg.jfrog.io/artifactory/main/release/1.76.0/source/boost_1_76_0.tar.gz \
+  && tar -zxvf boost_1_76_0.tar.gz \
+  && cd boost_1_76_0 \
+  && ./bootstrap.sh \
+  && ./b2 \
+  && sudo ./b2 install
+
+RUN git clone -b version9 https://github.com/libbitcoin/secp256k1 \
+  && git clone -b version3 https://github.com/libbitcoin/libbitcoin-system \
+  && git clone -b version3 https://github.com/libbitcoin/libbitcoin-protocol \
+  && git clone -b version3 https://github.com/libbitcoin/libbitcoin-client \
+  && git clone -b version3 https://github.com/libbitcoin/libbitcoin-server \
+  && git clone -b version3 https://github.com/libbitcoin/libbitcoin-network \
+  && git clone -b version3 https://github.com/libbitcoin/libbitcoin-database \
+  && git clone -b version3 https://github.com/libbitcoin/libbitcoin-explorer \
+  && cd secp256k1 && ./autogen.sh && ./configure.sh --enable-module-recovery && make && sudo make install && cd .. \
+  && cd libbitcoin-system && ./autogen.sh && ./configure.sh && make && sudo make install && cd .. \
+  && cd libbitcoin-protocol && ./autogen.sh && ./configure.sh && make && sudo make install && cd .. \
+  && cd libbitcoin-network && ./autogen.sh && ./configure.sh && make && sudo make install && cd .. \
+  && cd libbitcoin-client && ./autogen.sh && ./configure.sh && make && sudo make install && cd .. \
+  && cd libbitcoin-explorer && ./autogen.sh && ./configure.sh && make && sudo make install
 
 ENV GOENV_ROOT=/home/${APP_USER}/.goenv
 ENV NVM_DIR=/home/${APP_USER}/.nvm
