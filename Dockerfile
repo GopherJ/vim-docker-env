@@ -266,6 +266,10 @@ RUN git clone https://github.com/bitcoin/bitcoin \
   && make \
   && sudo make install
 
+RUN git clone https://github.com/btcsuite/btcd \
+  && cd btcd \
+  && go install -v . ./cmd/...
+
 RUN wget ttps://boostorg.jfrog.io/artifactory/main/release/1.76.0/source/boost_1_76_0.tar.gz \
   && tar -zxvf boost_1_76_0.tar.gz \
   && cd boost_1_76_0 \
