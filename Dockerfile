@@ -17,6 +17,8 @@ RUN apt update --fix-missing \
   && apt upgrade -y \
   && apt install -y \
   gcc-riscv64-linux-gnu \
+  gcc-arm-linux-gnueabihf \
+  gcc-aarch64-linux-gnu \
   nvidia-cuda-toolkit \
   bsdmainutils \
   xvfb \
