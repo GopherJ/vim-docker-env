@@ -266,6 +266,13 @@ RUN git clone https://github.com/bitcoin/bitcoin \
   && make \
   && sudo make install
 
+RUN git clone https://github.com/bitcoin-core/btcdeb \
+  && cd btcdeb \
+  && ./autogen.sh \
+  && ./configure \
+  && make \
+  && sudo make install
+
 RUN git clone https://github.com/btcsuite/btcd \
   && cd btcd \
   && go install -v . ./cmd/...
