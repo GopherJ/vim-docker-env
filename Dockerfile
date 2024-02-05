@@ -141,6 +141,7 @@ RUN apt update --fix-missing \
   libevent-dev \
   libsqlite3-dev \
   uuid-dev \
+  libcurl4-openssl-dev \
   libprotobuf-dev \
   nlohmann-json3-dev \
   libsecp256k1-dev \
@@ -149,6 +150,7 @@ RUN apt update --fix-missing \
   gfortran \
   parallel \
   musl-tools \
+  net-tools \
   xdotool \
   autoconf \
   autotools-dev \
