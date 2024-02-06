@@ -245,6 +245,11 @@ RUN git clone https://github.com/pyenv/pyenv.git ~/.pyenv \
   && git clone https://github.com/pyenv/pyenv-virtualenv.git $(pyenv root)/plugins/pyenv-virtualenv \
   && pyenv install ${PY_VERSION}
 
+RUN git clone https://github.com/emscripten-core/emsdk.git \
+  && cd emsdk \
+  && ./emsdk install 3.1.7 \
+  && ./emsdk activate 3.1.7
+
 # RUN wget https://github.com/hyperledger-labs/solang/releases/download/v0.2.0/solang-linux-x86-64 \
 #   && chmod u+x solang-linux-x86-64  \
 #   && sudo mv solang-linux-x86-64 /usr/local/bin
