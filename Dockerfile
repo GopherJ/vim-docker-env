@@ -434,7 +434,7 @@ RUN curl -o- https://cdn.jsdelivr.net/gh/nvm-sh/nvm@0.39.3/install.sh | bash \
 # RUN curl -L --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/cargo-bins/cargo-binstall/main/install-from-binstall-release.sh | bash
 
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | \
-  sh -s -- -y --default-toolchain ${RUST_TOOLCHAIN} --component rust-src --target wasm32-unknown-unknown --target wasm32-wasi --target x86_64-pc-windows-gnu --target x86_64-apple-darwin \
+  sh -s -- -y --default-toolchain ${RUST_TOOLCHAIN} --component llvm-tools --component rustc-dev --component rust-src --target wasm32-unknown-unknown --target wasm32-wasi --target x86_64-pc-windows-gnu --target x86_64-apple-darwin \
   && . /home/${APP_USER}/.cargo/env \
   && curl -fLo ~/.cargo/config --create-dirs https://cdn.jsdelivr.net/gh/GopherJ/cfg/cargo/config \
   && cargo install cargo-edit \
