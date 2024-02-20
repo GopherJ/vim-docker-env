@@ -251,7 +251,9 @@ RUN git clone https://github.com/emscripten-core/emsdk.git \
   && ./emsdk install 3.1.7 \
   && ./emsdk activate 3.1.7
 
-RUN curl -L https://sp1.succinct.xyz | bash
+RUN curl -L https://sp1.succinct.xyz | bash \
+  && [ -s "/home/${APP_USER}/.zshenv" ] && . "/home/${APP_USER}/.zshenv" \
+  && sp1up
 
 # RUN wget https://github.com/hyperledger-labs/solang/releases/download/v0.2.0/solang-linux-x86-64 \
 #   && chmod u+x solang-linux-x86-64  \
