@@ -253,7 +253,8 @@ RUN git clone https://github.com/emscripten-core/emsdk.git \
 
 RUN curl -L https://sp1.succinct.xyz | bash \
   && [ -s "/home/${APP_USER}/.zshenv" ] && . "/home/${APP_USER}/.zshenv" \
-  && sp1up
+  && sp1up \
+  && cargo prove install-toolchain
 
 # RUN wget https://github.com/hyperledger-labs/solang/releases/download/v0.2.0/solang-linux-x86-64 \
 #   && chmod u+x solang-linux-x86-64  \
