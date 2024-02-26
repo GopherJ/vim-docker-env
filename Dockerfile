@@ -458,6 +458,7 @@ RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | \
   && cargo install git-interactive-rebase-tool \
   && RUSTFLAGS="-C link-args=-rdynamic" cargo install --force cargo-stylus \
   && cargo install --git https://github.com/MordechaiHadad/bob.git \
+  && cargo install --git https://github.com/0xpolygonmiden/compiler --branch develop midenc \
   && cargo install --git https://github.com/casey/just just \
   && cargo install --git https://github.com/facebook/buck2 buck2 \
   && cargo install --git https://github.com/starkware-libs/cairo.git --tag v1.1.0 cairo-lang-compiler \
