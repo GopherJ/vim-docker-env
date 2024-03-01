@@ -437,7 +437,7 @@ RUN curl -o- https://cdn.jsdelivr.net/gh/nvm-sh/nvm@0.39.3/install.sh | bash \
 # RUN curl -L --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/cargo-bins/cargo-binstall/main/install-from-binstall-release.sh | bash
 
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | \
-  sh -s -- -y --default-toolchain ${RUST_TOOLCHAIN} --component llvm-tools --component rustc-dev --component rust-src --target wasm32-unknown-unknown --target wasm32-wasi --target x86_64-pc-windows-gnu --target x86_64-apple-darwin \
+  sh -s -- -y --default-toolchain ${RUST_TOOLCHAIN} --component llvm-tools --component rustc-dev --component rust-src --target wasm32-unknown-unknown --target wasm32-wasi --target riscv32i-unknown-none-elf --target x86_64-pc-windows-gnu --target x86_64-apple-darwin \
   && . /home/${APP_USER}/.cargo/env \
   && curl -fLo ~/.cargo/config --create-dirs https://cdn.jsdelivr.net/gh/GopherJ/cfg/cargo/config \
   && cargo install cargo-edit \
@@ -464,6 +464,7 @@ RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | \
   && cargo install --git https://github.com/starkware-libs/cairo.git --tag v1.1.0 cairo-lang-compiler \
   && cargo install --git https://github.com/starkware-libs/cairo.git --tag v1.1.0 cairo-language-server \
   && cargo install --git https://github.com/software-mansion/scarb.git --tag v0.3.0 scarb \
+  && cargo install --git https://github.com/nexus-xyz/nexus-zkvm nexus-tools \
   && cargo install cargo-whatfeatures --no-default-features --features "rustls" \
   && rustup install nightly-2023-04-23 && cargo +nightly-2023-04-23 install --git https://github.com/facebook/buck2.git buck2 \
   && cargo install --features cli etk-asm etk-dasm \
