@@ -44,6 +44,7 @@ RUN apt update --fix-missing \
   alsa-utils \
   transmission \
   ffmpeg \
+  bindgen \
   tig \
   wabt \
   proxychains4 \
