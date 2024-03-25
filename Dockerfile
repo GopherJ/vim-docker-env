@@ -16,6 +16,9 @@ ENV TZ=Asia/Shanghai
 RUN apt update --fix-missing \
   && apt upgrade -y \
   && apt install -y \
+  linux-tools-common \
+  linux-tools-generic \
+  linux-tools-`uname -r` \
   gcc-riscv64-linux-gnu \
   gcc-arm-linux-gnueabihf \
   gcc-aarch64-linux-gnu \
