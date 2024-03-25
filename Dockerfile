@@ -456,6 +456,8 @@ RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | \
   && cargo install fnm \
   && cargo install broot \
   && cargo install stylua \
+  && cargo install samply \
+  && cargo install flamegraph \
   && cargo install git-interactive-rebase-tool \
   && RUSTFLAGS="-C link-args=-rdynamic" cargo install --force cargo-stylus \
   && cargo install --git https://github.com/MordechaiHadad/bob.git \
