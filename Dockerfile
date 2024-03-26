@@ -461,6 +461,8 @@ RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | \
   && cargo install stylua \
   && cargo install samply \
   && cargo install flamegraph \
+  && sudo bash -c "echo 0 > /proc/sys/kernel/kptr_restrict" \
+  && echo -1 | sudo tee /proc/sys/kernel/perf_event_paranoid \
   && cargo install git-interactive-rebase-tool \
   && RUSTFLAGS="-C link-args=-rdynamic" cargo install --force cargo-stylus \
   && cargo install --git https://github.com/MordechaiHadad/bob.git \
