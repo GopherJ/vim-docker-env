@@ -16,6 +16,9 @@ ENV TZ=Asia/Shanghai
 RUN apt update --fix-missing \
   && apt upgrade -y \
   && apt install -y \
+  linux-tools-common \
+  linux-tools-generic \
+  linux-tools-`uname -r` \
   gcc-riscv64-linux-gnu \
   gcc-arm-linux-gnueabihf \
   gcc-aarch64-linux-gnu \
@@ -457,6 +460,11 @@ RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | \
   && cargo install fnm \
   && cargo install broot \
   && cargo install stylua \
+  && cargo install samply \
+  && cargo install flamegraph \
+  && sudo bash -c "echo 0 > /proc/sys/kernel/kptr_restrict" \
+  && sudo sysctl kernel.perf_event_paranoid=-1 \
+  && sudo sysctl kernel.perf_event_mlock_kb=2048 \
   && cargo install git-interactive-rebase-tool \
   && RUSTFLAGS="-C link-args=-rdynamic" cargo install --force cargo-stylus \
   && cargo install --git https://github.com/MordechaiHadad/bob.git \
