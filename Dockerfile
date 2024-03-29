@@ -56,6 +56,7 @@ RUN apt update --fix-missing \
   aria2 \
   tzdata \
   libssl-dev \
+  libcxxopts-dev \
   libstdc++-12-dev \
   librsvg2-bin \
   z3 \
