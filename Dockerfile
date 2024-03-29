@@ -169,6 +169,7 @@ RUN apt update --fix-missing \
   ruby-dev \
   python3 \
   python3-pip \
+  conan \
   apt-file \
   openssh-client \
   openssh-server \
