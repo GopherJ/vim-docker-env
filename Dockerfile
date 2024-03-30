@@ -453,6 +453,7 @@ RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | \
   && cargo install sea-orm-cli \
   && cargo install zellij \
   && cargo install cargo-geiger \
+  && cargo install cargo-wizard \
   && cargo install cargo-binstall \
   && cargo binstall cargo-risczero \
   && cargo install wasm-tools \
