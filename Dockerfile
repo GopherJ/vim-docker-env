@@ -508,6 +508,7 @@ RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | \
   && cargo install --git https://github.com/est31/cargo-udeps \
   && cargo install --git https://github.com/BrainiumLLC/cargo-mobile \
   && cargo install --git https://github.com/bnjbvr/cargo-machete \
+  && cargo install --force cargo-make \
   && cargo install cargo-chef \
   && cargo install watchexec-cli \
   && cargo install cargo-deadlinks \
