@@ -469,6 +469,7 @@ RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | \
   && cargo install stylua \
   && cargo install samply \
   && cargo install flamegraph \
+  && cargo install wasm-bindgen-cli \
   && cargo install --locked tokio-console \
   && sudo bash -c "echo 0 > /proc/sys/kernel/kptr_restrict" \
   && sudo sysctl kernel.perf_event_paranoid=-1 \
