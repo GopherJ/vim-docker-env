@@ -415,6 +415,7 @@ RUN curl -o- https://cdn.jsdelivr.net/gh/nvm-sh/nvm@0.39.3/install.sh | bash \
   tldr \
   zksync-cli \
   gulp-cli \
+  aicommits \
   sol2uml \
   tx2uml \
   doctoc \
