@@ -450,7 +450,7 @@ RUN curl -o- https://cdn.jsdelivr.net/gh/nvm-sh/nvm@0.39.3/install.sh | bash \
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | \
   sh -s -- -y --default-toolchain ${RUST_TOOLCHAIN} --component llvm-tools --component rustc-dev --component rust-src --target wasm32-unknown-unknown --target wasm32-wasi --target riscv32i-unknown-none-elf --target x86_64-pc-windows-gnu --target x86_64-apple-darwin \
   && . /home/${APP_USER}/.cargo/env \
-  && curl -fLo ~/.cargo/config --create-dirs https://cdn.jsdelivr.net/gh/GopherJ/cfg/cargo/config \
+  && curl -fLo ~/.cargo/config --create-dirs https://cdn.jsdelivr.net/gh//GopherJ/dotfiles/cargo/config \
   && cargo install cargo-edit \
   && cargo install ast-grep \
   && cargo install spl-token-cli \
@@ -546,7 +546,7 @@ RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | \
   && cargo install --locked evcxr_jupyter \
   && curl -L https://foundry.paradigm.xyz | bash \
   && ~/.foundry/bin/foundryup \
-  && curl -fLo ~/.config/alacritty/alacritty.yml --create-dirs https://cdn.jsdelivr.net/gh/GopherJ/cfg/alacritty/alacritty.yml --retry-delay 2 --retry 3 \
+  && curl -fLo ~/.config/alacritty/alacritty.yml --create-dirs https://cdn.jsdelivr.net/gh//GopherJ/dotfiles/alacritty/alacritty.yml --retry-delay 2 --retry 3 \
   && cargo install --git https://github.com/extrawurst/gitui \
   && curl -fo ~/.config/gitui/key_config.ron --create-dirs https://cdn.jsdelivr.net/gh/extrawurst/gitui/vim_style_key_config.ron \
   && cargo install --git https://github.com/sharkdp/fd \
@@ -563,7 +563,7 @@ RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | \
 
 
 RUN sh -c "$(curl -fsSL https://cdn.jsdelivr.net/gh/ohmyzsh/ohmyzsh/tools/install.sh)" \
-  && curl https://cdn.jsdelivr.net/gh/GopherJ/cfg/zshrc/.zshrc --retry-delay 2 --retry 3 >> ~/.zshrc
+  && curl https://cdn.jsdelivr.net/gh//GopherJ/dotfiles/zshrc/.zshrc --retry-delay 2 --retry 3 >> ~/.zshrc
 
 RUN curl -fsSL https://sh.iroh.computer/install_laptop.sh | sh
 
@@ -589,24 +589,24 @@ RUN sudo add-apt-repository ppa:jonathonf/vim \
   && pip3 install --user maturin \
   && pip3 install --user poetry \
   && sudo gem install neovim \
-  && curl -fo ~/.vimrc https://cdn.jsdelivr.net/gh/GopherJ/cfg/coc/.vimrc --retry-delay 2 --retry 3 \
-  && curl -fo ~/.vim/coc-settings.json --create-dirs https://cdn.jsdelivr.net/gh/GopherJ/cfg/coc/coc-settings.json --retry-delay 2 --retry 3 \
+  && curl -fo ~/.vimrc https://cdn.jsdelivr.net/gh//GopherJ/dotfiles/coc/.vimrc --retry-delay 2 --retry 3 \
+  && curl -fo ~/.vim/coc-settings.json --create-dirs https://cdn.jsdelivr.net/gh//GopherJ/dotfiles/coc/coc-settings.json --retry-delay 2 --retry 3 \
   && curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://cdn.jsdelivr.net/gh/junegunn/vim-plug/plug.vim --retry-delay 2 --retry 3 \
   && if [ ! -d ~/.config ]; then mkdir ~/.config; fi \
   && ln -s ~/.vim ~/.config/nvim \
   && ln -s ~/.vimrc ~/.config/nvim/init.vim \
   && nvim --headless +PlugInstall +qall \
   && nvim --headless +VimspectorInstall +qall \
-  && curl -fo ~/.vimspector.json --create-dirs https://cdn.jsdelivr.net/gh/GopherJ/cfg/vimspector/.vimspector.json --retry-delay 2 --retry 3 \
+  && curl -fo ~/.vimspector.json --create-dirs https://cdn.jsdelivr.net/gh//GopherJ/dotfiles/vimspector/.vimspector.json --retry-delay 2 --retry 3 \
   && if [ ! -d ~/.config/coc/extensions ]; then mkdir -p ~/.config/coc/extensions; fi \
-  && curl -fo ~/.config/coc/extensions/package.json https://cdn.jsdelivr.net/gh/GopherJ/cfg/coc/package.json --retry-delay 2 --retry 3 \
+  && curl -fo ~/.config/coc/extensions/package.json https://cdn.jsdelivr.net/gh//GopherJ/dotfiles/coc/package.json --retry-delay 2 --retry 3 \
   && cd ~/.config/coc/extensions \
   && npm install --global-style --ignore-scripts --no-bin-links --no-package-lock --only=prod \
-  && curl -fo ~/.vim/tasks.ini https://cdn.jsdelivr.net/gh/GopherJ/cfg/asynctasks/tasks.ini --retry-delay 2 --retry 3 \
-  && curl -fo --create-dirs ~/.config/coc/ultisnips/rust.snippets https://cdn.jsdelivr.net/gh/GopherJ/cfg/snippets/rust.snippets --retry-delay 2 --retry 3 \
-  && curl -fo --create-dirs ~/.config/coc/ultisnips/typescript.snippets https://cdn.jsdelivr.net/gh/GopherJ/cfg/snippets/typescript.snippets --retry-delay 2 --retry 3 \
-  && curl -fo --create-dirs ~/.config/coc/ultisnips/solidity.snippets https://cdn.jsdelivr.net/gh/GopherJ/cfg/snippets/solidity.snippets --retry-delay 2 --retry 3 \
-  && curl -fo --create-dirs ~/.config/coc/ultisnips/go.snippets https://cdn.jsdelivr.net/gh/GopherJ/cfg/snippets/go.snippets --retry-delay 2 --retry 3
+  && curl -fo ~/.vim/tasks.ini https://cdn.jsdelivr.net/gh//GopherJ/dotfiles/asynctasks/tasks.ini --retry-delay 2 --retry 3 \
+  && curl -fo --create-dirs ~/.config/coc/ultisnips/rust.snippets https://cdn.jsdelivr.net/gh//GopherJ/dotfiles/snippets/rust.snippets --retry-delay 2 --retry 3 \
+  && curl -fo --create-dirs ~/.config/coc/ultisnips/typescript.snippets https://cdn.jsdelivr.net/gh//GopherJ/dotfiles/snippets/typescript.snippets --retry-delay 2 --retry 3 \
+  && curl -fo --create-dirs ~/.config/coc/ultisnips/solidity.snippets https://cdn.jsdelivr.net/gh//GopherJ/dotfiles/snippets/solidity.snippets --retry-delay 2 --retry 3 \
+  && curl -fo --create-dirs ~/.config/coc/ultisnips/go.snippets https://cdn.jsdelivr.net/gh//GopherJ/dotfiles/snippets/go.snippets --retry-delay 2 --retry 3
 
 RUN solc-select install ${SOLC_VERSION} \
   && solc-select use ${SOLC_VERSION}
@@ -620,11 +620,11 @@ RUN curl -fLo ~/.config/coc/extensions/coc-tabnine-data/binaries/$TABNINE_VERSIO
   && chmod u+x ./TabNine ./TabNine-deep-cloud ./TabNine-deep-local ./WD-TabNine
 
 RUN git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm \
-  && curl -fLo ~/.tmux.conf --create-dirs https://cdn.jsdelivr.net/gh/GopherJ/cfg/tmux/.tmux.conf --retry-delay 2 --retry 3 \
-  && curl -fLo ~/.tmuxline_snapshot --create-dirs https://cdn.jsdelivr.net/gh/GopherJ/cfg/tmux/.tmuxline_snapshot --retry-delay 2 --retry 3
+  && curl -fLo ~/.tmux.conf --create-dirs https://cdn.jsdelivr.net/gh//GopherJ/dotfiles/tmux/.tmux.conf --retry-delay 2 --retry 3 \
+  && curl -fLo ~/.tmuxline_snapshot --create-dirs https://cdn.jsdelivr.net/gh//GopherJ/dotfiles/tmux/.tmuxline_snapshot --retry-delay 2 --retry 3
 
-RUN git clone https://github.com/GopherJ/cfg ~/cfg \
-  && cd ~/cfg/fonts \
+RUN git clone https://github.com//GopherJ/dotfiles ~/dotfiles \
+  && cd ~/dotfiles/fonts \
   && ./install-fira-code.sh
 
 RUN curl -fsSL https://cdn.jsdelivr.net/gh/filebrowser/get/get.sh | bash
