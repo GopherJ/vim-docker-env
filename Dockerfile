@@ -56,6 +56,7 @@ RUN apt update --fix-missing \
   duf \
   aria2 \
   tzdata \
+  libdb5.3++-dev \
   libssl-dev \
   librocksdb-dev \
   libcxxopts-dev \
