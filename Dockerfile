@@ -19,6 +19,8 @@ RUN apt update --fix-missing \
   linux-tools-common \
   linux-tools-generic \
   linux-tools-`uname -r` \
+  bpfcc-tools \
+  linux-headers-$(uname -r) \
   gcc-riscv64-linux-gnu \
   gcc-arm-linux-gnueabihf \
   gcc-aarch64-linux-gnu \
