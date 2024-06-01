@@ -208,6 +208,8 @@ RUN apt update --fix-missing \
   binaryen \
   sagemath \
   pari-gp \
+  fontforge \
+  python3-fontforge \
   && update-alternatives --install /usr/bin/clangd clangd /usr/bin/clangd-15 100 \
   && update-alternatives --install /usr/bin/clang clang /usr/bin/clang-15 1 --slave /usr/bin/clang++ clang++ /usr/bin/clang++-15 \
   && apt clean \
