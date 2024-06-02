@@ -263,10 +263,10 @@ RUN git clone https://github.com/pyenv/pyenv.git ~/.pyenv \
   && git clone https://github.com/pyenv/pyenv-virtualenv.git $(pyenv root)/plugins/pyenv-virtualenv \
   && pyenv install ${PY_VERSION}
 
-RUN git clone https://github.com/emscripten-core/emsdk.git \
-  && cd emsdk \
-  && ./emsdk install 3.1.7 \
-  && ./emsdk activate 3.1.7
+RUN git clone https://github.com/emscripten-core/emsdk.git ~/.emsdk \
+  && cd ~/.emsdk \
+  && ./emsdk install latest \
+  && ./emsdk activate latest
 
 RUN curl -L https://sp1.succinct.xyz | bash \
   && [ -s "/home/${APP_USER}/.zshenv" ] && . "/home/${APP_USER}/.zshenv" \
