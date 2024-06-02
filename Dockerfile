@@ -463,6 +463,8 @@ RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | \
   && . /home/${APP_USER}/.cargo/env \
   && curl -fLo ~/.cargo/config --create-dirs https://cdn.jsdelivr.net/gh//GopherJ/dotfiles/cargo/config \
   && cargo install cargo-edit \
+  && cargo install typst-cl \
+  && cargo install --git https://github.com/nvarner/typst-lsp typst-lsp \
   && cargo install ast-grep \
   && cargo install spl-token-cli \
   && cargo install cbindgen \
