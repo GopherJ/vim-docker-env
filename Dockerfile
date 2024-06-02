@@ -465,6 +465,7 @@ RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | \
   && cargo install cargo-edit \
   && cargo install typst-cl \
   && cargo install --git https://github.com/nvarner/typst-lsp typst-lsp \
+  && cargo install --git https://github.com/astrale-sharp/typstfmt.git \
   && cargo install ast-grep \
   && cargo install spl-token-cli \
   && cargo install cbindgen \
