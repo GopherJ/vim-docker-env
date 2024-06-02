@@ -37,8 +37,10 @@ RUN apt update --fix-missing \
   rofi \
   nnn \
   sshfs \
+  qemu-system \
   neomutt \
   mold \
+  lld \
   git-lfs \
   flameshot \
   inkscape \
@@ -76,7 +78,6 @@ RUN apt update --fix-missing \
   expat \
   qrencode \
   git \
-  lld \
   wget \
   curl \
   xclip \
@@ -332,6 +333,7 @@ RUN git clone -b version9 https://github.com/libbitcoin/secp256k1 \
 
 ENV GOENV_ROOT=/home/${APP_USER}/.goenv
 ENV NVM_DIR=/home/${APP_USER}/.nvm
+ENV ZVM_DIR=/home/${APP_USER}/.zvm
 ENV CARGO_HOME=/home/${APP_USER}/.cargo
 ENV USER=${APP_USER}
 ENV VCPKG_ROOT=/home/${APP_USER}/vcpkg
@@ -403,6 +405,9 @@ RUN sudo add-apt-repository ppa:hluk/copyq \
 RUN sudo add-apt-repository ppa:maveonair/helix-editor \
   && sudo apt update \
   && sudo apt install helix
+
+RUN curl https://cdn.jsdelivr.net/gh/tristanisham/zvm@0.7.1/install.sh | bash \
+  && ${ZVM_DIR}/self/zvm install 0.12.0
 
 RUN curl -o- https://cdn.jsdelivr.net/gh/nvm-sh/nvm@0.39.3/install.sh | bash \
   && curl -fsSL https://fnm.vercel.app/install | bash \
