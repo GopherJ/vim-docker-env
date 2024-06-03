@@ -20,6 +20,7 @@ RUN apt update --fix-missing \
   linux-tools-generic \
   linux-tools-`uname -r` \
   bpfcc-tools \
+  wine64 \
   linux-headers-$(uname -r) \
   gcc-riscv64-linux-gnu \
   gcc-arm-linux-gnueabihf \
@@ -37,6 +38,7 @@ RUN apt update --fix-missing \
   rofi \
   nnn \
   sshfs \
+  qemu-user \
   qemu-system \
   neomutt \
   mold \
