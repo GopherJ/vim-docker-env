@@ -62,6 +62,9 @@ RUN apt update --fix-missing \
   tzdata \
   libdb5.3++-dev \
   libssl-dev \
+  libc-dev \
+  libc6-dev-i386 \
+  lld-15 \
   librocksdb-dev \
   libcxxopts-dev \
   libstdc++-12-dev \
@@ -120,6 +123,14 @@ RUN apt update --fix-missing \
   git-extras \
   libclang-dev \
   llvm \
+  bison \
+  flex \
+  texinfo \
+  gperf \
+  patchutils \
+  bc \
+  libglib2.0-dev \
+  libslirp-dev \
   zlib1g-dev \
   libmpc-dev \
   libmpfr-dev \
@@ -281,12 +292,12 @@ RUN curl -L https://sp1.succinct.xyz | bash \
 #   && solc-select install ${SOLC_VERSION} \
 #   && solc-select use ${SOLC_VERSION}
 
-# RUN wget https://cmake.org/files/v3.18/cmake-3.18.4.tar.gz \
-#     && tar -xzvf cmake-3.18.4.tar.gz \
-#     && cd cmake-3.18.4 \
-#     && ./bootstrap \
-#     && make -j4 \
-#     && sudo make install
+RUN wget https://cmake.org/files/v3.29/cmake-3.29.3.tar.gz \
+  && tar -xzvf cmake-3.29.3.tar.gz \
+  && cd cmake-3.29.3 \
+  && ./bootstrap \
+  && make -j$(nproc) \
+  && sudo make install
 
 # RUN curl -fLo ~/ripgrep_12.1.1_amd64.deb https://github.com/BurntSushi/ripgrep/releases/download/12.1.1/ripgrep_12.1.1_amd64.deb --retry-delay 2 --retry 3 \
 #     && sudo dpkg -i ~/ripgrep_12.1.1_amd64.deb
@@ -491,6 +502,8 @@ RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | \
   && sudo sysctl kernel.perf_event_paranoid=-1 \
   && sudo sysctl kernel.perf_event_mlock_kb=2048 \
   && sudo sysctl -w kernel.yama.ptrace_scope=0 \
+  && echo 0 | sudo tee /proc/sys/kernel/kptr_restrict \
+  # && sudo mkdir -p /usr/share/doc/perf-tip && sudo wget https://cdn.jsdelivr.net/gh/linux/tools/perf/Documentation/tips.txt -- /usr/share/doc/perf-tip/tips.txt \
   && cargo install git-interactive-rebase-tool \
   && RUSTFLAGS="-C link-args=-rdynamic" cargo install --force cargo-stylus \
   && cargo install --git https://github.com/MordechaiHadad/bob.git \
@@ -563,7 +576,7 @@ RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | \
   && cargo install --locked evcxr_jupyter \
   && curl -L https://foundry.paradigm.xyz | bash \
   && ~/.foundry/bin/foundryup \
-  && curl -fLo ~/.config/alacritty/alacritty.yml --create-dirs https://cdn.jsdelivr.net/gh//GopherJ/dotfiles/alacritty/alacritty.yml --retry-delay 2 --retry 3 \
+  && curl -fLo ~/.config/alacritty/alacritty.yml --create-dirs https://cdn.jsdelivr.net/gh/GopherJ/dotfiles/alacritty/alacritty.yml --retry-delay 2 --retry 3 \
   && cargo install --git https://github.com/extrawurst/gitui \
   && curl -fo ~/.config/gitui/key_config.ron --create-dirs https://cdn.jsdelivr.net/gh/extrawurst/gitui/vim_style_key_config.ron \
   && cargo install --git https://github.com/sharkdp/fd \
