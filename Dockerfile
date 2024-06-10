@@ -16,6 +16,8 @@ ENV TZ=Asia/Shanghai
 RUN apt update --fix-missing \
   && apt upgrade -y \
   && apt install -y \
+  libsecret-1-0 \
+  libsecret-1-dev \
   linux-tools-common \
   linux-tools-generic \
   linux-tools-`uname -r` \
@@ -40,6 +42,12 @@ RUN apt update --fix-missing \
   sshfs \
   qemu-user \
   qemu-system \
+  virtualbox \
+  virtualbox-dkms \
+  virtualbox-ext-pack \
+  virtualbox-guest-additions-iso \
+  virtualbox-guest-utils \
+  virtualbox-qt \
   neomutt \
   mold \
   lld \
@@ -419,6 +427,7 @@ RUN sudo add-apt-repository ppa:maveonair/helix-editor \
   && sudo apt update \
   && sudo apt install helix
 
+# RUN curl -L https://github.com/marler8997/zigup/releases/download/v2024_05_05/zigup-x86_64-linux.tar.gz | tar xz
 RUN curl https://cdn.jsdelivr.net/gh/tristanisham/zvm@0.7.1/install.sh | bash \
   && ${ZVM_DIR}/self/zvm install 0.12.0
 
