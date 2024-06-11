@@ -490,7 +490,7 @@ RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | \
   && cargo install cargo-edit \
   && cargo install --git https://github.com/typst/typst --locked typst-cli \
   && cargo install --git https://github.com/nvarner/typst-lsp typst-lsp \
-  && cargo install --git https://github.com/astrale-sharp/typstfmt.git \
+  && cargo install --git https://github.com/Enter-tainer/typstyle \
   && cargo install ast-grep \
   && cargo install spl-token-cli \
   && cargo install cbindgen \
