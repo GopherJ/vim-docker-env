@@ -70,21 +70,13 @@ RUN apt update --fix-missing \
   duf \
   aria2 \
   tzdata \
-  libdb5.3++-dev \
-  libssl-dev \
   libc-dev \
   libc6-dev-i386 \
   lld-15 \
-  librocksdb-dev \
   libcxxopts-dev \
   libstdc++-12-dev \
   librsvg2-bin \
   z3 \
-  libz3-dev \
-  libzmq3-dev \
-  libdb-dev \
-  libdb++-dev \
-  libminiupnpc-dev \
   postgresql-client \
   redis-tools \
   mysql-client \
@@ -117,8 +109,6 @@ RUN apt update --fix-missing \
   mosh \
   certbot \
   mingw-w64 \
-  libncurses5-dev \
-  libncursesw5-dev \
   debhelper \
   inotify-tools \
   watchman \
@@ -140,6 +130,7 @@ RUN apt update --fix-missing \
   patchutils \
   bc \
   libglib2.0-dev \
+  libssl-dev \
   libslirp-dev \
   zlib1g-dev \
   libmpc-dev \
@@ -147,6 +138,8 @@ RUN apt update --fix-missing \
   libgmp-dev \
   libxml2-dev \
   libasound2-dev \
+  libncurses5-dev \
+  libncursesw5-dev \
   libboost-all-dev \
   libarmadillo-dev \
   libjsoncpp-dev \
@@ -178,6 +171,13 @@ RUN apt update --fix-missing \
   libmpdec-dev \
   libevent-dev \
   libsqlite3-dev \
+  librocksdb-dev \
+  libdb5.3++-dev \
+  libz3-dev \
+  libzmq3-dev \
+  libdb-dev \
+  libdb++-dev \
+  libminiupnpc-dev \
   uuid-dev \
   libcurl4-openssl-dev \
   libprotobuf-dev \
