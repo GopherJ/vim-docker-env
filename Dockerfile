@@ -269,6 +269,10 @@ RUN git clone https://github.com/universal-ctags/ctags ~/ctags \
   && make \
   && sudo make install
 
+RUN sudo add-apt-repository ppa:obsproject/obs-studio \
+  && sudo apt update \
+  && sudo apt install obs-studio -y
+
 RUN wget https://github.com/chevdor/subwasm/releases/download/v0.18.0/subwasm_linux_amd64_v0.18.0.deb -O subwasm.deb \
   && sudo dpkg -i subwasm.deb
 
