@@ -623,6 +623,8 @@ RUN sudo add-apt-repository ppa:jonathonf/vim \
   && pip3 install --upgrade pip \
   && pip3 install --upgrade pipenv \
   && pip3 install --upgrade solc-select \
+  && pip3 inssall --user cmakelang \
+  && pip3 install --user cmake-language-server \
   && pip3 install --user jupyter \
   && pip3 install --user you-get \
   && pip3 install --user codespell \
