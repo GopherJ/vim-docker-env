@@ -156,6 +156,7 @@ RUN apt update --fix-missing \
   libutempter-dev \
   liblz4-dev \
   libpq-dev \
+  libtbb-dev \
   libpqxx-dev \
   libmysqlclient-dev \
   libjansson-dev \
