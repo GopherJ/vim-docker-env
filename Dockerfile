@@ -234,6 +234,8 @@ RUN apt update --fix-missing \
   fontforge \
   python3-fontforge \
   && update-alternatives --install /usr/bin/clangd clangd /usr/bin/clangd-15 100 \
+  && update-alternatives --install /usr/bin/llc llc /usr/bin/llc-15 100 \
+  && update-alternatives --install /usr/bin/opt opt /usr/bin/opt-15 100 \
   && update-alternatives --install /usr/bin/clang clang /usr/bin/clang-15 1 --slave /usr/bin/clang++ clang++ /usr/bin/clang++-15 \
   && apt clean \
   && rm -rf /var/lib/apt/lists/*
