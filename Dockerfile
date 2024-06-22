@@ -22,6 +22,7 @@ RUN apt update --fix-missing \
   linux-tools-generic \
   linux-tools-`uname -r` \
   bpfcc-tools \
+  screenkey \
   wine64 \
   linux-headers-$(uname -r) \
   gcc-riscv64-linux-gnu \
@@ -146,6 +147,7 @@ RUN apt update --fix-missing \
   libblas-dev \
   libopenblas-dev \
   liblapack-dev \
+  libbenchmark-dev \
   libfreetype6-dev \
   libexpat1-dev \
   libfontconfig1-dev \
@@ -225,6 +227,7 @@ RUN apt update --fix-missing \
   bash-completion \
   clangd-15 \
   clang-15 \
+  lua5.4 \
   nasm \
   protobuf-compiler \
   protobuf-compiler-grpc \
@@ -629,6 +632,7 @@ RUN sudo add-apt-repository ppa:jonathonf/vim \
   && pip3 inssall --user cmakelang \
   && pip3 install --user cmake-language-server \
   && pip3 install --user jupyter \
+  && pip3 install --user ninja \
   && pip3 install --user you-get \
   && pip3 install --user codespell \
   && pip3 install --user detect-secrets \
