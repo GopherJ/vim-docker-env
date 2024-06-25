@@ -21,11 +21,17 @@ RUN apt update --fix-missing \
   linux-tools-common \
   linux-tools-generic \
   linux-tools-`uname -r` \
+  tesseract-ocr \
   bpfcc-tools \
   screenkey \
   wine64 \
+  gdb-multiarch \
+  binutils-riscv64-linux-gnu \
+  binutils-common \
   linux-headers-$(uname -r) \
   gcc-riscv64-linux-gnu \
+  g++-riscv64-linux-gnu \
+  gcc-riscv64-unknown-elf \
   gcc-arm-linux-gnueabihf \
   gcc-aarch64-linux-gnu \
   nvidia-cuda-toolkit \
@@ -42,7 +48,8 @@ RUN apt update --fix-missing \
   nnn \
   sshfs \
   qemu-user \
-  qemu-system \
+  qemu-user-static \
+  qemu-system-riscv32 \
   virtualbox \
   virtualbox-dkms \
   virtualbox-ext-pack \
@@ -128,6 +135,7 @@ RUN apt update --fix-missing \
   flex \
   texinfo \
   gperf \
+  valgrind \
   patchutils \
   bc \
   libglib2.0-dev \
@@ -628,7 +636,9 @@ RUN sudo add-apt-repository ppa:jonathonf/vim \
   && sudo apt install -y vim neovim solc ethereum \
   && pip3 install --upgrade pip \
   && pip3 install --upgrade pipenv \
+  && pip3 install "pix2tex[gui]" \
   && pip3 install --upgrade solc-select \
+  && python3 -m pip install -U "yt-dlp[default]" \
   && pip3 inssall --user cmakelang \
   && pip3 install --user cmake-language-server \
   && pip3 install --user jupyter \
