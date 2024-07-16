@@ -2,12 +2,12 @@ FROM ubuntu:22.04
 LABEL Cheng JIANG <alex_cj96@foxmail.com>
 
 ARG APP_USER=alex_cj96
-ARG GO_VERSION=1.22.3
+ARG GO_VERSION=1.22.5
 ARG NODE_VERSION=v18
 ARG RUST_TOOLCHAIN=nightly-2024-05-06
-ARG TABNINE_VERSION=4.4.225
-ARG RUST_ANALYZER_VERSION=2023-01-21
-ARG SOLC_VERSION=0.8.21
+ARG TABNINE_VERSION=4.180.0
+ARG RUST_ANALYZER_VERSION=2024-07-15
+ARG SOLC_VERSION=0.8.26
 ARG PY_VERSION=3.11.5
 
 ENV DEBIAN_FRONTEND noninteractive
@@ -355,20 +355,20 @@ RUN wget ttps://boostorg.jfrog.io/artifactory/main/release/1.76.0/source/boost_1
   && ./b2 \
   && sudo ./b2 install
 
-RUN git clone -b version9 https://github.com/libbitcoin/secp256k1 \
-  && git clone -b version3 https://github.com/libbitcoin/libbitcoin-system \
-  && git clone -b version3 https://github.com/libbitcoin/libbitcoin-protocol \
-  && git clone -b version3 https://github.com/libbitcoin/libbitcoin-client \
-  && git clone -b version3 https://github.com/libbitcoin/libbitcoin-server \
-  && git clone -b version3 https://github.com/libbitcoin/libbitcoin-network \
-  && git clone -b version3 https://github.com/libbitcoin/libbitcoin-database \
-  && git clone -b version3 https://github.com/libbitcoin/libbitcoin-explorer \
-  && cd secp256k1 && ./autogen.sh && ./configure.sh --enable-module-recovery && make && sudo make install && cd .. \
-  && cd libbitcoin-system && ./autogen.sh && ./configure.sh && make && sudo make install && cd .. \
-  && cd libbitcoin-protocol && ./autogen.sh && ./configure.sh && make && sudo make install && cd .. \
-  && cd libbitcoin-network && ./autogen.sh && ./configure.sh && make && sudo make install && cd .. \
-  && cd libbitcoin-client && ./autogen.sh && ./configure.sh && make && sudo make install && cd .. \
-  && cd libbitcoin-explorer && ./autogen.sh && ./configure.sh && make && sudo make install
+RUN git clone -b version8 https://github.com/libbitcoin/secp256k1 --depth=1 \
+  && git clone -b version3 https://github.com/libbitcoin/libbitcoin-system --depth=1 \
+  && git clone -b version3 https://github.com/libbitcoin/libbitcoin-protocol --depth=1  \
+  && git clone -b version3 https://github.com/libbitcoin/libbitcoin-client --depth=1  \
+  && git clone -b version3 https://github.com/libbitcoin/libbitcoin-server --depth=1  \
+  && git clone -b version3 https://github.com/libbitcoin/libbitcoin-network --depth=1  \
+  && git clone -b version3 https://github.com/libbitcoin/libbitcoin-database --depth=1  \
+  && git clone -b version3 https://github.com/libbitcoin/libbitcoin-explorer --depth=1  \
+  && cd secp256k1 && ./autogen.sh && ./configure --enable-module-recovery && sed -i 's|libprotokit.a|-lprotokit|g' Makefile && make && sudo make install && cd .. \
+  && cd libbitcoin-system && ./autogen.sh && ./configure && sed -i 's|libprotokit.a|-lprotokit|g' Makefile && make -j$(nproc) && sudo make install && cd .. \
+  && cd libbitcoin-protocol && ./autogen.sh && ./configure && sed -i 's|libprotokit.a|-lprotokit|g' Makefile && make -j$(nproc) && sudo make install && cd .. \
+  && cd libbitcoin-network && ./autogen.sh && ./configure && sed -i 's|libprotokit.a|-lprotokit|g' Makefile && make -j$(nproc) && sudo make install && cd .. \
+  && cd libbitcoin-client && ./autogen.sh && ./configure && sed -i 's|libprotokit.a|-lprotokit|g' Makefile && make -j$(nproc) && sudo make install && cd .. \
+  && cd libbitcoin-explorer && ./autogen.sh && ./configure && sed -i 's|libprotokit.a|-lprotokit|g' Makefile && make -j$(nproc) && sudo make install
 
 ENV GOENV_ROOT=/home/${APP_USER}/.goenv
 ENV NVM_DIR=/home/${APP_USER}/.nvm
