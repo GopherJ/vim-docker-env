@@ -104,10 +104,12 @@ RUN apt update --fix-missing \
   texmaker \
   texinfo \
   texlive-fonts-recommended \
+  fonts-noto-cjk \
   texlive-fonts-extra \
   texlive-latex-extra \
   texlive-bibtex-extra \
   texlive-xetex \
+  texlive-lang-chinese \
   bear \
   apt-utils \
   apt-rdepends \
@@ -282,6 +284,10 @@ RUN git clone https://github.com/universal-ctags/ctags ~/ctags \
   && ./configure \
   && make \
   && sudo make install
+
+RUN sudo apt-add-repository ppa:fish-shell/release-3 \
+  && sudo apt update \
+  && sudo apt install fish -y
 
 RUN sudo add-apt-repository ppa:obsproject/obs-studio \
   && sudo apt update \
@@ -506,6 +512,7 @@ RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | \
   && . /home/${APP_USER}/.cargo/env \
   && curl -fLo ~/.cargo/config --create-dirs https://cdn.jsdelivr.net/gh//GopherJ/dotfiles/cargo/config \
   && cargo install cargo-edit \
+  && cargo install skim \
   && cargo install --git https://github.com/typst/typst --locked typst-cli \
   && cargo install --git https://github.com/nvarner/typst-lsp typst-lsp \
   && cargo install --git https://github.com/Enter-tainer/typstyle \
@@ -593,6 +600,7 @@ RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | \
   && cargo install basic-http-server \
   && cargo install bat \
   && cargo install mdbook \
+  mdbook-epub \
   mdbook-mermaid \
   mdbook-linkcheck \
   mdbook-plantuml \
@@ -600,6 +608,7 @@ RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | \
   mdbook-toc \
   mdbook-i18n-helpers \
   && cargo install --git https://github.com/lzanini/mdbook-katex \
+  && cargo install --git https://github.com/HollowMan6/mdbook-pdf \
   && cargo install diesel_cli --no-default-features --features postgres \
   && cargo install --force --git https://github.com/google/evcxr.git evcxr_repl \
   && cargo install --force --git https://github.com/paritytech/cargo-remote \
@@ -640,6 +649,9 @@ RUN sudo add-apt-repository ppa:jonathonf/vim \
   && pip3 install --upgrade solc-select \
   && python3 -m pip install -U "yt-dlp[default]" \
   && pip3 inssall --user cmakelang \
+  && pip3 install --user mdbook-pdf-outline \
+  && pip3 inssall --user gh2md \
+  && pip3 inssall --user mkdocs \
   && pip3 install --user cmake-language-server \
   && pip3 install --user jupyter \
   && pip3 install --user ninja \
