@@ -207,6 +207,8 @@ RUN apt update --fix-missing \
   autotools-dev \
   python3-autopep8 \
   python3.10-venv \
+  python3 \
+  python3-pip \
   automake \
   libtool \
   tmux \
@@ -214,8 +216,6 @@ RUN apt update --fix-missing \
   cppcheck \
   ruby \
   ruby-dev \
-  python3 \
-  python3-pip \
   conan \
   apt-file \
   openssh-client \
@@ -477,6 +477,7 @@ RUN curl -o- https://cdn.jsdelivr.net/gh/nvm-sh/nvm@0.39.3/install.sh | bash \
   aicommits \
   sol2uml \
   tx2uml \
+  markmap-cli \
   doctoc \
   ts-node \
   markdownlint \
@@ -643,31 +644,31 @@ RUN sudo add-apt-repository ppa:jonathonf/vim \
   && sudo add-apt-repository ppa:ethereum/ethereum \
   && sudo apt update -y \
   && sudo apt install -y vim neovim solc ethereum \
-  && pip3 install --upgrade pip \
-  && pip3 install --upgrade pipenv \
-  && pip3 install "pix2tex[gui]" \
-  && pip3 install --upgrade solc-select \
-  && python3 -m pip install -U "yt-dlp[default]" \
-  && pip3 inssall --user cmakelang \
-  && pip3 install --user mdbook-pdf-outline \
-  && pip3 inssall --user gh2md \
-  && pip3 inssall --user mkdocs \
-  && pip3 install --user cmake-language-server \
-  && pip3 install --user jupyter \
-  && pip3 install --user ninja \
-  && pip3 install --user you-get \
-  && pip3 install --user codespell \
-  && pip3 install --user detect-secrets \
-  && pip3 install --user wheel \
-  && pip3 install --user smdv \
-  && pip3 install --user neovim-remote \
-  && pip3 install --user panoramix-decompiler \
-  && pip3 install --user cmake-format \
+  && pip3 install --user -U pip \
+  && pip3 install --user -U pipenv \
+  && pip3 install --user -U "pix2tex[gui]" \
+  && pip3 install --user -U solc-select \
+  && pip3 install --user -U "yt-dlp[default]" \
+  && pip3 inssall --user -U cmakelang \
+  && pip3 install --user -U mdbook-pdf-outline \
+  && pip3 inssall --user -U gh2md \
+  && pip3 inssall --user -U mkdocs \
+  && pip3 install --user -U cmake-language-server \
+  && pip3 install --user -U jupyter \
+  && pip3 install --user -U ninja \
+  && pip3 install --user -U you-get \
+  && pip3 install --user -U codespell \
+  && pip3 install --user -U detect-secrets \
+  && pip3 install --user -U wheel \
+  && pip3 install --user -U smdv \
+  && pip3 install --user -U neovim-remote \
+  && pip3 install --user -U panoramix-decompiler \
+  && pip3 install --user -U cmake-format \
   && pip3 install --user -U jedi \
-  && pip3 install --user pynvim \
-  && pip3 install --user awscli \
-  && pip3 install --user maturin \
-  && pip3 install --user poetry \
+  && pip3 install --user -U pynvim \
+  && pip3 install --user -U awscli \
+  && pip3 install --user -U maturin \
+  && pip3 install --user -U poetry \
   && sudo gem install neovim \
   && curl -fo ~/.vimrc https://cdn.jsdelivr.net/gh//GopherJ/dotfiles/coc/.vimrc --retry-delay 2 --retry 3 \
   && curl -fo ~/.vim/coc-settings.json --create-dirs https://cdn.jsdelivr.net/gh//GopherJ/dotfiles/coc/coc-settings.json --retry-delay 2 --retry 3 \
