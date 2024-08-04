@@ -538,7 +538,6 @@ RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | \
   && cargo install cargo-zigbuild \
   && cargo install cargo-xwin \
   && cargo install --locked tokio-console \
-  && sudo bash -c "echo 0 > /proc/sys/kernel/kptr_restrict" \
   && sudo sysctl kernel.perf_event_paranoid=-1 \
   && sudo sysctl kernel.perf_event_mlock_kb=2048 \
   && sudo sysctl -w kernel.yama.ptrace_scope=0 \
